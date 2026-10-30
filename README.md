@@ -38,7 +38,7 @@ It works for **brownfield** (an existing product: web, iOS, Android, desktop) an
 Requires [Claude Code](https://claude.com/claude-code).
 
 ```
-/plugin marketplace add rasikain/ux-os
+/plugin marketplace add xianix-team/ux-os
 /plugin install uxos@uxos-marketplace
 ```
 

@@ -115,9 +115,9 @@ Remove the plugin entirely (inside Claude Code):
 
 They need the CLI (step 0) and access to the repo. Either:
 
-- **Public repo:** `gh repo edit rasikain/ux-os --visibility public`, then they run
-  `/plugin marketplace add rasikain/ux-os` and `/plugin install uxos@uxos-marketplace`.
+- **Public repo:** `gh repo edit xianix-team/ux-os --visibility public`, then they run
+  `/plugin marketplace add xianix-team/ux-os` and `/plugin install uxos@uxos-marketplace`.
 - **Private repo:** add them as a collaborator first (`gh repo add-collaborator
-  rasikain/ux-os <user>`); same two commands.
+  xianix-team/ux-os <user>`); same two commands.
 - **Team auto-enable:** commit `.claude/settings.json` (see [`team-settings.example.json`](team-settings.example.json))
   into a repo they open — the plugin is then offered automatically, no `/plugin` step.

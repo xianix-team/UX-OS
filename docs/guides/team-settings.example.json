@@ -2,7 +2,7 @@
   "//": "Copy to .claude/settings.json in a project to offer the uxos plugin to everyone who opens it in Claude Code. They are prompted to trust the marketplace on first use.",
   "extraKnownMarketplaces": {
     "uxos-marketplace": {
-      "source": { "source": "github", "repo": "rasikain/ux-os" }
+      "source": { "source": "github", "repo": "xianix-team/ux-os" }
     }
   },
   "enabledPlugins": {

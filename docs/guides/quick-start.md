@@ -20,7 +20,7 @@ claude
 ```
 Inside the `claude` prompt:
 ```
-/plugin marketplace add rasikain/ux-os
+/plugin marketplace add xianix-team/ux-os
 /plugin install uxos@uxos-marketplace
 ```
 
