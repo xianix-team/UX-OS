@@ -1,0 +1,16 @@
+{
+  "description": "Skill-first rule: inside a uxos project, remind Claude on every prompt to route UX work through the uxos procedures.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/skill-first.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "uxos",
+  "version": "0.27.0",
+  "description": "UX Designer OS — a co-pilot for UX and product designers, brownfield and greenfield. Builds a persistent project model, runs the analysis, and carries the designer through journeys, a functional prototype (Claude Design + code), and development Units.",
+  "author": {
+    "name": "Rasika Mahindasiri",
+    "url": "https://github.com/rasikain"
+  },
+  "keywords": [
+    "ux",
+    "product-design",
+    "brownfield",
+    "greenfield",
+    "design-system",
+    "prototype",
+    "claude-design",
+    "requirements"
+  ],
+  "homepage": "https://github.com/rasikain/ux-os",
+  "repository": "https://github.com/rasikain/ux-os",
+  "license": "MIT"
+}
