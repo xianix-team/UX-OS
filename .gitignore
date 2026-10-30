@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# editor
+.vscode/
+.idea/
+*.swp
+
+# OS / misc
+Thumbs.db
+
+# build artifact, not source
+uxos-skill.zip
+uxos-plugin.zip

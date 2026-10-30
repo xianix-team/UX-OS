@@ -1,0 +1,15 @@
+{
+  "name": "uxos-marketplace",
+  "description": "UX Designer OS — the uxos plugin for Claude Code.",
+  "owner": {
+    "name": "Rasika Mahindasiri",
+    "url": "https://github.com/rasikain"
+  },
+  "plugins": [
+    {
+      "name": "uxos",
+      "source": "./plugin",
+      "description": "UX Designer OS — co-pilot for UX and product designers, brownfield and greenfield: a persistent project model, analysis, journeys, functional prototypes (Claude Design + code), and development Units."
+    }
+  ]
+}
