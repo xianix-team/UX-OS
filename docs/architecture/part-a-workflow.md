@@ -1,7 +1,7 @@
 # Part A — `uxos-diagnose`: what gets built & how you use it
 
 Read this before I build. It shows the plugin structure and the end-to-end workflow you'd
-run, grounded in a walkthrough against a real transit web app.
+run. The example product (`acme-portal`, a clinic-appointment site) is made up.
 
 ---
 
@@ -88,16 +88,16 @@ uxos/blueprint.md         uxos/open-questions.md
 Built an initial model from the live site + your inputs. 14 items need your eye:
 
 CONFLICTS (2)
-  • blueprint: "My Reservations" — found no nav link, guessed it exists. keep / cut?
-  • personas: added a "foreign tourist" segment under General Passenger — include?
+  • blueprint: "My Appointments" — found no nav link, guessed it exists. keep / cut?
+  • personas: added a "visiting patient" segment under Patient — include?
 
 UNKNOWNS (7)
-  • reservation window length (days ahead booking opens)
+  • booking window length (days ahead booking opens)
   • whether search itself needs login
   • ... (all now in open-questions.md)
 
 LOW-CONFIDENCE GUESSES (5)
-  • class availability per route taken from the "Our Services" text, not tested
+  • doctor availability per specialty taken from the "Our Services" text, not tested
   • ...
 
 → Edit the files directly, or tell me the fixes. Say "continue" when ready.
@@ -116,11 +116,11 @@ You fix what matters, ignore the rest, `continue`.
 ```
 ```
 From the product I can see these journeys:
-  J1  Search availability            J7  Login
-  J2  General passenger booking      J8  Cancellation (offline)
-  J3  Warrant booking                J9  Refund on disruption (offline)
-  J4  Pension warrant booking        J10 Contact / complaint
-  J5  Season ticket (external)       J11 Print ticket at station
+  J1  Search appointments             J7  Login
+  J2  Book an appointment             J8  Cancellation (offline)
+  J3  Insurance-covered booking       J9  Refund on rescheduling (offline)
+  J4  Book for a dependant            J10 Contact / complaint
+  J5  Lab results (external)          J11 Print referral at clinic
   J6  Register + OTP
 
 Which are KEY for this engagement?   › J1 J2 J3 J4
@@ -162,8 +162,8 @@ affected · recommended direction`. Runs `ux-critic` to challenge each row; you 
 pushback inline:
 
 ```
-PRB-11  Seat map doesn't confirm "seats together" before payment
-  ux-critic: this is ASSUMPTION-tier — the seat map is behind login and unobserved.
+PRB-11  Slot picker doesn't confirm the doctor's name before payment
+  ux-critic: this is ASSUMPTION-tier — the slot picker is behind login and unobserved.
              Keep as a problem, but mark "needs verification", not a finding.
   keep as-is / downgrade / drop ?  › downgrade
 ```
@@ -176,19 +176,19 @@ Writes `uxos/problems.md`.
 ```
 ```
 BUSINESS GOALS         (from PROCESS problems)
-  1. Reduce station-counter dependency for collect/confirm/cancel   [in scope by default]
+  1. Reduce front-desk dependency for check-in/confirm/cancel       [in scope by default]
 COMPLIANCE
-  1. Consent + retention for stored passenger PII (PRB-14 C-2)      [in scope by default]
+  1. Consent + retention for stored patient data (PRB-14 C-2)       [in scope by default]
 
-UG1 General Passenger — pain points
-  1. Re-enters every passenger each booking (PRB-14)          to be solved?  › yes
+UG1 Patient — pain points
+  1. Re-enters every dependant each booking (PRB-14)          to be solved?  › yes
      response type?  › new-feature
-  2. Can't tell if seats are together before paying (PRB-11)  [needs verification — skip]
+  2. Can't tell which doctor it is before paying (PRB-11)     [needs verification — skip]
   3. Payment double-charge recovery is manual (PRB-07)        to be solved?  › yes
      response type?  › escalate
 
-UG2 Warrant — pain points
-  1. No "temporary vs confirmed" status + deadline (PRB-01/02) to be solved? › yes
+UG2 Insured patient — pain points
+  1. No "pending vs approved" status + deadline (PRB-01/02)   to be solved?  › yes
      response type?  › journey-improvement
   ...
 ```
@@ -252,7 +252,7 @@ Next:
 **After `/uxos:to-be-solved` (G2)** — Part A essentially done
 ```
 Next:
-  1. (Part B) /uxos:respond   5 scoped items — start with the warrant cluster
+  1. (Part B) /uxos:respond   5 scoped items — start with the insurance cluster
   2. share uxos/             hand problems.md / to-be-solved.md to stakeholders
   3. /uxos:matrix J1          J1 was keyed but never matrixed
 ```
@@ -285,5 +285,5 @@ Same engine powers `/uxos:status` — it is just this block, unscoped.
 7. `/uxos:to-be-solved` + G2.
 8. `/uxos:status`.
 
-Tested at each step against a private regression fixture (a real transit seat-reservation
-web app walked by hand) — the `uxos/` the plugin produces should match it.
+Tested at each step against a private regression fixture (a real web app walked by hand) —
+the `uxos/` the plugin produces should match it.

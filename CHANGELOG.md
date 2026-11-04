@@ -8,6 +8,9 @@ versions fix them.
 
 ## [Unreleased]
 
+### Changed
+- Docs: replaced examples drawn from a real project with a made-up one.
+
 ## [0.28.0] — 2026-11-02
 
 Stops code drifting from approved designs. A faithful build used to get every element
