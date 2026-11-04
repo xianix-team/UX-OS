@@ -107,19 +107,35 @@ screen. Read it before building.
    degrades to inline styling.
 4. If a Figma file exists for this journey, build **from its frames** using the
    **`figma-design-to-code`** skill — not from memory. Optionally map the two libraries with
-   Code Connect.
+   Code Connect. If a Claude Design canvas exists (`claude_design_url`), its artboards are
+   the design — read through `artboard-preflight`, never recalled.
 5. Match journey steps to screens the same way as Path A: reuse an existing screen where one
    already covers a step; build new ones only for steps that are new or changed. When a
    `screen-specs` block exists, build everything it specifies (entry point, sub-actions,
    controls, nav updates, states), not just the journey step. Compose **only from library
    components**; if one is missing, stop and add it **at its own level** via `code-library`
    (an atom before the molecule that needs it) — never inline, never as a one-off.
-6. Build **one screen at a time**, in the framework and conventions the repo already uses.
-   **After each screen, run the audit** from `code-build-contract`, fix what it finds, run the
-   prototype (the `run` skill) and look at it, then show the designer the files and the
-   audit result. **Findings block confirmation** unless the designer overrides one — record
-   each override (finding, file, their reason); never override on your own.
-7. **Make it functional — a prototype people can use, not static screens:**
+6. **Build the shared shell first, and confirm it before any section.** The page column and
+   gutter, the header, anything sticky, and the section rhythm — from the Composition
+   block's Shell table. Measure the built shell against the artboard and show the designer
+   both numbers. A screen is too large a first unit: a shell error moves every section on
+   every screen, and a section checked on an unverified shell is checked against nothing.
+
+   **Measure a section heading, never the header** — a header is often inset differently
+   from the body beneath it, and taking the page width from it is a known way to get this
+   exactly wrong.
+7. Run `artboard-preflight` first; do not start from a remembered design. Then build **one
+   screen at a time**, in the framework and conventions the repo already uses, **from its
+   Composition block** (`screen-specs/<id>.md`) — not from the canvas directly and never
+   from memory of it. If the block is missing or says `to be decided at design` while an
+   artboard exists, extract it from the artboard and confirm it with the designer first.
+   **After each screen, run the audit** from `code-build-contract` and fix what it finds.
+   Then run `design-parity` for that screen against its artboard, and show the designer
+   its table alongside the files and the audit result. "I ran it and looked at it" is not
+   a parity result and does not satisfy this step. **Audit findings and zero-tolerance
+   parity differences block confirmation** unless the designer overrides one — record each
+   override (finding, file, their reason); never override on your own.
+8. **Make it functional — a prototype people can use, not static screens:**
    - **Runs end to end.** Real routes and navigation between the journey's screens, in
      journey order, plus the entry points and nav updates from the screen spec.
    - **Mock data shaped by the units.** Fixtures follow each unit's **Data** table (field
@@ -137,14 +153,15 @@ screen. Read it before building.
      can point at them.
    Scope boundary: no real backend, auth, or persistence beyond in-memory. Say explicitly
    what a developer still has to wire (APIs, auth, storage).
-8. Before finishing, a `code-review` / `simplify` pass over the changed code for reuse and
+9. Before finishing, a `code-review` / `simplify` pass over the changed code for reuse and
    duplication.
-9. Record the outcome in `uxos/handoff/<journey-id>.md` — files created/changed, branch name,
-   how to run it (command + route), the state switcher, fixtures and the `BR` constants
-   file, audit result and overrides, what's left to wire up. If `uxos/requirements/<id>.md`
-   exists, set each unit's **Prototype / design** line to its route (and the canvas link,
-   if there is one).
-10. If `design_master: code` and the prototype added or changed library components, say
+10. Record the outcome in `uxos/handoff/<journey-id>.md` — files created/changed, branch
+   name, how to run it (command + route), the state switcher, fixtures and the `BR`
+   constants file, audit result and overrides, the parity table per screen (and the
+   `built without seeing the design` label if `artboard-preflight` ran in reduced mode),
+   what's left to wire up. If `uxos/requirements/<id>.md` exists, set each unit's
+   **Prototype / design** line to its route (and the canvas link, if there is one).
+11. If `design_master: code` and the prototype added or changed library components, say
     that Claude Design is now behind and suggest `design-mirror` push (`/design-sync`).
 
 ## Path D — Claude Design
@@ -175,9 +192,13 @@ screen. Read it before building.
    - user-visible business rules (limits, messages, fees) with values taken from the `BR`
      entries in `business-rules.md`, never invented;
    - composed from the design system's components; a missing component goes back to
-     `claude-design-library` at its atomic level, not drawn as a one-off.
+     `claude-design-library` at its atomic level, not drawn as a one-off;
+   - arranged as the screen spec's **Composition** block says, where it decides anything.
 5. Build **one screen (with its states) at a time**; after each, give the designer the
-   canvas link and wait for confirmation. Don't build the whole journey unattended.
+   canvas link and wait for confirmation. Once confirmed, **write the screen's Composition
+   block back** into `screen-specs/<id>.md` from the artboard as drawn — read in this pass,
+   not recalled — replacing any `to be decided at design`. The code path builds from that
+   block, so a canvas without one hasn't finished handing off. Don't build the whole journey unattended.
 6. Artifacts are private by default; sharing with stakeholders is the designer's call.
 7. **Comments become decisions.** When revising, each comment thread is turned into a
    change in the model (journey, screen spec, pattern, rule) or a reasoned "no change",
@@ -197,5 +218,5 @@ design itself lives in Figma). Path B: `uxos/design-prompts/<journey-id>.md` fro
 `${CLAUDE_PLUGIN_ROOT}/templates/design-prompt.md`. Path D: `uxos/handoff/<journey-id>.md`, `target: claude-design`, `claude_design_url` set,
 the Screens table listing artboards (screen + states), and a revision log. Path C:
 `uxos/handoff/<journey-id>.md`, `target: code`,
-`branch` set, the Screens/files table listing files created/changed, the audit result, and any
-Overrides. Then run `next-steps`.
+`branch` set, the Screens/files table listing files created/changed, the audit result, the
+parity table per screen, and any Overrides. Then run `next-steps`.

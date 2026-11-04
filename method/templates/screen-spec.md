@@ -54,6 +54,31 @@ Cite `patterns.md`'s nav model — reuse the existing pattern, don't invent a ne
 Anything marked missing gets added at its own level — an atom before the molecule that needs
 it — before `design-handoff` builds the screen, so nothing is drawn as a one-off.
 
+### Composition
+
+How the screen is arranged. Extracted by **reading the artboard** where one exists; decided
+with the designer where one does not, and then drawn from. Left as
+`to be decided at design` is a legitimate answer — a guess is not.
+
+**Shell** — state once per journey, per artboard; note it if artboards disagree
+| | |
+|---|---|
+| Content column | <width>, gutter <n> <inside \| outside> it |
+| Sticky | <what sticks, and its height — not "the header" unless the whole header sticks> |
+| Narrow (<breakpoint>) | <what changes> |
+
+**Sections**, in order, with their anchor ids — ids are nav contract
+| # | id | Arrangement | Notes |
+|---|---|---|---|
+| 1 | `<id>` | <single column \| two columns, <left> / <right> \| band of N \| fixed chart> | <why, where the arrangement carries meaning> |
+
+**Element kinds that carry meaning** — only where the shape *is* the argument
+| Element | Kind | Why not the obvious thing |
+|---|---|---|
+
+**Verbatim** — text the design quotes rather than describes
+<each quoted string, exactly; cite its `BR-<n>` where a business rule fixes it>
+
 ---
 
 ## Summary

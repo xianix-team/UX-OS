@@ -46,10 +46,12 @@ Read before anything else; if one can't be read, stop and say so.
    convention, the mapping recorded. Components are rebuilt in the repo's framework from
    the component README + preview (behaviour, variants, states), not copied as HTML.
 4. **Build the prototype** with `design-handoff`, code path, one journey at a time, from
-   its approved canvas plus its screen spec, units, and business rules.
-5. **Visual parity check, per screen.** Put the canvas artboard and the running prototype
-   side by side (screenshot both) and list differences. Each is fixed, or accepted by the
-   designer and recorded.
+   its approved canvas plus its screen spec, units, and business rules. Every screen's
+   **Composition** block must be filled from its artboard (read in this pass) and confirmed
+   before that screen is built — the build follows the block, not the picture.
+5. **Visual parity check, per screen.** Run `design-parity` for each screen against its
+   artboard. Its table goes to the designer; each difference is fixed or accepted and
+   recorded.
 6. **Switch the master.** Set in `product-context.md`: `design_master: code`,
    `design_master_since: <date>`, `design_master_commit: <sha>`. From now on Claude Design
    mirrors the code.
