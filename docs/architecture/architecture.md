@@ -41,9 +41,9 @@ The work divides cleanly into two packages that are independently useful:
 The **to-be-solved list is the contract** between them. Each approved item carries
 `{problem, evidence tier, affected personas, response type, recommended direction}`.
 
-The method was validated end-to-end by walking Part A manually against a real product (a
-public transit seat-reservation web app), `improve` objective. That run is kept as a
-private regression fixture, not shipped with the plugin.
+The method was validated end-to-end by walking Part A manually against a real web app,
+`improve` objective. That run is kept as a private regression fixture, not shipped with the
+plugin.
 
 ---
 
@@ -324,7 +324,7 @@ gate, but always offers "continue anyway".
 ## 7. MVP slice
 
 Ship **`uxos-diagnose` (Part A)** end to end. It has been walked manually against a real
-transit seat-reservation web app (kept as a private regression fixture):
+web app (kept as a private regression fixture):
 
 ```
 /uxos:init      -> analyse-domain + study-product + build-blueprint + capture-users
