@@ -49,6 +49,36 @@ journey.
 8. **Prototype-only tooling** (the state switcher, dev panels) lives in its own clearly
    named prototype folder, uses tokens like everything else, and is never imported by a
    library component or shipped as product UI. It is not part of the design system.
+9. **A note asserting what a design contains is a citation.** Any comment — in code or in
+   the model — that says what an artboard, canvas or spec shows must name the file and have
+   been read in the same pass that wrote the note. Otherwise give the code's own reason, or
+   write nothing.
+
+   A remembered claim presented as a checked one is worse than silence: it is what the next
+   reviewer trusts instead of looking. Typical cases: a page-column measurement taken from
+   the wrong element, a component comment claiming the canvas drew a layout it did not, and
+   the model repeating that claim — each one defeats the review that follows it.
+
+## Deviation budget — what "a small difference" means
+
+When the built screen differs from its Composition block (`screen-specs/<id>.md`) or its
+artboard, the size of the difference decides whether the builder may proceed alone.
+
+| Difference | Tolerance | The builder |
+|---|---|---|
+| **Inventory** — a section, nav item, control or state on one side and not the other | **zero** | stops and asks |
+| **Arrangement** — stacked vs columns, column order, which column is wider, a band's count | **zero** | stops and asks |
+| **Element kind** — a diamond becoming a card, tracked type becoming a pill, a link becoming a button | **zero** | stops and asks |
+| **Text the design quotes** | **verbatim** | stops and asks |
+| **Geometry** — widths, spacing, position *within* a confirmed arrangement | within one spacing step | proceeds |
+
+The first three are where every serious divergence sits, and they are exactly what a
+heading diff cannot see. Zero tolerance is not strictness for its own sake: these are the
+differences a reader notices immediately.
+
+**A deviation licensed by a rule licenses only what that rule requires.** Replacing an
+unreachable link with a blocked marker because a `BR-<n>` demands it does not license also
+changing the control beside it because the other one seemed better.
 
 ## Prototype isolation (default; the designer may opt out)
 - Work on a **new branch**, from a clean tree (ask before touching a dirty one).
@@ -80,14 +110,15 @@ their reason — under **Overrides** in the handoff record. Never override on yo
 never report a screen as clean without having actually run the scan.
 
 **Be honest about what this can't do.** It catches mechanical violations. It cannot judge
-visual fidelity, whether a token choice is *appropriate*, or interaction quality. Pair it
-with actually looking at the screen.
+visual fidelity, whether a token choice is *appropriate*, or interaction quality. Fidelity
+to the design is `design-parity`'s job — run it beside the audit wherever an artboard
+exists.
 
 ## Skills worth using alongside
 - **`figma-design-to-code`** — mandatory whenever a Figma file exists for the journey: build
   from the Figma frames, not from memory.
 - **Figma Code Connect** (`figma-code-connect`) — optional; maps the Figma library's
   components to their code counterparts so the two stay in step. Needs the Figma connector.
-- **`run`** — launch the prototype and look at it; the audit doesn't replace this.
+- **`run`** — launch the prototype; `design-parity` then compares it with its artboard.
 - **`code-review` / `simplify`** — a final pass over the changed code for reuse and
   duplication.

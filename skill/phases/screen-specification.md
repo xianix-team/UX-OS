@@ -1,6 +1,6 @@
 ---
 name: screen-specification
-description: Turn a journey's steps into a full spec per screen it touches — entry points, sub-action items, screen-level controls (filters/sort/search), navigation/menu updates, and states — using the same How/Why/Technical-delight discipline as journey-design, applied to what surrounds the primary action rather than its sequence. Sits between journey-design and design-handoff; fixes "only the best case got designed."
+description: Turn a journey's steps into a full spec per screen it touches — entry points, sub-action items, screen-level controls (filters/sort/search), navigation/menu updates, states, and Composition (how the screen is arranged — shell, sections, meaningful element kinds) — using the same How/Why/Technical-delight discipline as journey-design, applied to what surrounds the primary action rather than its sequence. Sits between journey-design and design-handoff; fixes "only the best case got designed."
 ---
 
 # screen-specification
@@ -47,6 +47,16 @@ For each screen:
   library. Mark anything that doesn't as **missing** and name its level — it gets added
   (atoms before the molecules that need them) before `design-handoff` builds the screen,
   rather than being drawn as a one-off.
+- **Composition** — how the screen is arranged, not just what is on it: the shell (content
+  column, gutter, what sticks), the sections in order with their anchor ids, each section's
+  arrangement, and any element whose *kind* carries meaning (a gate drawn as a diamond
+  rather than a card, a label set as tracked type rather than a pill). Where an artboard
+  exists, **read it and extract these** — do not describe it from memory. Where none exists
+  yet, decide with the designer or write `to be decided at design`; never guess.
+
+  This is the block that stops a faithful build from producing a screen with every correct
+  element in the wrong arrangement. Everything else in this spec says *what must be there*;
+  only this says *where*.
 
 Don't invent sub-actions, controls, or nav changes that have no real basis — if a screen
 genuinely has none beyond the primary action, say so rather than padding the spec.
@@ -55,3 +65,6 @@ genuinely has none beyond the primary action, say so rather than padding the spe
 `uxos/screen-specs/<journey-id>.md` from `templates/screen-spec.md`, one block per
 screen. Then run `next-steps` — it should point at `design-handoff`, and note that
 `design-handoff` will now build the full spec per screen, not just the primary path.
+
+A screen spec with no Composition block is not finished. `design-handoff`'s code path
+builds from it, and without it the arrangement is invented and then defended.

@@ -8,11 +8,37 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.28.0] — 2026-11-02
+
+Stops code drifting from approved designs. A faithful build used to get every element
+right and the arrangement wrong, because nothing in the model said *where* things go.
+
 ### Added
+- **Composition block** in screen specs — shell (content column, gutter, what sticks),
+  sections in order with anchor ids and arrangement, element kinds that carry meaning,
+  verbatim text. Extracted from the artboard where one exists, decided with the designer
+  where not; `to be decided at design` is allowed, a guess is not. Claude Design handoffs
+  write it back from the confirmed artboard.
+- `design-parity` — compares a built screen with its artboard in four mechanical
+  dimensions (inventory, geometry, semantics, content), shell first and across every
+  artboard of the journey; classifies each difference (translation error, rule-driven,
+  capability, taste) and records the table in the handoff. Taste deviations never ship
+  unasked.
+- `artboard-preflight` — confirms the artboard is reachable and renderable before a code
+  build or parity check; otherwise stops, or continues labelled *built without seeing the
+  design*.
+- `code-build-contract`: rule 9 (a note about what a design shows is a citation, read in
+  the same pass) and a **deviation budget** (inventory, arrangement, element kind:
+  zero tolerance; quoted text: verbatim; geometry: one spacing step).
+- Handoff template: **Design parity** section.
 - Open-source project files: `LICENSE` (MIT), `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`,
   this changelog, and GitHub issue and pull-request templates.
 
 ### Changed
+- `design-handoff` code path builds the shared shell first and confirms it with measured
+  numbers, then builds each screen from its Composition block and runs `design-parity`;
+  "ran it and looked at it" no longer counts.
+- `promote-to-code` and `design-mirror` (push verify, as a spot check) use `design-parity`.
 - `docs/` organised into `guides/`, `architecture/` (with `images/`), and `background/`.
 
 ## [0.27.0] — 2026-10-29

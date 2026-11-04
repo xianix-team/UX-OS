@@ -46,6 +46,8 @@ skips all of them and drifts out of the product's scope.
 | visual direction (greenfield) | `design-direction` |
 | a design system | `figma-library`, `claude-design-library`, or `code-library` (+ `code-build-contract`) |
 | screens in Figma, Claude Design, a design prompt, or a functional prototype in code | `design-handoff` |
+| a screen to be built in code from an approved design | `artboard-preflight` first, then `design-handoff` (Path C) + `code-build-contract` |
+| a built screen to be checked against its design | `design-parity` |
 | move the design from Claude Design into code (greenfield) | `promote-to-code` (`/uxos:promote`) |
 | keep Claude Design and code in step, either direction | `design-mirror` (`/uxos:mirror`); pushes via the designer's `/design-sync` |
 | a live page to be browsed | `browser-preflight` first |
@@ -201,7 +203,7 @@ User journeys → wireframing → solution test). These steps are runnable, in t
 | 2 | `procedures/journey-design.md` | `journey` — full detail: Step / How / Why / Technical-delight table, Core Experience, `state: proposed` |
 | 2a | `procedures/edge-case-analysis.md` *(suggested, never forced)* | `edge-cases` — input/data, state/timing, actor/permission, system/network, cross-surface handoff, accessibility/device, each with severity and proposed handling |
 | 2b | `procedures/requirements-drafting.md` *(suggested, never forced)* | `requirements` — development Units (Who/Why/What/How + acceptance criteria), the single dev handoff, folding in edge cases + any `problems.md` rows scoped to this journey |
-| 2c | `procedures/screen-specification.md` *(suggested, strongly — this is what design-handoff was missing)* | `screen-specs` — per screen the journey touches: entry points, sub-action items, controls, nav/menu updates, states, one screen at a time confirmed |
+| 2c | `procedures/screen-specification.md` *(suggested, strongly — this is what design-handoff was missing)* | `screen-specs` — per screen the journey touches: entry points, sub-action items, controls, nav/menu updates, states, Composition (arrangement — what the code path builds from), one screen at a time confirmed |
 | 2d | `procedures/figma-library.md` *(once, before the first Figma handoff — on greenfield this runs only after `design-direction` → `pattern-study`)* | the Figma design system, built bottom-up by atomic level — colour → typography → spacing/radius/elevation → atoms → molecules → organisms → templates — confirmed stage by stage; not tied to any one journey. Screens (Pages) come later from `design-handoff`, composed from these |
 | 2e | `procedures/code-library.md` *(once, before the first code-path handoff — needed wherever no component library exists: greenfield, or a brownfield product styled by one-off overrides)* | the design system in code, built bottom-up and confirmed level by level, held to `procedures/code-build-contract.md` |
 | 3 | `procedures/design-handoff.md` | Figma screens, reusing the library above and any `screen-specs` (delegates to `figma-generate-design`, needs the connector authorized) **or** a `design-prompt` for Stitch/another tool **or** real screen code built in the repo from existing components — warns explicitly if no `screen-specs` exist |

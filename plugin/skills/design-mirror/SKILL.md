@@ -36,7 +36,9 @@ applied `change-impact`, or when `code-sync` reports component changes.
 2. **Verify** once they say it's done: `read` `project/tokens.json` and the component list;
    compare with the code's tokens and library — names, values (every theme), components,
    variants. Report matches and mismatches; mismatches mean the sync is incomplete — say
-   which, never patch the system by hand.
+   which, never patch the system by hand. Where canvases exist for a journey, also run
+   `design-parity` on one screen as a spot check. A system can match on tokens and
+   components while every screen built from it does not.
 3. Record `mirrored_commit` and `mirrored_at` in `handoff/design-system.md`.
 
 ## Mode 2 — pull-back (Claude Design → code), `design_master: code`

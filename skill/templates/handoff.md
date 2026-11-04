@@ -52,6 +52,16 @@ mirrored_at: <YYYY-MM-DD>
 | Finding | File | Designer's reason for overriding |
 |---|---|---|
 
+## Design parity (code target only)
+**Artboard:** <name, revision> · **Preflight:** <full | readable, not renderable | *built without seeing the design*>
+**Shell:** content column <x, width> built vs <x, width> artboard · sticky <what, height> built vs artboard
+
+| Screen | Difference | Dimension | Class | Resolution |
+|---|---|---|---|---|
+| <screen> | <what differs> | inventory / geometry / semantics / content | translation error / rule-driven (`BR-<n>` or rule) / capability / taste | fixed / accepted by designer, <reason> |
+
+All four dimensions reported per screen: <screen: inventory ✓ geometry ✓ semantics ✓ content ✓>
+
 ## Mirror & promotion log (design-system.md only)
 | Date | Event | Detail |
 |---|---|---|
