@@ -12,6 +12,7 @@ synced_at: <YYYY-MM-DD>
 design_tools: <claude-design + code (recommended) | figma | prompt — what this project designs in>
 design_master: <claude-design | code — where the design system's truth lives; see design-mirror>
 design_master_since: <YYYY-MM-DD>
+design_records_path: <only if the designer kept an older uxos/handoff/ folder — otherwise omit>
 source: <url / repo path / simulator walk / screenshots / figma / docs / reference material / designer's own description — list what backed this>
 ---
 

@@ -30,7 +30,7 @@ Not set → ask the designer, and record it. Brownfield with a code library → 
 Run after `code-library` changes tokens or components, after `promote-to-code`, after an
 applied `change-impact`, or when `code-sync` reports component changes.
 1. Say what changed in the code library since the last mirror (tokens, components; from
-   `handoff/design-system.md` → `mirrored_commit` to now) and ask the designer to run
+   `design-records/design-system.md` → `mirrored_commit` to now) and ask the designer to run
    `/design-sync` in Claude Code against the system at `claude_design_url` (first time: it
    can create one).
 2. **Verify** once they say it's done: `read` `project/tokens.json` and the component list;
@@ -39,12 +39,12 @@ applied `change-impact`, or when `code-sync` reports component changes.
    which, never patch the system by hand. Where canvases exist for a journey, also run
    `design-parity` on one screen as a spot check. A system can match on tokens and
    components while every screen built from it does not.
-3. Record `mirrored_commit` and `mirrored_at` in `handoff/design-system.md`.
+3. Record `mirrored_commit` and `mirrored_at` in `design-records/design-system.md`.
 
 ## Mode 2 — pull-back (Claude Design → code), `design_master: code`
-Run when a canvas was revised or commented on since its last handoff entry, or when the
+Run when a canvas was revised or commented on since its last design record entry, or when the
 designer says something was changed in Claude Design.
-1. **Detect.** For each canvas in `handoff/*.md` (`claude_design_url`): `read` it and its
+1. **Detect.** For each canvas in `design-records/*.md` (`claude_design_url`): `read` it and its
    comments; compare the screens with the prototype and the code library. For the system:
    if it is no longer `editing: code`, diff its `tokens.json` and components against the
    code. List every difference.
@@ -59,8 +59,8 @@ designer says something was changed in Claude Design.
 3. Present the pull-back report (change, evidence — canvas, artboard, comment —, route,
    proposed model update). The designer accepts, rejects, or edits each item.
 4. Apply the accepted items through their procedures (each with its own confirmations).
-   Then run **Mode 1** so Claude Design mirrors the result. Log in `handoff/design-system.md`
-   and the journey's handoff revision log.
+   Then run **Mode 1** so Claude Design mirrors the result. Log in `design-records/design-system.md`
+   and the journey's design record revision log.
 
 ## Mode 3 — while Claude Design is master (`design_master: claude-design`)
 Code is not a source. Changes go into the Claude Design System through

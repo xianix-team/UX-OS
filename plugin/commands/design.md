@@ -27,13 +27,13 @@ Hand off journey `$ARGUMENTS` for design.
      `figma-use`) and follow the Figma path — one screen at a time, confirming each with
      the designer before the next.
    - **Claude Design:** check the Artifact tool is available — if not, say so and offer the
-     other targets. Attach the Claude Design System from `handoff/design-system.md`; if
+     other targets. Attach the Claude Design System from `design-records/design-system.md`; if
      none, offer `/uxos:claude-design-library` first. If the journey already has a canvas,
      read its comments and revise it — each comment becomes a model change or a reasoned
      no-change. One canvas per journey (optionally 2–3 directions for the key screen
      first): an artboard per screen and per state from the screen spec, labelled with steps
      and unit ids, rule values from `business-rules.md` — one screen at a time, confirming
-     each. When the designer approves it, mark the handoff `status: approved`.
+     each. When the designer approves it, mark the design record `status: approved`.
    - **Prompt:** draft the per-step design prompts grounded in `patterns.md`, present for
      confirmation, then write them.
    - **Code:** real local repo only (not the disposable `uxos-repo-cache/`). Read the
@@ -49,11 +49,11 @@ Hand off journey `$ARGUMENTS` for design.
      prototype-only state switcher for every spec'd state, `data-unit` / `data-ac` markers.
      On `design_master: code`, if library components changed, suggest `/uxos:mirror`.
 
-4. Write `uxos/handoff/<id>.md` (Figma, Claude Design, or code) or `uxos/design-prompts/<id>.md` (prompt).
+4. Write `uxos/design-records/<id>.md` (Figma, Claude Design, or code) or `uxos/design-prompts/<id>.md` (prompt).
 
 5. Run the `next-steps` skill and present its block.
 
-Templates: `${CLAUDE_PLUGIN_ROOT}/templates/handoff.md`,
+Templates: `${CLAUDE_PLUGIN_ROOT}/templates/design-record.md`,
 `${CLAUDE_PLUGIN_ROOT}/templates/design-prompt.md`.
 
 Note: the Figma path needs the Figma MCP connector authorized in your own session, and

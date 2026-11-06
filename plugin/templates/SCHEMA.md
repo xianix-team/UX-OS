@@ -19,7 +19,8 @@ below the frontmatter follow each template.
 | `source` | domain, context, patterns | what backed it — url / repo / simulator walk / screenshots / figma / docs / reference material / designer's description |
 | `repo`, `repo_branch`, `synced_commit`, `synced_at` | product-context | the code-sync baseline — which repo and branch count as built, and the commit the model last matched |
 | `design_tools`, `design_master`, `design_master_since` | product-context | where the project designs, and which side — Claude Design or code — is the design system's source of truth (see design-mirror) |
-| `mirrored_commit`, `mirrored_at` | handoff/design-system | the code commit Claude Design last mirrored via /design-sync |
+| `design_records_path` | product-context | only when the designer kept an older project's `uxos/handoff/` folder; omitted otherwise |
+| `mirrored_commit`, `mirrored_at` | design-records/design-system | the code commit Claude Design last mirrored via /design-sync |
 | `built` | requirements units | `not yet` \| `partial` (AC ids met) \| `<commit sha>` — set by code-sync |
 | `grouping` | to-be-solved | `user-group` (improve/revamp, from a problems register) \| `theme` (greenfield, from `problem-validation`) |
 
@@ -48,7 +49,7 @@ below the frontmatter follow each template.
 | `competitor` | `competitors/<slug>.md` | one deep dive: our journeys walked on their product, UX read, terminology, trust, review themes, patterns to borrow/avoid |
 | `impact` | `impact/<date>-<slug>.md` | one requested design change → target kind, alias chain, uses per level and source, look-alikes, scope options with blast radius, contrast/state checks, decision |
 | `business-rules` | `business-rules.md` | rules `BR-<n>` grouped by object; `state` existing/proposed; evidence; `Used by` → journey steps + units; kept current by code-sync |
-| `handoff` | `handoff/<journey-id>.md`, `handoff/design-system.md` | `target`: figma \| code \| claude-design; links out to the Figma file, branch, or `claude_design_url`; revision log for canvases |
+| `design-record` | `design-records/<journey-id>.md`, `design-records/design-system.md`, `design-records/code-library.md` | the designer's working record, not for developers (their handoff is `requirements`);  `target`: figma \| code \| claude-design; links out to the Figma file, branch, or `claude_design_url`; revision log for canvases |
 | `open-questions` | `open-questions.md` | — |
 | `new-feature-mapping` | `feature-mapping/<slug>.md` | `driver` + `source_problem` + touchpoints → journey steps |
 | `decision` | `decisions/<id>.md` | → affected artifacts |

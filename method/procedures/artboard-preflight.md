@@ -11,7 +11,7 @@ declared. Same role as `browser-preflight`: a step that needs something doesn't 
 silently without it.
 
 ## Check
-1. Does the journey's handoff record a `claude_design_url` (or a Figma file)?
+1. Does the journey's design record a `claude_design_url` (or a Figma file)?
 2. Can this session actually open it — Artifact `read` for a canvas, the Figma connector
    for Figma? A deferred tool counts only once loaded (ToolSearch).
 3. Can it be **rendered**, not just read as markup? For a Claude Design canvas, write the
@@ -23,9 +23,9 @@ silently without it.
   cannot be measured this pass, only differences in markup.
 - **Not reachable** → **stop and tell the designer.** If they ask you to go on anyway,
   continue in reduced mode and label the result: *built without seeing the design.* That
-  label goes in the handoff record (Design parity → Preflight), not only in the reply.
+  label goes in the design record (Design parity → Preflight), not only in the reply.
 
-Record the outcome in the handoff's **Design parity** section either way.
+Record the outcome in the design record's **Design parity** section either way.
 
 **Not needed for content no artboard contains.** A rewrite of copy or a component the
 artboard doesn't draw is compared with the previous code (`design-parity` step 7). If the

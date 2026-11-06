@@ -14,12 +14,13 @@ There is one format: the **Unit**, with the user story built into its **Why**. (
 with `format: story` are still valid; re-running this procedure rewrites them as units.)
 
 **Template is the contract.** Read `${CLAUDE_PLUGIN_ROOT}/templates/requirements.md` before drafting and
-keep its shape exactly: every frontmatter key, the **Unit index** table, and per unit the
+keep its shape exactly: every frontmatter key, the **Start here** block, the **Unit index**
+table, and per unit the
 **Readiness** and **Built** lines and the **Who / Why / What / How / Acceptance criteria / Build notes**
 headings in that order, with the **States** and **Data** tables using the template's
 column names. Downstream agents parse
 this structure, so never merge, reorder, rename, or drop a section. A section with nothing
-to say gets `none` or `needs decision`, not deletion. Summary goes at the end.
+to say gets `none` or `needs decision`, not deletion. Summary and Sources go at the end.
 
 ## Sources
 Read before drafting. Missing sources lower readiness; they don't block drafting.
@@ -37,7 +38,12 @@ Read before drafting. Missing sources lower readiness; they don't block drafting
 6. `uxos/business-rules.md` — the rules each unit applies, cited as `BR-<n>` with their
    values. A rule the unit needs that isn't in the register is `needs decision`.
 7. `uxos/personas/`, `uxos/user-groups.md` — **Who**, roles, permissions.
-8. `uxos/patterns.md`, `uxos/handoff/<id>.md` — components used; prototype/Figma links.
+8. `uxos/patterns.md`, `uxos/design-records/<id>.md`, `uxos/design-records/design-system.md`,
+   `uxos/design-records/code-library.md` — where the library lives; components used; how to run the prototype, its files, what's left to wire; canvas or Figma
+   links; differences from the design the designer accepted. The design record is the
+   designer's working log: **take only these facts from it.** Parity history, audit results,
+   and reasoning stay there, and a developer should never need to open it. So state the fact in the unit, and **don't
+   point developers to the design record**: it appears only under Sources.
 9. `uxos/open-questions.md`, `uxos/requirements-gap.md` (if present) — open items and any
    client NFRs relevant to this journey.
 
@@ -60,19 +66,30 @@ Read before drafting. Missing sources lower readiness; they don't block drafting
      `AC-<unit-id>.<n>` so test and planning agents can reference it. At least one happy
      path, one per relevant state, one per folded-in edge case, one per resolved PRB, and
      NFRs only when the model states them.
-   - **Build notes** — dependencies between units, prototype/design links, patterns, open
-     questions, assumptions.
+   - **Build notes** — dependencies between units, prototype/design links, the files and
+     components to build from, what's left to wire, accepted differences from the design,
+     patterns, open questions, assumptions. An accepted difference is there so a developer
+     doesn't "fix" a deliberate choice; list only ones a developer could trip over.
+   - **Start here** — fill it last, from the units: build order from Depends on, ready and
+     blocked from Readiness, how to run the prototype from the design record.
 3. **Honesty.** A field the model doesn't answer is written `needs decision` and added to
    Open questions — never filled with a plausible guess. No estimates, story points,
-   technical design, APIs, or data models: those belong to the downstream agents.
+   technical design, APIs, or data models: those belong to the downstream agents. **Left to
+   wire** says what the prototype fakes, not how to build it.
 4. **Readiness.** A unit is `ready` only when it has no `needs decision` field, no
    unresolved `needs decision` edge case, and at least one to-be-solved trace. Otherwise
-   `not-ready`, with the reason on the unit.
+   `not-ready`, with the reason on the unit. Count the `needs decision` fields in each unit
+   before setting this. There's no "ready to start" or "ready except for": any such field
+   makes the unit `not-ready`, and it goes under **Blocked** in Start here with what blocks
+   it. **Left to wire** only names an integration; it never stands in for a format, limit,
+   message, or behaviour the model doesn't state. Those stay `needs decision`. Never drop the
+   marker to make a unit ready: a hidden gap is worse than a blocked unit.
 5. **Coverage check** before presenting: every journey step is in exactly one unit (or the
    designer says why not); every `handled`/`open` edge case and every in-scope PRB for this
    journey appears in an AC. Report gaps in the Summary.
 6. **Structure check** before presenting: compare the draft against the template —
-   frontmatter keys (`ready_units` filled), Unit index present and matching the units,
+   frontmatter keys (`ready_units` filled), Start here filled and matching the units, Unit
+   index present and matching the units, no `ready` unit containing `needs decision`,
    every unit has its Readiness line and all six headings with the States and Data tables.
    Fix any miss.
 7. Present the **whole draft** at once (assembly from confirmed sources, not fresh

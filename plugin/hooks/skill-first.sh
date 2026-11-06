@@ -10,8 +10,17 @@ cat <<EOF
 [uxos skill-first rule] This is a uxos project. For any task that produces work for this product (UX or not), first check the routing table in ${CLAUDE_PLUGIN_ROOT}/METHOD.md ("Skill-first rule"). If a uxos skill covers it, load and follow that skill and name it in one line. Do not substitute general knowledge or another plugin's/global skill for a job a uxos skill covers. If no uxos skill fits, say "uxos has no procedure for <task>; I'll use general capabilities for this", label the output [outside uxos], and don't write it into a model artifact unless the designer asks.
 EOF
 
-# Code-sync check: if the model has a repo baseline, count commits since it (read-only).
 ctx="$dir/uxos/product-context.md"
+
+# Older layout: design records used to live in uxos/handoff/.
+if [ -d "$dir/uxos/handoff" ] && [ ! -d "$dir/uxos/design-records" ]; then
+  echo "[uxos design records] This project keeps its design records in uxos/handoff/. Wherever a uxos procedure says uxos/design-records/, read and write uxos/handoff/ instead."
+  if ! grep -q '^design_records_path:' "$ctx" 2>/dev/null; then
+    echo "Before running a uxos command, ask once: \"uxos now calls this folder design-records, so developers don't take it for their handoff (that's requirements/). Rename uxos/handoff to uxos/design-records? (yes / keep it)\". On yes, run git mv uxos/handoff uxos/design-records (plain mv if it isn't tracked) and tell the designer to commit it. On keep it, add design_records_path: uxos/handoff to the frontmatter of uxos/product-context.md so this isn't asked again. Never rename without a yes."
+  fi
+fi
+
+# Code-sync check: if the model has a repo baseline, count commits since it (read-only).
 [ -f "$ctx" ] || exit 0
 field() { sed -n "s/^$1:[[:space:]]*//p" "$ctx" | head -1 | tr -d '"'"'"; }
 repo=$(field repo); sha=$(field synced_commit); branch=$(field repo_branch)

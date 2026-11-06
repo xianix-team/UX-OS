@@ -8,6 +8,10 @@ description: Turn a confirmed journey (proposed, with Step/How/Why/Technical-del
 Goal: hand a designed journey to the tool the designer actually works in, carrying the
 patterns, personas, and rationale with it. Never a bare "go design this."
 
+This is the handoff to a **design tool**, not to developers. Their handoff is the Units
+(`requirements-drafting`). What this writes to `uxos/design-records/` is the designer's own
+record.
+
 ## Prerequisite
 The journey must be confirmed (`state: proposed`, from `journey-design`) — don't run this on
 a draft still being corrected. `patterns.md` must exist; it's what keeps new screens
@@ -65,7 +69,7 @@ the designer names another. The recommended pairing is **Claude Design + code**:
    say which components were added.
 5. Build one screen (or step) at a time. After each, tell the designer to check it in Figma
    and confirm before continuing to the next. Don't build the whole journey unattended.
-6. Record the outcome in `uxos/handoff/<journey-id>.md` — Figma file/frame links, which
+6. Record the outcome in `uxos/design-records/<journey-id>.md` — Figma file/frame links, which
    screens were built vs referenced, open items.
 
 ## Path B — Design prompt (Stitch or another tool)
@@ -159,12 +163,14 @@ screen. Read it before building.
    what a developer still has to wire (APIs, auth, storage).
 9. Before finishing, a `code-review` / `simplify` pass over the changed code for reuse and
    duplication.
-10. Record the outcome in `uxos/handoff/<journey-id>.md` — files created/changed, branch
+10. Record the outcome in `uxos/design-records/<journey-id>.md` — files created/changed, branch
    name, how to run it (command + route), the state switcher, fixtures and the `BR`
    constants file, audit result and overrides, the parity table per screen (and the
    `built without seeing the design` label if `artboard-preflight` ran in reduced mode),
-   what's left to wire up. If `uxos/requirements/<id>.md` exists, set each unit's
-   **Prototype / design** line to its route (and the canvas link, if there is one).
+   what's left to wire up. If `uxos/requirements/<id>.md` exists, **bring it up to date with
+   what was built:** its **Start here** (how to run it, design system) and each unit's **Build
+   notes** (Prototype / design, Build from, Left to wire, Accepted differences). Show the
+   designer the changes before writing them.
 11. If `design_master: code` and the prototype added or changed library components, say
     that Claude Design is now behind and suggest `design-mirror` push (`/design-sync`).
 
@@ -173,14 +179,14 @@ screen. Read it before building.
    isn't available in this session (check deferred tools too, loading with ToolSearch before
    deciding), say so and offer Figma, a design prompt, or code — stop here. Never substitute
    an HTML file.
-2. **Design system.** If `uxos/handoff/design-system.md` records a Claude Design System,
+2. **Design system.** If `uxos/design-records/design-system.md` records a Claude Design System,
    attach it. If none exists, say so and offer `claude-design-library` first (recommended);
    the designer may proceed without it, in which case tokens come straight from
-   `patterns.md` and the handoff record notes that no shared system was used.
-3. **Revising an existing canvas?** If `uxos/handoff/<journey-id>.md` already has a
+   `patterns.md` and the design record notes that no shared system was used.
+3. **Revising an existing canvas?** If `uxos/design-records/<journey-id>.md` already has a
    `claude_design_url`, read the artifact and its comments first, list what the comments ask
    for, confirm with the designer, revise that same canvas (keep its URL), and log the
-   changes in the handoff record. Otherwise start a new one: Artifact `quickstart` with
+   changes in the design record. Otherwise start a new one: Artifact `quickstart` with
    intent `design`, then publish from the **Design** type it names, titled `J<n> —
    <journey name>`, attaching the design system.
 4. **What goes on the canvas** — one canvas per journey. Before the main build, if the
@@ -213,18 +219,18 @@ screen. Read it before building.
    then answered on the thread — only threads the designer sent to Claude can be replied
    to or resolved; list the others for the designer.
 8. **Approval.** When the designer (or client, through them) approves the canvas, set the
-   handoff record's `status: approved`. On `design_master: claude-design` that is what
+   design record's `status: approved`. On `design_master: claude-design` that is what
    makes `promote-to-code` available; on `code` it means "build it in Path C".
-9. Record the outcome in `uxos/handoff/<journey-id>.md` — `target: claude-design`,
+9. Record the outcome in `uxos/design-records/<journey-id>.md` — `target: claude-design`,
    `claude_design_url`, screens and states built, components used or added, open items,
    and a revision log. If `uxos/requirements/<id>.md` exists, set each unit's
    **Prototype / design** line to the canvas link.
 
 ## Output
-Path A: `uxos/handoff/<journey-id>.md` from `templates/handoff.md` (a record — the
+Path A: `uxos/design-records/<journey-id>.md` from `templates/design-record.md` (a record — the
 design itself lives in Figma). Path B: `uxos/design-prompts/<journey-id>.md` from
-`templates/design-prompt.md`. Path D: `uxos/handoff/<journey-id>.md`, `target: claude-design`, `claude_design_url` set,
+`templates/design-prompt.md`. Path D: `uxos/design-records/<journey-id>.md`, `target: claude-design`, `claude_design_url` set,
 the Screens table listing artboards (screen + states), and a revision log. Path C:
-`uxos/handoff/<journey-id>.md`, `target: code`,
+`uxos/design-records/<journey-id>.md`, `target: code`,
 `branch` set, the Screens/files table listing files created/changed, the audit result, the
 parity table per screen, and any Overrides. Then run `next-steps`.

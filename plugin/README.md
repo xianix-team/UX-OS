@@ -48,7 +48,7 @@ cd <your workspace or the product repo>
 /uxos:blueprint [source]          # create the feature map, or update it (diff, then confirm)
 /uxos:journey-design <journey>    # create/update/enrich a journey: Step / How / Why / delight
 /uxos:edge-cases <journey>        # systematic edge-case register (suggested, never forced)
-/uxos:requirements <journey>                # dev handoff: Units with Who/Why/What/How + acceptance criteria
+/uxos:requirements <journey>                # dev handoff: Units with Who/Why/What/How + acceptance criteria, in uxos/requirements/
 /uxos:screen-spec <journey>        # per-screen spec: entry points, sub-actions, filters, nav
 /uxos:figma-library               # build/update the Figma design-system file (run once first)
 /uxos:code-library               # build the design system in code, bottom-up (before a code handoff)

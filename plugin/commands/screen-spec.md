@@ -19,7 +19,7 @@ Spec the screens for journey `$ARGUMENTS`.
    touches, then draft each one's full spec — entry points, primary action (referenced,
    not re-drafted), sub-action items, screen-level controls, nav/menu updates, states,
    components, and **Composition** (shell, sections and their arrangement, meaningful
-   element kinds, verbatim text). If the journey's handoff has a `claude_design_url` or a
+   element kinds, verbatim text). If the journey's design record has a `claude_design_url` or a
    Figma file, read the artboards for Composition — don't describe them from memory;
    otherwise decide it with the designer or write `to be decided at design`.
    Present and confirm **one screen at a time**, not the whole set unconfirmed.

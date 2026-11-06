@@ -15,12 +15,15 @@ use it as-is: delivery/Bolt planning, development, and test design. Built only f
 confirmed model; anything not settled is listed under **Open questions** and the unit is
 marked `not-ready` rather than filled in by guesswork.
 
-**For developers:** put the unit id (e.g. `U-J<n>-1`) in commit messages or PR titles for
-work on that unit. uxos reads them to keep its model in step with what was built.
+## Start here
 
-**Sources:** `journeys/<id>.md` · `screen-specs/<id>.md` <or "not yet written"> ·
-`edge-cases/<id>.md` <or "not yet written"> · `to-be-solved.md` · `problems.md` <if any> ·
-`personas/` · `handoff/<id>.md` <if a prototype exists>
+- **This journey:** <one line — who does what, and why it matters>
+- **Build order:** <unit ids in dependency order>
+- **Ready now:** <ready unit ids> · **Blocked:** <not-ready unit ids, each with what blocks it — or none>
+- **See it running:** <branch; command → route; how to open the state switcher — or "no prototype yet">
+- **Design system:** <where the library lives and how its levels are organised — or "no code library yet">
+- **Commits:** put the unit id (e.g. `U-J<n>-1`) in commit messages or PR titles for work on
+  that unit. uxos reads them to keep its model in step with what was built.
 
 ## Unit index
 
@@ -90,7 +93,10 @@ this unit needs that isn't in the register yet is `needs decision`, never invent
 
 ### Build notes
 - **Depends on:** <unit ids this needs first, and why — or none>
-- **Prototype / design:** <Figma frame or prototype file links from `handoff/`, or none yet>
+- **Prototype / design:** <route, plus canvas or Figma frame link — or none yet. Not the design record>
+- **Build from:** <prototype screen files for this unit; library components by level; fixtures; `BR` constants file — or none yet>
+- **Left to wire:** <what the prototype fakes and production needs: APIs, auth, storage — or none yet>
+- **Accepted differences from the design:** <difference, reason, who accepted it — or none>
 - **Patterns:** <`patterns.md` components and tokens the screens use>
 - **Open questions:** <list, each linked to `open-questions.md` — or none>
 - **Assumptions:** <labelled `Assumption` — or none>
@@ -101,3 +107,8 @@ this unit needs that isn't in the register yet is `needs decision`, never invent
 - **Units:** <total> · **ready:** <n> · **not-ready:** <n> (<ids>)
 - **Coverage:** <journey steps not covered by any unit — should be none; edge cases not folded in; PRBs not resolved>
 - **Open questions blocking handoff:** <list>
+
+## Sources
+`journeys/<id>.md` · `screen-specs/<id>.md` <or "not yet written"> ·
+`edge-cases/<id>.md` <or "not yet written"> · `to-be-solved.md` · `problems.md` <if any> ·
+`personas/` · `design-records/<id>.md` <if a prototype exists>

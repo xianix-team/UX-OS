@@ -76,7 +76,7 @@ journeys, patterns    (optional)            business rules               require
 | Solve | `/uxos:journey-design <J>` · `/uxos:edge-cases <J>` · `/uxos:screen-spec <J>` |
 | Design system | `/uxos:claude-design-library` · `/uxos:code-library` · `/uxos:figma-library` |
 | Design & prototype | `/uxos:design <J> [claude-design\|code\|figma\|prompt]` · `/uxos:promote` · `/uxos:mirror` |
-| Dev handoff | `/uxos:requirements <J>` (Units) |
+| Dev handoff | `/uxos:requirements <J>` (Units, in `uxos/requirements/`) |
 | Keep current | `/uxos:sync [repo]` · `/uxos:impact "<change>"` |
 
 The recommended design setup is **Claude Design + a functional prototype in code**: on
@@ -85,6 +85,10 @@ approved; from then on code is the single master and Claude Design mirrors it (y
 `/design-sync`; `/uxos:mirror` verifies and brings canvas changes back through the right
 checks). Figma paths need the Figma connector authorized in your session; the code path
 needs a real local checkout of the repo.
+
+**What to give developers:** `uxos/requirements/`. Each journey's Units file starts with how
+to build and run it, and needs nothing else from the model. `uxos/design-records/` is your own
+working record, not a handoff.
 
 Everything uxos produces is a git-tracked `uxos/` folder in your project. Team-wide: commit
 [`docs/guides/team-settings.example.json`](docs/guides/team-settings.example.json) as

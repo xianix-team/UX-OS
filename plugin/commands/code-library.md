@@ -21,8 +21,8 @@ Build or extend the code design system for the current project.
      spacing/radius/elevation → atoms → molecules → organisms → templates — and after each
      run the audit, fix findings, and confirm with the designer before the next
 
-4. Write `uxos/handoff/code-library.md` (Library levels, audit result, overrides).
+4. Write `uxos/design-records/code-library.md` (Library levels, audit result, overrides).
 
 5. Run the `next-steps` skill and present its block.
 
-Templates: `${CLAUDE_PLUGIN_ROOT}/templates/handoff.md`.
+Templates: `${CLAUDE_PLUGIN_ROOT}/templates/design-record.md`.

@@ -19,8 +19,8 @@ Build the Claude Design System for this project.
    `claude-design-library` skill: present the scope by level, then build one stage at a
    time, confirming each with the designer.
 
-4. Write `uxos/handoff/design-system.md`.
+4. Write `uxos/design-records/design-system.md`.
 
 5. Run the `next-steps` skill and present its block.
 
-Templates: `${CLAUDE_PLUGIN_ROOT}/templates/handoff.md`.
+Templates: `${CLAUDE_PLUGIN_ROOT}/templates/design-record.md`.

@@ -54,8 +54,8 @@ the page.
    Apply `code-build-contract`'s deviation budget: inventory, arrangement and element kind
    are zero-tolerance whatever the class.
 
-5. **Output a table into the journey's handoff** — the **Design parity** section of
-   `uxos/handoff/<journey-id>.md` (`templates/handoff.md`): each difference, its
+5. **Output a table into the journey's design record** — the **Design parity** section of
+   `uxos/design-records/<journey-id>.md` (`templates/design-record.md`): each difference, its
    dimension, its class, its resolution, plus the shell numbers and the preflight outcome.
    The table is the artefact; a sentence saying parity passed is not.
 

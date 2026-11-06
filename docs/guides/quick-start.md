@@ -246,6 +246,12 @@ edge cases and related UX issues automatically, proposes the slicing for your OK
 marks any unit with open questions `not-ready` instead of guessing. Run it after
 `/uxos:screen-spec` for the fullest units.
 
+**This is what you give developers:** `uxos/requirements/`. Each file opens with **Start here**
+(build order, what's ready, how to run the prototype), and each unit's Build notes say what to
+build from and what's left to wire. `uxos/design-records/` is your own working record of what
+was drawn, built, and checked; developers don't need it. In a project from before 0.30.0 that
+folder is `uxos/handoff/`, and uxos offers once to rename it.
+
 *(strongly recommended before handoff)*
 ```
 /uxos:screen-spec "<feature name>"
