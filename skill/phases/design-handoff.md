@@ -129,10 +129,12 @@ screen. Read it before building.
    Composition block** (`screen-specs/<id>.md`) — not from the canvas directly and never
    from memory of it. If the block is missing or says `to be decided at design` while an
    artboard exists, extract it from the artboard and confirm it with the designer first.
-   **After each screen, run the audit** from `code-build-contract` and fix what it finds.
+   **After each screen, run the audit** from `code-build-contract`, including its rendered
+   perceivability check, and fix what it finds.
    Then run `design-parity` for that screen against its artboard, and show the designer
    its table alongside the files and the audit result. "I ran it and looked at it" is not
-   a parity result and does not satisfy this step. **Audit findings and zero-tolerance
+   a parity result and does not satisfy this step. Before asking for visual feedback, and
+   whenever the designer says they can't see a change, run `loop-preflight`. **Audit findings and zero-tolerance
    parity differences block confirmation** unless the designer overrides one — record each
    override (finding, file, their reason); never override on your own.
 8. **Make it functional — a prototype people can use, not static screens:**
@@ -147,7 +149,9 @@ screen. Read it before building.
    - **Every state reachable.** A small, prototype-only **state switcher** (a dev panel or
      `?state=` param) shows each screen's states from the screen spec and edge cases —
      empty, loading, error, permission-denied, success — so clients and QA see more than
-     the happy path. It is never part of the product UI.
+     the happy path. It also shows a **build stamp** that updates with each rebuild or hot
+     reload, so the designer can tell whether they have the latest build (`loop-preflight`).
+     It is never part of the product UI.
    - **Traceable.** Each screen's root carries `data-unit="U-J<n>-<k>"`; elements an
      acceptance criterion checks carry `data-ac="AC-U-J<n>-<k>.<m>"`, so QA and test agents
      can point at them.
@@ -193,11 +197,15 @@ screen. Read it before building.
      entries in `business-rules.md`, never invented;
    - composed from the design system's components; a missing component goes back to
      `claude-design-library` at its atomic level, not drawn as a one-off;
-   - arranged as the screen spec's **Composition** block says, where it decides anything.
+   - arranged as the screen spec's **Composition** block says, where it decides anything;
+   - **annotation that can't be mistaken for design.** A specimen frame, label, or callout is
+     a hairline, a muted rule, or nothing — never a surface, fill, radius, or elevation the
+     system uses to mean something. On a canvas that says what the design is, a framed option
+     reads as part of the option.
 5. Build **one screen (with its states) at a time**; after each, give the designer the
    canvas link and wait for confirmation. Once confirmed, **write the screen's Composition
    block back** into `screen-specs/<id>.md` from the artboard as drawn — read in this pass,
-   not recalled — replacing any `to be decided at design`. The code path builds from that
+   not recalled — replacing any `to be decided at design`, and leaving out annotation. The code path builds from that
    block, so a canvas without one hasn't finished handing off. Don't build the whole journey unattended.
 6. Artifacts are private by default; sharing with stakeholders is the designer's call.
 7. **Comments become decisions.** When revising, each comment thread is turned into a

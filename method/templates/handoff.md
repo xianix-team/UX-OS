@@ -52,15 +52,24 @@ mirrored_at: <YYYY-MM-DD>
 | Finding | File | Designer's reason for overriding |
 |---|---|---|
 
+### Perceivability (rendered, every theme)
+**Region boundary minimum:** <ratio, and where it's recorded | not set — asked designer>
+| Element | Sits on | Theme | Fill vs ground | Edge vs ground | Needs | Result |
+|---|---|---|---|---|---|---|
+
 ## Design parity (code target only)
 **Artboard:** <name, revision> · **Preflight:** <full | readable, not renderable | *built without seeing the design*>
 **Shell:** content column <x, width> built vs <x, width> artboard · sticky <what, height> built vs artboard
 
 | Screen | Difference | Dimension | Class | Resolution |
 |---|---|---|---|---|
-| <screen> | <what differs> | inventory / geometry / semantics / content | translation error / rule-driven (`BR-<n>` or rule) / capability / taste | fixed / accepted by designer, <reason> |
+| <screen> | <what differs, and from artboard or previous code> | inventory / geometry / semantics / content | translation error / rule-driven (`BR-<n>` or rule) / capability / taste | fixed / accepted by designer, <reason> |
 
 All four dimensions reported per screen: <screen: inventory ✓ geometry ✓ semantics ✓ content ✓>
+
+**Claims dropped by a rewrite** (`design_master: code`; compared with `<previous commit>`)
+| Claim the old version made | Where | Designer's decision |
+|---|---|---|
 
 ## Mirror & promotion log (design-system.md only)
 | Date | Event | Detail |

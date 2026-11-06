@@ -52,7 +52,9 @@ For each screen:
   arrangement, and any element whose *kind* carries meaning (a gate drawn as a diamond
   rather than a card, a label set as tracked type rather than a pill). Where an artboard
   exists, **read it and extract these** — do not describe it from memory. Where none exists
-  yet, decide with the designer or write `to be decided at design`; never guess.
+  yet, decide with the designer or write `to be decided at design`; never guess. Specimen
+  frames, labels, and callouts on an artboard are annotation, not composition: leave them
+  out, and ask if you can't tell which is which.
 
   This is the block that stops a faithful build from producing a screen with every correct
   element in the wrong arrangement. Everything else in this spec says *what must be there*;
