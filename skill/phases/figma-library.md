@@ -68,7 +68,7 @@ undecided palette just relocates the inconsistency. On greenfield it also needs
    designer deferred.
 
 ## Output
-`uxos/handoff/design-system.md` from `templates/handoff.md` — set `journey: design
+`uxos/design-records/design-system.md` from `templates/design-record.md` — set `journey: design
 system (foundations)`, and use the Library levels table for the seven stages instead of
 screens. Then run `next-steps`; it should point at `design-handoff` for the first journey
 now that the library exists.

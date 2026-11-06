@@ -11,8 +11,8 @@ Promote the design from Claude Design to code. Journeys (optional): `$ARGUMENTS`
    `/uxos:mirror` instead. If it isn't `claude-design`, ask the designer what it should be.
 
 2. Check the prerequisites from the `promote-to-code` skill: an approved canvas
-   (`uxos/handoff/<journey>.md` with `status: approved`), the Claude Design System link in
-   `uxos/handoff/design-system.md`, and the implementation stack in
+   (`uxos/design-records/<journey>.md` with `status: approved`), the Claude Design System link in
+   `uxos/design-records/design-system.md`, and the implementation stack in
    `uxos/design-direction.md`. Name whatever is missing and stop.
 
 3. Run the `promote-to-code` skill: inventory and diff against `patterns.md` → promotion
@@ -21,8 +21,8 @@ Promote the design from Claude Design to code. Journeys (optional): `$ARGUMENTS`
    `design_master` to `code` → ask the designer to run `/design-sync` → verify with
    `design-mirror`.
 
-4. Log the promotion in `uxos/handoff/design-system.md`.
+4. Log the promotion in `uxos/design-records/design-system.md`.
 
 5. Run the `next-steps` skill and present its block.
 
-Templates: `${CLAUDE_PLUGIN_ROOT}/templates/handoff.md`.
+Templates: `${CLAUDE_PLUGIN_ROOT}/templates/design-record.md`.

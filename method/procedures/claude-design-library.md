@@ -44,7 +44,7 @@ hex values, no one-off pieces.
    index `project/design-system.json` written last. Read its `from-design-tool.md` /
    `format.md` references when relevant.
 1. **Find or start the system.** Run Artifact `quickstart` with intent `other` to see the
-   design systems this account can open. If `handoff/design-system.md` already records a
+   design systems this account can open. If `design-records/design-system.md` already records a
    Claude Design System for this project, read it (`action: read`) and update it; build
    only what's missing. Otherwise create one from the **Design System** type the quickstart
    or a `scope: types` listing names, titled `<product> design system`.
@@ -59,6 +59,6 @@ hex values, no one-off pieces.
    wider on their behalf.
 
 ## Output
-`uxos/handoff/design-system.md` from `{{TEMPLATES}}/handoff.md` — `target: claude-design`,
+`uxos/design-records/design-system.md` from `{{TEMPLATES}}/design-record.md` — `target: claude-design`,
 `claude_design_url` set, the Library levels table filled. Then run `next-steps`; it should
 point at `design-handoff` (Claude Design path) for the first journey.

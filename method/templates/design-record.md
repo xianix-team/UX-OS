@@ -1,5 +1,5 @@
 ---
-artifact: handoff
+artifact: design-record
 project: <slug>
 journey: J<n> — <journey name>
 target: <figma | code | claude-design>
@@ -13,7 +13,10 @@ mirrored_commit: <code commit Claude Design last mirrored — design_master code
 mirrored_at: <YYYY-MM-DD>
 ---
 
-# Handoff Record — J<n> <journey name>
+# Design Record — J<n> <journey name>
+
+The designer's working record: what was drawn or built, how it was checked, what was decided.
+**Developers don't need this file.** Their handoff is `requirements/<journey-id>.md` (Units).
 
 ## Figma file / repo
 <Figma file link, or repo path + branch name>
@@ -25,7 +28,7 @@ mirrored_at: <YYYY-MM-DD>
 | 1. <step> | <existing screen/file reused, or new one built> | referenced / built | <frame link, or file path> |
 | 2. <step> | <...> | built | <...> |
 
-## Library levels (design-system record only — omit for a journey handoff)
+## Library levels (design-system record only — omit for a journey record)
 | Level | Built | Pending | Notes |
 |---|---|---|---|
 | 1a · Colour | | | |

@@ -12,17 +12,17 @@ masters.
 
 ## When
 - `product-context.md` has `design_master: claude-design`, and
-- at least one journey's canvas is approved by the designer (its handoff record has
+- at least one journey's canvas is approved by the designer (its design record has
   `status: approved`), and
 - `design-direction.md` includes the implementation-stack stage (framework, styling).
 `next-steps` suggests it when all three hold. Never automatic.
 
 ## Sources
 Read before anything else; if one can't be read, stop and say so.
-1. The Claude Design System — `handoff/design-system.md` → `claude_design_url`. With the
+1. The Claude Design System — `design-records/design-system.md` → `claude_design_url`. With the
    Artifact tool, `read` its `project/README.md`, `project/design-system.json`,
    `project/tokens.json`, and each `components/<Comp>/README.md` and `preview.html`.
-2. The approved journey canvases — each `handoff/<journey>.md` → `claude_design_url`;
+2. The approved journey canvases — each `design-records/<journey>.md` → `claude_design_url`;
    `read` the canvas and its comments (unresolved comments are open items, not decisions).
 3. `patterns.md` §6, `design-direction.md`, `screen-specs/`, `requirements/`,
    `business-rules.md` — the model is the spec; the canvases show how it was drawn.
@@ -59,7 +59,7 @@ Read before anything else; if one can't be read, stop and say so.
    existing Claude Design System (it's their command, uxos can't start it). That re-syncs
    the system from code and locks it (`editing: code`). Then run `design-mirror` in
    **verify** mode.
-8. Log the promotion in `handoff/design-system.md`: what transferred, the token name
+8. Log the promotion in `design-records/design-system.md`: what transferred, the token name
    mapping, parity results, what didn't transfer and why. Then run `next-steps`.
 
 ## Never

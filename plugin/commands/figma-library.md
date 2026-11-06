@@ -20,11 +20,11 @@ Build or update the Figma design-system file for the current project.
      confirming with the designer before the next — each level composed only from instances
      of the one below, every value bound to a foundation variable, no detached copies
 
-3. Write `uxos/handoff/design-system.md` (the Library levels table).
+3. Write `uxos/design-records/design-system.md` (the Library levels table).
 
 4. Run the `next-steps` skill and present its block.
 
-Templates: `${CLAUDE_PLUGIN_ROOT}/templates/handoff.md`.
+Templates: `${CLAUDE_PLUGIN_ROOT}/templates/design-record.md`.
 
 Note: needs the Figma MCP connector authorized in your own session, and benefits from the
 `figma` plugin's skills being available — this command doesn't bundle them.

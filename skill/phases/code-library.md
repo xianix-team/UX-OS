@@ -54,6 +54,6 @@ Follow `code-build-contract` throughout; its rules are why this is built the way
 this library.)*
 
 ## Output
-`uxos/handoff/code-library.md` from `templates/handoff.md` — `target: code`, `branch`
+`uxos/design-records/code-library.md` from `templates/design-record.md` — `target: code`, `branch`
 set, the Library levels table filled in (built / pending), and any **Overrides**. Then run
 `next-steps`; it should point at `design-handoff` (code) for the first journey.

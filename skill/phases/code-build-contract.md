@@ -28,7 +28,7 @@ that makes it hold.
    components file or folder): on greenfield, create one — a folder per level (`atoms/`,
    `molecules/`, `organisms/`, `templates/`) or the stack's equivalent; on brownfield, don't
    restructure — tag each new or changed component with its level in its doc comment
-   (`@level atom`) and list it by level in `handoff/code-library.md`. A component whose
+   (`@level atom`) and list it by level in `design-records/code-library.md`. A component whose
    level nobody can name is not finished.
 5. **No component defined inside a screen file.** If it's reusable or styled, it belongs in
    the library.
@@ -106,7 +106,7 @@ Scan only the files changed for this screen. Findings, with file and line:
 
 **Blocking by default.** Report the findings and fix them *before* asking the designer to
 confirm the screen. If the designer wants to override a finding, record it — finding, file,
-their reason — under **Overrides** in the handoff record. Never override on your own, and
+their reason — under **Overrides** in the design record. Never override on your own, and
 never report a screen as clean without having actually run the scan.
 
 ### Rendered check — perceivability
@@ -130,7 +130,7 @@ same-coloured ground takes a different fill before a heavier line, because hard 
 visibly and fills do not.
 
 A boundary below its minimum is an audit finding, so it **blocks like any other** and can be
-overridden the same way. Record what you measured in the handoff's perceivability table.
+overridden the same way. Record what you measured in the design record's perceivability table.
 
 Never report an audit pass on an element whose boundary was not measured against its real
 parent in every theme, and never fix an invisible boundary by raising its weight before

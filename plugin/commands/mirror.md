@@ -7,11 +7,11 @@ Mirror Claude Design and the code. Mode (optional): `$ARGUMENTS`.
 
 ## Steps
 
-1. Read `design_master` in `uxos/product-context.md` and `uxos/handoff/design-system.md`
+1. Read `design_master` in `uxos/product-context.md` and `uxos/design-records/design-system.md`
    (`claude_design_url`, `mirrored_commit`). Not set → ask, and record it.
 
 2. No mode given → decide: code library or prototype changed since `mirrored_commit` →
-   **push**; a canvas or its comments newer than its handoff revision log → **pull**; both →
+   **push**; a canvas or its comments newer than its design record's revision log → **pull**; both →
    pull first (so canvas decisions reach the code), then push. Say which and why.
 
 3. Run the `design-mirror` skill in that mode:
@@ -24,8 +24,8 @@ Mirror Claude Design and the code. Mode (optional): `$ARGUMENTS`.
    - On `design_master: claude-design`, explain there is nothing to mirror yet — changes go
      straight into Claude Design — and point at `/uxos:promote` when canvases are approved.
 
-4. Update `mirrored_commit` / `mirrored_at` and the log in `uxos/handoff/design-system.md`.
+4. Update `mirrored_commit` / `mirrored_at` and the log in `uxos/design-records/design-system.md`.
 
 5. Run the `next-steps` skill and present its block.
 
-Templates: `${CLAUDE_PLUGIN_ROOT}/templates/handoff.md`.
+Templates: `${CLAUDE_PLUGIN_ROOT}/templates/design-record.md`.

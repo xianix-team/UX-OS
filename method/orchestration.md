@@ -17,6 +17,15 @@ silently, and the method suggests next steps but never forces a sequence.
 
 Either way the artifact schemas and the gates are identical. Templates are in `templates/`.
 
+**Who reads what.** `uxos/requirements/` (Units) is the dev handoff: developers, QA, and AI-DLC
+agents need nothing else. `uxos/design-records/` is the designer's working record: what was
+drawn or built, how it was checked, what was decided.
+
+**Older projects** keep these records in `uxos/handoff/`. Treat that folder as
+`uxos/design-records/`, and offer once to rename it (`git mv`), never without a yes. If the
+designer declines, set `design_records_path: uxos/handoff` in `product-context.md`, keep
+using it, and don't ask again.
+
 ## Skill-first rule — uxos procedures before general knowledge
 
 Inside a uxos project, every task that produces work for the product — UX or not — is checked

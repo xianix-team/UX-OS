@@ -8,6 +8,25 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.30.0] — 2026-11-06
+
+Makes the Units the one thing developers receive. Clients liked them as a dev handoff, and said
+the `handoff/` folder made little sense to developers. It was never written for them.
+
+### Added
+- Units files open with a **Start here** block: the journey, build order, what's ready and
+  blocked, how to run the prototype, and where the design system lives.
+- Unit **Build notes** gain Build from, Left to wire, and Accepted differences from the design.
+  `design-handoff` updates them, with the designer's OK, when a prototype is built or changed.
+- `next-steps` suggests refreshing Units when the design record has moved on or Start here is
+  missing, and says to give developers `uxos/requirements/`.
+
+### Changed
+- **`uxos/handoff/` is now `uxos/design-records/`**, and the `handoff` template is `design-record`.
+  Existing projects keep working: uxos treats the old folder as the new one and offers once to
+  rename it, never without a yes. Declining sets `design_records_path` in `product-context.md`.
+- In Units files, Sources moved from the top to the end.
+
 ## [0.29.0] — 2026-11-06
 
 Closes the gap between "did I build it?" and "does it work?", found by the designer spotting

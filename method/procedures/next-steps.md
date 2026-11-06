@@ -23,10 +23,16 @@ on?" interaction model.
    **Code path:** before the first code-path `design-handoff`, check a component library
    exists in the repo (and covers the journey's tokens and atoms); if not, suggest
    `/uxos:code-library` first — it's the usual case on greenfield. **Claude Design path:** before the first `claude-design` handoff, suggest
-   `/uxos:claude-design-library` if `handoff/design-system.md` has no Claude Design System.
+   `/uxos:claude-design-library` if `design-records/design-system.md` has no Claude Design System.
    When a canvas exists, suggest re-running `/uxos:design <journey> claude-design` to work
    through its comments. After a code handoff,
    report the audit result and any recorded overrides.
+
+   **Units:** the Units in `uxos/requirements/` are the dev handoff. If a journey's design
+   record has changed since its Units file (compare git dates), or the file has no **Start
+   here** block, suggest re-running `/uxos:requirements <id>` so developers aren't working
+   from stale build notes. When a journey's Units are ready, say to give developers
+   `uxos/requirements/`, not `uxos/design-records/`.
 
    **Code sync:** if `product-context.md` has a `repo`, report commits on `repo_branch` since
    `synced_commit`; any → suggest `/uxos:sync` as a gap worth closing (first, before new
@@ -37,11 +43,11 @@ on?" interaction model.
    `/uxos:sync <repo>` enriches the existing documents with business logic from the code".
 
    **Design master:** read `design_tools` and `design_master` from `product-context.md`
-   (unset → suggest recording them). `claude-design` with at least one handoff record
+   (unset → suggest recording them). `claude-design` with at least one design record
    `status: approved` and a stack in `design-direction.md` → suggest `/uxos:promote` as the
    usual next step. `code` and the code library or prototype changed since
-   `handoff/design-system.md` → `mirrored_commit` → suggest `/uxos:mirror` (push, via
-   `/design-sync`) in the gap slot. A canvas with comments or edits newer than its handoff
+   `design-records/design-system.md` → `mirrored_commit` → suggest `/uxos:mirror` (push, via
+   `/design-sync`) in the gap slot. A canvas with comments or edits newer than its design record
    revision log → suggest `/uxos:mirror` pull-back. Prefer suggesting the Claude Design +
    code path over Figma when `design_tools` says so.
 

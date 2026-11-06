@@ -22,8 +22,24 @@ Write the development Units for journey `$ARGUMENTS`.
    - Then draft every unit in full and present the whole file at once; take corrections
      by unit id.
 
-4. Write `uxos/requirements/<id>.md`.
+4. Before presenting and before writing, check the draft:
+   - **Readiness:** go through each unit. Any `needs decision` in it means `Readiness:
+     not-ready`, whatever the reason, and the unit goes under **Blocked** in Start here with
+     what blocks it. Update `ready_units`, the Unit index, and the Summary to match. Saying
+     "ready to start" or "non-blocking" about a unit with one of these is wrong.
+   - **Gaps stay visible:** never drop a `needs decision` to make a unit ready. Before setting
+     readiness, check every Data row, state message, and rule against its source. A format,
+     limit, message, or behaviour the model doesn't state is `needs decision` and is listed
+     under Open questions, not `—`, not "see Left to wire", and not a plausible statement such
+     as "validated by the payment provider". Left to wire only names the integration.
+   - **Design system line:** read `uxos/design-records/design-system.md` and `code-library.md`
+     if they exist, and state where the library lives. Say "no code library yet" only if they
+     don't record one.
+   - **Start here** has only the template's lines; other notes go in the Summary.
+   - **Developers:** the design record appears only under Sources.
 
-5. Run the `next-steps` skill and present its block.
+5. Write `uxos/requirements/<id>.md`.
+
+6. Run the `next-steps` skill and present its block.
 
 Templates: `${CLAUDE_PLUGIN_ROOT}/templates/requirements.md`.
