@@ -53,6 +53,7 @@ skips all of them and drifts out of the product's scope.
 | screens in Figma, Claude Design, a design prompt, or a functional prototype in code | `design-handoff` |
 | a screen to be built in code from an approved design | `artboard-preflight` first, then `design-handoff` (Path C) + `code-build-contract` |
 | a built screen to be checked against its design | `design-parity` |
+| visual feedback on a running build, or "I can't see the change" | `loop-preflight` |
 | move the design from Claude Design into code (greenfield) | `promote-to-code` (`/uxos:promote`) |
 | keep Claude Design and code in step, either direction | `design-mirror` (`/uxos:mirror`); pushes via the designer's `/design-sync` |
 | a live page to be browsed | `browser-preflight` first |

@@ -34,6 +34,7 @@ comfort>
 
 ## 5. Accessibility baseline
 **Target:** <WCAG level>
+**Region boundary minimum:** <contrast ratio for cards, frames, bands, panels against their ground — decided by looking; controls and inputs stay at 3:1>
 
 ## 6. Iconography & imagery
 <line vs filled icons; illustration style; photography use>

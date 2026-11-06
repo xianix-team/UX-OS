@@ -109,6 +109,33 @@ confirm the screen. If the designer wants to override a finding, record it — f
 their reason — under **Overrides** in the handoff record. Never override on your own, and
 never report a screen as clean without having actually run the scan.
 
+### Rendered check — perceivability
+The scan reads files; this reads the running screen, in every theme. For every element that
+separates one region from another or marks something the user operates, measure its boundary
+against the ground it **actually sits on**, not the page default. Its strength is the higher
+of fill-against-ground and edge-against-ground; composite any translucent value first.
+
+| Boundary | Examples | Minimum |
+|---|---|---|
+| **Needed to operate something** | an input, a control, a focus indicator | 3:1 (WCAG 1.4.11) |
+| **Separates regions** | a card, a frame, a band, a panel | the project's **region boundary minimum** |
+
+The region minimum is the designer's: `design-direction.md` §5, or `patterns.md` §6 on
+brownfield. If none is recorded, report the measured values, and ask the designer to set one
+while looking at the rendered screen. Do not assume a number.
+
+Where fill and ground are the same token, the edge carries the whole boundary: say so in the
+component, don't inherit it. **Prefer fill over edge:** a region that needs separating from a
+same-coloured ground takes a different fill before a heavier line, because hard edges stack
+visibly and fills do not.
+
+A boundary below its minimum is an audit finding, so it **blocks like any other** and can be
+overridden the same way. Record what you measured in the handoff's perceivability table.
+
+Never report an audit pass on an element whose boundary was not measured against its real
+parent in every theme, and never fix an invisible boundary by raising its weight before
+trying a different fill.
+
 **Be honest about what this can't do.** It catches mechanical violations. It cannot judge
 visual fidelity, whether a token choice is *appropriate*, or interaction quality. Fidelity
 to the design is `design-parity`'s job — run it beside the audit wherever an artboard

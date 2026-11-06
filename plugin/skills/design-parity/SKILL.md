@@ -1,6 +1,6 @@
 ---
 name: design-parity
-description: Compare a built screen against the approved artboard it was built from, mechanically and in four dimensions (inventory, geometry, semantics, content), and classify every difference — translation error, rule-driven, capability, or taste — so the right ones reach the designer. Called by promote-to-code, design-handoff (code path) and design-mirror.
+description: Compare a built screen against the approved artboard it was built from, mechanically and in four dimensions (inventory, geometry, semantics, content), and classify every difference — translation error, rule-driven, capability, or taste — so the right ones reach the designer. Under design_master code, a rewrite is also compared with the code it replaced, so claims dropped without anyone noticing are found. Called by promote-to-code, design-handoff (code path) and design-mirror.
 ---
 
 # design-parity
@@ -9,7 +9,9 @@ Goal: the code does not silently differ from an approved design, and the differe
 does carry were each decided by someone rather than by nobody.
 
 ## Prerequisite — render both, remember neither
-Run `artboard-preflight` first; do not start from a remembered design.
+Run `artboard-preflight` first; do not start from a remembered design. The exception is
+content no artboard contains (step 7): it is checked against the previous code, so the
+artboard being unreachable doesn't stop that part.
 
 Serve the artboard as a file and open it beside the running prototype, both at the same
 widths: the design width, and the narrow artboard's width if one exists. For a Claude
@@ -61,9 +63,24 @@ the page.
    rules 2 and 5 hold inside a parity fix. After fixing, re-measure the whole page, not
    only the section changed: a shell fix moves everything.
 
+7. **A second baseline, where the artboard does not govern.** Under `design_master: code`
+   the code legitimately runs ahead of the canvas, so the artboard lags by design. When the
+   change is a **rewrite rather than a first build**, and what changed is copy or a component
+   the artboard does not draw, also compare against the previous code (the last commit before
+   the rewrite). Same four dimensions, same classification, same table.
+
+   Then ask: *what did this say before that it no longer says?* List the claims the old
+   version made and the claims the new one makes, and name every claim present then and
+   absent now. This takes judgement, unlike the measured dimensions, so **show the designer
+   the dropped claims** rather than deciding alone. A claim dropped for length is a decision;
+   a claim dropped without anyone noticing is a defect, and the two are indistinguishable
+   afterwards unless this is run at the time.
+
 Then run `next-steps`.
 
 ## Never
 Report parity from a heading diff alone; check only the sections you edited; measure one
 artboard and conclude about the others; ship a taste deviation without asking; or write a
-claim about an artboard you did not read in this pass.
+claim about an artboard you did not read in this pass. Never report parity on rewritten copy
+from the artboard alone when the artboard does not contain that copy, or let a shortened
+version stand unexamined against the one it replaced.

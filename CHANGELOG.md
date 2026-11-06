@@ -8,6 +8,27 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.29.0] — 2026-11-06
+
+Closes the gap between "did I build it?" and "does it work?", found by the designer spotting
+defects on the page that every check had passed.
+
+### Added
+- **Perceivability check** in the `code-build-contract` audit, on the rendered screen in every
+  theme: 3:1 for boundaries needed to operate something; a designer-set **region boundary
+  minimum** for cards, frames, bands, and panels. Measured against the real parent; prefer a
+  different fill over a heavier edge. A finding blocks like any other audit finding.
+- `design-parity` **second baseline:** under `design_master: code`, a rewrite is also compared
+  with the previous code, and claims dropped along the way go to the designer. This part still
+  runs when the artboard is unreachable.
+- `loop-preflight` — checks the designer is looking at the current build: server process, page
+  freshness, same origin. The state switcher now shows a build stamp, because the agent can't
+  see the designer's tab.
+- `design-handoff` Path D: an annotation convention, so frames and labels can't be mistaken for
+  design. Annotation stays out of Composition blocks.
+- Templates: region boundary minimum in `design-direction`; perceivability and dropped-claims
+  tables in `handoff`.
+
 ### Changed
 - Docs: replaced examples drawn from a real project with a made-up one.
 

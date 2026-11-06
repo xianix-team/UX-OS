@@ -27,6 +27,10 @@ silently without it.
 
 Record the outcome in the handoff's **Design parity** section either way.
 
+**Not needed for content no artboard contains.** A rewrite of copy or a component the
+artboard doesn't draw is compared with the previous code (`design-parity` step 7). If the
+artboard is unreachable, that comparison still runs; everything else stays labelled.
+
 ## Never
 Infer an artboard's contents from the model, from a previous session, or from a
 screenshot taken earlier in this one, and present the result as a build from the design.

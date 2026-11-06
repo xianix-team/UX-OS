@@ -45,7 +45,9 @@ tech comfort. Confirm.
 
 ### Stage 5 — Accessibility baseline
 Propose a WCAG target (AA is a reasonable default) — ask explicitly rather than assuming it
-doesn't matter. Confirm.
+doesn't matter. Then ask for the **region boundary minimum**: how strongly a card, frame, or
+band must stand out from its ground, decided by looking at rendered samples. Controls and
+inputs stay at 3:1 whatever this says. Confirm.
 
 ### Stage 6 — Iconography & imagery
 Propose line vs filled icon style, and whether illustration or photography fits the
