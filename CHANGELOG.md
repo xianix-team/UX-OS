@@ -8,6 +8,20 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.31.0] — 2026-11-10
+
+### Added
+- **`/uxos:validate`** — optional user validation before design. Plan mode breaks the
+  to-be-solved items, and optionally the personas, into bets, ranks them by risk, records what
+  would prove each wrong, and writes a screener by user group (never persona traits) and an
+  interview guide per group that asks about context before pain, every question tied to a bet.
+  Findings mode codes the designer's session notes, rules on each bet with counts and quotes,
+  and proposes updates: personas (confirm, revise, split, merge, missing segment), then
+  to-be-solved, with refuted items going back to the scope gate.
+- Evidence tags `[interviewed, <date>, n=<N>]` and `[surveyed, <date>, n=<N>]`; a Validation
+  section in the persona and to-be-solved templates.
+- An honesty rule: never simulate users.
+
 ## [0.30.0] — 2026-11-06
 
 Makes the Units the one thing developers receive. Clients liked them as a dev handoff, and said

@@ -35,6 +35,10 @@ domain research is the evidence). Omit entirely rather than inventing demographi
 ## Needs
 - <what the product would have to provide to serve them>
 
+<!-- Optional — only after a user-validation study. -->
+## Validation
+- <date> — <confirmed / revised / split / merged>: <what changed> `[interviewed, <date>, n=<N>]` — `research/<date>-<slug>/`
+
 <!-- Optional — include when it affects design decisions (device, connectivity, context). -->
 ## Usage profile
 - Tech comfort: <...>

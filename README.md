@@ -21,7 +21,8 @@ It works for **brownfield** (an existing product: web, iOS, Android, desktop) an
   feature map, and journeys for you to confirm.
 - **Finds and scopes problems** — UX matrices per journey, a problems register challenged by
   a critic agent, and a scope gate deciding what's worth solving. Optional competitor
-  analysis mapped onto your own feature map.
+  analysis mapped onto your own feature map, and optional user validation: interview guides
+  to check the needs and personas with real users, and your notes turned into evidence.
 - **Designs the solution** — journeys with How / Why / Technical delight per step, edge
   cases, screen specs, business rules in one register.
 - **Prototypes it** — in **Claude Design** canvases and as a **functional prototype in your
@@ -72,7 +73,7 @@ journeys, patterns    (optional)            business rules               require
 | Set up | `/uxos:init` · `/uxos:import` · `/uxos:status` |
 | Brownfield analysis | `/uxos:journeys` · `/uxos:matrix <J>` · `/uxos:patterns` · `/uxos:problems` |
 | Greenfield direction | `/uxos:to-be-solved` · `/uxos:requirements-gap` · `/uxos:design-direction` · `/uxos:patterns` |
-| Scope | `/uxos:to-be-solved` · `/uxos:competitors` (optional) · `/uxos:feature-mapping <feature>` · `/uxos:blueprint` |
+| Scope | `/uxos:to-be-solved` · `/uxos:competitors` (optional) · `/uxos:validate` (optional) · `/uxos:feature-mapping <feature>` · `/uxos:blueprint` |
 | Solve | `/uxos:journey-design <J>` · `/uxos:edge-cases <J>` · `/uxos:screen-spec <J>` |
 | Design system | `/uxos:claude-design-library` · `/uxos:code-library` · `/uxos:figma-library` |
 | Design & prototype | `/uxos:design <J> [claude-design\|code\|figma\|prompt]` · `/uxos:promote` · `/uxos:mirror` |

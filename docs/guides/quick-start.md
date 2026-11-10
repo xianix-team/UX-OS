@@ -363,7 +363,26 @@ feature branches don't count as built.
 
 ---
 
-## 6. Optional — see what competitors do
+## 6. Optional — check the needs with real users
+
+```
+/uxos:validate
+```
+On greenfield and add-feature work, the to-be-solved list rests on domain analysis,
+personas built without research, and stakeholder requests. This plans a small study to
+check the riskiest of those with real users before you design: it breaks each item into
+bets (the problem is real, frequent enough, how people cope today, whether they'd change),
+ranks them by risk, writes down what would prove each wrong, and drafts a screener and an
+interview guide per user group. Choose **personas and needs** to check the personas too.
+
+You run the sessions. Then `/uxos:validate findings` turns your notes into evidence — each
+bet supported, refuted or mixed, with counts and quotes — and proposes updates: personas
+first, then to-be-solved, with refuted items going back to the scope gate. uxos never
+invents what users said. Keep raw notes and names out of `uxos/`.
+
+Skip it if you'd rather validate later with the prototype.
+
+## 7. Optional — see what competitors do
 
 ```
 /uxos:competitors
@@ -381,7 +400,7 @@ never decides scope. Re-run it later to refresh.
 
 ---
 
-## 7. Designing in Claude Design, prototyping in code
+## 8. Designing in Claude Design, prototyping in code
 
 The recommended setup — no Figma licence, and one design system instead of two.
 
@@ -419,7 +438,7 @@ Claude Design matches.
 
 ---
 
-## 8. A client asks for a design change — check the impact first
+## 9. A client asks for a design change — check the impact first
 
 "Can we make the button blue darker?" Before touching anything:
 ```
@@ -474,6 +493,7 @@ writes nothing.
 | `/uxos:code-library` | build/extend the design system in code bottom-up, confirmed level by level (run once before the first code handoff) |
 | `/uxos:claude-design-library` | build/update the design system in Claude Design, bottom-up, confirmed level by level (run once before the first canvas) |
 | `/uxos:design <journey> [claude-design\|code\|figma\|prompt]` | hand off to a Claude Design canvas, a functional prototype in code, Figma, or a prompt |
+| `/uxos:validate [plan\|findings]` | optional: check the to-be-solved needs, and the personas if you choose, with real users — bets, screener, interview guides; then your notes as evidence |
 | `/uxos:competitors [names/URLs]` | optional: competitors mapped onto your model — table stakes, differentiators, whitespace, journey walk-throughs, review themes |
 | `/uxos:promote [journeys]` | greenfield: move the design from Claude Design into a code library + functional prototype; code becomes the master |
 | `/uxos:mirror [push\|pull\|verify]` | keep Claude Design and code in step — push via your `/design-sync`, pull canvas changes back into code |

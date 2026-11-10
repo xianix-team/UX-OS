@@ -52,3 +52,9 @@ below depends on how the candidates were found — `user-group` when derived fro
 
 ## Needs verification before deciding
 - <item> — <what to confirm, with whom> (also in open-questions.md)
+
+## Validation
+<!-- Only after a user-validation study; otherwise omit. -->
+| Item | Result | Evidence | Study |
+|---|---|---|---|
+| <ref> | supported / refuted / mixed | `[interviewed, <date>, n=<N>]` | `research/<date>-<slug>/` |
