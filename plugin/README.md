@@ -57,6 +57,7 @@ cd <your workspace or the product repo>
 /uxos:promote         # greenfield: Claude Design → code library + functional prototype
 /uxos:mirror [mode]   # keep Claude Design and code in step (push via /design-sync, pull canvas changes)
 /uxos:competitors     # optional: table stakes, differentiators, whitespace vs. your model
+/uxos:validate        # optional: check needs and personas with real users — guides, then findings
 /uxos:impact "<change>" # is it a token? where is it used? change here or everywhere?
 /uxos:sync [repo]     # bring the model in line with what devs built (asks before changing anything)
 /uxos:status          # where things stand + suggested next steps (anytime)

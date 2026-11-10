@@ -59,6 +59,15 @@ on?" interaction model.
    `competitors.md` dated more than six months ago → suggest a refresh. Mention it at most
    once per session if the designer passes on it.
 
+   **User validation (optional — suggest, never push):** `to-be-solved.md` exists, no study
+   in `uxos/research/` yet, and either it's greenfield or add-feature, or rows are
+   `needs-verification`, or personas are `inferred`/`assumption` → offer `/uxos:validate` in
+   the independent slot, one line: "optional — check the riskiest needs (and personas) with
+   real users before designing, or validate later with the prototype". A study with
+   `plan.md` and no `findings.md` → one line in the independent slot: bring findings in when
+   the sessions are done. Findings with model updates still `pending` → gap slot. Mention it
+   at most once per session if the designer passes on it.
+
    **Change impact:** if the designer mentions a client-requested visual change (a colour,
    font, spacing, a component), suggest `/uxos:impact "<change>"` before any library or
    design edit. If an impact report has `decision: pending`, list it in the gap slot.

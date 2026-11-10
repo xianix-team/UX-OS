@@ -45,6 +45,7 @@ skips all of them and drifts out of the product's scope.
 | to start or set up the project, adopt existing docs | `init`, `import-artifacts` |
 | domain research, user groups, personas | `analyse-domain`, `capture-users` |
 | competitor analysis, benchmarking, "what do others do?" | `competitor-analysis` (`/uxos:competitors`, optional) |
+| user research to check the needs or personas, interview questions, a screener, making sense of interview notes | `user-validation` (`/uxos:validate`, optional) |
 | what the product is, its scope, journey list | `study-product` |
 | a feature map / blueprint, or to update it | `build-blueprint` |
 | business rules / business logic | `business-rules.md` — seeded by `study-product`, filled and kept current from code by `code-sync` |
@@ -327,6 +328,17 @@ after domain analysis (greenfield), before scoping (brownfield), when a feature 
 justified by "a competitor has it", and when the analysis is over six months old.
 Competitor parity is supporting evidence, never a driver on its own.
 
+## User validation — optional, suggested
+
+`procedures/user-validation.md` checks the riskiest assumptions behind the to-be-solved list
+— and, if the designer chooses, the personas themselves — with real users before design.
+Plan mode breaks items into bets, ranks them by risk, records what would prove each wrong,
+and writes a screener (by user group, never persona traits) and discussion guides that ask
+about context before pain. Findings mode codes the designer's session notes, rules on each
+bet with counts, and proposes updates: personas, then to-be-solved, then the scope gate.
+Never required — many teams validate later through the prototype — and never simulated:
+participant answers only ever come from real sessions.
+
 ## Change impact — before a design change lands
 
 A client asks for a change ("make the blue darker"). `procedures/change-impact.md` answers
@@ -348,6 +360,8 @@ designer always chooses.
 
 - Never fabricate an evidence row in the UX matrix (analytics, business data, interviews).
   Leave it empty until the designer supplies it.
+- Never simulate users. Interview or survey evidence comes only from real sessions, tagged
+  `[interviewed, <date>, n=<N>]` or `[surveyed, <date>, n=<N>]`.
 - Anything behind an auth wall or otherwise unobserved is `Assumption`-tier: keep it, label
   it "needs verification", do not treat it as a finding.
 - Recommendations in the problems register are **proposed directions, not decided
