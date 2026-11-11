@@ -189,6 +189,19 @@ density, accessibility baseline, iconography, platform convention stance. There'
 existing product to extract patterns from, so this *is* the source of truth for visual
 direction.
 
+**Not a designer, or running it with a client?** It asks who is answering first. Anyone who
+isn't a designer is asked about their product and customers, not design terms, and chooses
+by looking at **style tiles**: the same piece of your product drawn in 2–3 directions. The
+technical details are worked out from the personas, with a reason given for each. You can
+also bring a **mood board**: screenshots or links of designs you like. uxos asks what you
+like about each and uses that as inspiration, never copying another brand's logo or
+palette. The result records who decided what, and starts with a plain-words summary you
+can share.
+
+**Revamping an existing product?** The same step runs on a brownfield revamp. It starts by
+going through today's design to keep, change, or drop each part, and `/uxos:patterns`
+then re-runs to follow the new direction.
+
 ```
 /uxos:patterns
 ```
@@ -482,7 +495,7 @@ writes nothing.
 | `/uxos:problems` | brownfield — derive + critique the problems register |
 | `/uxos:to-be-solved` | scope gate — decide what to solve, set response types (runs problem-validation internally on greenfield) |
 | `/uxos:requirements-gap [doc]` | greenfield — cross-check a client FR/NFR doc against to-be-solved, both ways + NFR sweep |
-| `/uxos:design-direction` | greenfield — philosophy, colour, type, spacing, a11y, before any screen work |
+| `/uxos:design-direction` | greenfield or revamp — the look and feel before any screen work; works for non-designers (mood board, style tiles, plain language) |
 | `/uxos:feature-mapping <feature>` | add-feature: driver, placement, conflict check |
 | `/uxos:blueprint [source]` | create the feature map, or update it (diff, confirm) |
 | `/uxos:journey-design <journey>` | create / update / enrich a journey in full detail |
