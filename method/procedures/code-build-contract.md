@@ -23,8 +23,7 @@ that makes it hold.
 4. **Atomic structure, bottom-up.** Tokens → atoms → molecules → organisms → templates,
    each built only from the level beneath it, in the places the repo already keeps each
    level. A missing piece is added **at its own level** (an atom before the molecule that
-   needs it), never inside a screen file — as a **proposed draft** until a design using it
-   is approved (`proposed-components`).
+   needs it), never inside a screen file.
    **Every component's level is visible.** If the repo has no per-level structure (one flat
    components file or folder): on greenfield, create one — a folder per level (`atoms/`,
    `molecules/`, `organisms/`, `templates/`) or the stack's equivalent; on brownfield, don't
@@ -37,9 +36,8 @@ that makes it hold.
    `div`), label associations, visible focus states (never `outline: none` without a
    replacement), alt text, sufficient contrast per the `design-direction` baseline. Fixed
    once at the atom, inherited everywhere.
-7. **Reuse before create.** Check the library for an existing component first, then the
-   proposed drafts; a new one must be distinct from everything already there, not a
-   near-duplicate. A library component never imports a proposed draft.
+7. **Reuse before create.** Check the library for an existing component first; a new one
+   must be distinct from everything already there, not a near-duplicate.
 
 **The repo's convention decides the mechanism.** CSS modules, Tailwind, styled-components,
 SwiftUI modifiers, Compose themes, Flutter `ThemeData` — follow what's already there
@@ -101,8 +99,7 @@ Scan only the files changed for this screen. Findings, with file and line:
 | Styling in screens | styling decisions (classes, modifiers) in page/screen files beyond composition |
 | Component in a screen | a component declared in a screen file rather than the library |
 | Bypassed library | importing a raw UI-kit element directly where the repo has a wrapper |
-| Near-duplicate | a new component overlapping an existing one or an existing draft in name or shape |
-| Draft misplaced | a new component added straight to the library while its design is unapproved, or a library component importing a draft |
+| Near-duplicate | a new component overlapping an existing one in name or shape |
 | Level unknown | a new or changed component with no atomic level (no level folder, no `@level` tag), or one composed from a level above it (an atom using a molecule) |
 | Dev tooling leak | prototype-only code (state switcher, fixtures) imported by a library component or a non-prototype route |
 | Atom-level a11y | non-semantic clickable elements, `outline: none` with no replacement, unlabeled inputs, missing alt |

@@ -89,13 +89,6 @@ Defined in the same bottom-up order; each level may only use what's defined bene
 ### 6.6 Organisms — one spec each, naming the molecules/atoms it is composed of
 ### 6.7 Templates — layout specs naming the organisms they arrange
 
-## 6a. Proposed components — drafts, not yet in the system
-Made for designs not yet approved. Built to the same rules; adopted into §6 only when a
-design using them is approved or the designer adopts them (`/uxos:adopt`).
-| Component / token | Level | Composed of | Created for | Used by | Status | Since |
-|---|---|---|---|---|---|---|
-| <name> | <atom / molecule / organism / template / token> | <parts> | <J<n> screen> | <J<n>, J<m>> | proposed / adopted / not adopted | <date> |
-
 ## 7. Figma file plan (generate once connector is authorised)
 Built bottom-up, confirmed level by level; no level may contain a detached copy of one
 below it (instances only) or an unbound value (every colour, size, and space bound to a

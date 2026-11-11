@@ -53,9 +53,8 @@ hex values, no one-off pieces.
 3. **Build one stage at a time** following the type's own instructions for how a design
    system is filled. After each stage, give the designer the link to check it and wait for
    confirmation before the next. Don't build the whole system unattended.
-4. **A piece found missing later** is a **proposed draft** (`proposed-components`) until a
-   design using it is approved — then it's added here at its own level. Never a one-off in a
-   journey canvas.
+4. **A piece found missing later** is added here at its own level, never drawn as a one-off
+   in a journey canvas.
 5. Artifacts are private by default. Sharing is the designer's call; never share or publish
    wider on their behalf.
 

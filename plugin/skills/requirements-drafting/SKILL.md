@@ -68,8 +68,7 @@ Read before drafting. Missing sources lower readiness; they don't block drafting
      NFRs only when the model states them.
    - **Build notes** — dependencies between units, prototype/design links, the files and
      components to build from, what's left to wire, accepted differences from the design,
-     patterns, open questions, assumptions. A component still in the proposed layer is named
-   as `proposed` in Build from. An accepted difference is there so a developer
+     patterns, open questions, assumptions. An accepted difference is there so a developer
      doesn't "fix" a deliberate choice; list only ones a developer could trip over.
    - **Start here** — fill it last, from the units: build order from Depends on, ready and
      blocked from Readiness, how to run the prototype from the design record.

@@ -46,14 +46,13 @@ Cite `patterns.md`'s nav model — reuse the existing pattern, don't invent a ne
 ### Components (by atomic level)
 | Level | Component | In the library? |
 |---|---|---|
-| template | <page layout this screen uses> | yes / proposed draft / **missing — add as a proposed draft** |
+| template | <page layout this screen uses> | yes / **missing — add via `figma-library`** |
 | organism | <e.g. data table with filters> | |
 | molecule | <e.g. labelled field> | |
 | atom | <e.g. status chip> | |
 
-Anything marked missing gets added as a proposed draft at its own level — an atom before the
-molecule that needs it — before `design-handoff` builds the screen, so nothing is drawn as a
-one-off. It joins the design system only when a design using it is approved.
+Anything marked missing gets added at its own level — an atom before the molecule that needs
+it — before `design-handoff` builds the screen, so nothing is drawn as a one-off.
 
 ### Composition
 

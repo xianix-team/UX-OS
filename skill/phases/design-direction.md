@@ -35,7 +35,7 @@ For anyone who isn't a designer, **plain-language mode** applies to every stage:
 - **They decide what's theirs:** the feel, the brand, references, must-haves. The technical
   details — type scale, spacing, icon style, accessibility level — are **derived** from the
   personas and offered as recommendations with a one-line reason in their terms ("larger
-  tap targets, because your users are on phones, often outdoors"). They can still
+  tap targets, because your guests book on phones, often outdoors"). They can still
   disagree.
 - Plain words, never condescending. No "this may be complicated for you".
 
@@ -79,7 +79,7 @@ the direction's Mood board section.
 
 ## Style tiles — how choices are shown
 A style tile is the same small, real piece of this product — taken from the to-be-solved
-scope or a key journey (a product card with its heading, image, key detail and main button) — drawn
+scope or a key journey (a booking card with its button, heading, price and photo) — drawn
 in one direction's colour, type, spacing, shape and imagery. Show 2–3 tiles side by side.
 - Write them as one HTML page, `uxos/design-direction/style-tiles.html`, every value a CSS
   custom property so the tiles double as draft tokens. Open it in the browser for the
@@ -90,7 +90,7 @@ in one direction's colour, type, spacing, shape and imagery. Show 2–3 tiles si
 - Never use a referenced brand's assets, palette, or type in a tile. Placeholder imagery is
   neutral.
 - **Tile copy comes from the model** — screen and step names from the journeys, the
-  to-be-solved scope — or is plainly neutral ("Item name", "Continue"). Never invent product
+  to-be-solved scope — or is plainly neutral ("Cabin name", "Book"). Never invent product
   claims or features in a tile.
 - Ask this-or-that ("A or B — which feels more like your product?") and what they like and
   dislike about each; turn the answers into the decision and re-render the chosen tile.

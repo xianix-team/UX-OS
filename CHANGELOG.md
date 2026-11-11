@@ -23,13 +23,6 @@ Design direction for people who aren't designers, and for revamps.
   asks what you like about it, extracts the visual qualities with their source, and asks
   about conflicts. References are inspiration: a brand's logo, artwork, or exact palette is
   never copied.
-- **Proposed components.** A component or token a design needs that the system lacks is now
-  built as a shared **proposed draft** — same rules, its atomic level named — and joins the
-  design system only when a design using it is approved, or the designer adopts it with the
-  new **`/uxos:adopt`**. One draft per component across the project, reused and changed in
-  place rather than copied, with a Used by list; a rejected design removes only the drafts
-  nothing else uses. Drafts live in a `proposed/` area in code, a Proposed page in Figma,
-  and a Proposed components table in `patterns.md`.
 - Every decision records who made it (`client`, `designer`, `derived`), with
   `needs_designer_review` when no designer was involved, and an **In plain words** summary
   to share after a workshop.

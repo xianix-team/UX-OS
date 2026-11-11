@@ -59,11 +59,6 @@ on?" interaction model.
    `competitors.md` dated more than six months ago → suggest a refresh. Mention it at most
    once per session if the designer passes on it.
 
-   **Proposed components:** a draft used by two or more designs that aren't approved → gap
-   slot: "decide on <draft> once, with `/uxos:adopt`, so the designs stop waiting on each
-   other". A design just approved that uses drafts → usual slot: adopt them. Drafts used by
-   nothing, or untouched for a month → mention `/uxos:adopt` once to clear them up.
-
    **User validation (optional — suggest, never push):** `to-be-solved.md` exists, no study
    in `uxos/research/` yet, and either it's greenfield or add-feature, or rows are
    `needs-verification`, or personas are `inferred`/`assumption` → offer `/uxos:validate` in
