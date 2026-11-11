@@ -1,6 +1,6 @@
 ---
 name: promote-to-code
-description: The one-time switch of the design master from Claude Design to code — usually on greenfield, once the first journeys' canvases are approved. Reads the Claude Design System and the approved canvases, translates them into a real code library (code-library, held to code-build-contract) and the functional prototype (design-handoff, code path), then makes Claude Design a mirror of the code via /design-sync. Records design_master: code. Confirmed at every step; nothing is lost in translation silently.
+description: "The one-time switch of the design master from Claude Design to code — usually on greenfield, once the first journeys' canvases are approved. Reads the Claude Design System and the approved canvases, translates them into a real code library (code-library, held to code-build-contract) and the functional prototype (design-handoff, code path), then makes Claude Design a mirror of the code via /design-sync. Records design_master: code. Confirmed at every step; nothing is lost in translation silently."
 ---
 
 # promote-to-code

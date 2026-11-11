@@ -12,3 +12,6 @@ Thumbs.db
 # build artifact, not source
 uxos-skill.zip
 uxos-plugin.zip
+
+# MCP server dependencies
+node_modules/

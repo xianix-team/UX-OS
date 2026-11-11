@@ -1,0 +1,26 @@
+{
+  "name": "uxos-skills-mcp",
+  "version": "0.31.0",
+  "private": true,
+  "type": "module",
+  "description": "MCP server that exposes plugin/skills as prompts, resources, and tools.",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "uxos-skills-mcp": "./server.mjs"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "start:http": "node server.mjs --http",
+    "test": "node --test test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/node": "^2.1.2",
+    "@modelcontextprotocol/server": "^2.4.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "^2.4.0"
+  }
+}
