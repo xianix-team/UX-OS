@@ -1,10 +1,19 @@
+import { existsSync } from 'node:fs';
 import { readFile, readdir, realpath } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { nodeSkillFiles } from '@modelcontextprotocol/server/ext/skills/node';
 
-const PLUGIN_ROOT = path.resolve(fileURLToPath(new URL('../plugin/', import.meta.url)));
+function resolvePluginRoot() {
+  const repoPlugin = fileURLToPath(new URL('../plugin/', import.meta.url));
+  if (existsSync(path.join(repoPlugin, 'skills'))) return repoPlugin;
+  const bundled = fileURLToPath(new URL('./plugin/', import.meta.url));
+  if (existsSync(path.join(bundled, 'skills'))) return bundled;
+  throw new Error('uxos plugin skills were not found. Run npm pack from mcp/ so plugin/ is bundled.');
+}
+
+const PLUGIN_ROOT = resolvePluginRoot();
 export const SKILLS_ROOT = path.join(PLUGIN_ROOT, 'skills');
 export const AGENTS_ROOT = path.join(PLUGIN_ROOT, 'agents');
 export const TEMPLATES_ROOT = path.join(PLUGIN_ROOT, 'templates');

@@ -1,18 +1,38 @@
 {
-  "name": "uxos-skills-mcp",
+  "name": "@99x-ai-dlc/uxos-skills-mcp",
   "version": "0.31.0",
-  "private": true,
+  "description": "MCP server that exposes the uxos skills, agents, templates, and method.",
+  "license": "MIT",
+  "author": "99x Asia",
   "type": "module",
-  "description": "MCP server that exposes plugin/skills as prompts, resources, and tools.",
-  "engines": {
-    "node": ">=20"
-  },
   "bin": {
     "uxos-skills-mcp": "./server.mjs"
+  },
+  "files": [
+    "server.mjs",
+    "catalog.mjs",
+    "plugin",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xianix-team/UX-OS.git",
+    "directory": "mcp"
+  },
+  "homepage": "https://github.com/xianix-team/UX-OS",
+  "bugs": {
+    "url": "https://github.com/xianix-team/UX-OS/issues"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "scripts": {
     "start": "node server.mjs",
     "start:http": "node server.mjs --http",
+    "prepack": "node scripts/bundle-plugin.mjs",
     "test": "node --test test.mjs"
   },
   "dependencies": {
