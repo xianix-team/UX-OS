@@ -44,7 +44,8 @@ For each screen:
   it exists; don't re-invent edge cases already found there.
 - **Components, by atomic level** — which template, organisms, molecules, and atoms from
   `patterns.md` §6 this screen is built from, and whether each already exists in the
-  library. Mark anything that doesn't as **missing** and name its level — it gets added
+  library or as a proposed draft. Mark anything that doesn't as **missing** and name its
+  level — it gets added as a proposed draft
   (atoms before the molecules that need them) before `design-handoff` builds the screen,
   rather than being drawn as a one-off.
 - **Composition** — how the screen is arranged, not just what is on it: the shell (content

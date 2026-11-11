@@ -55,6 +55,7 @@ skips all of them and drifts out of the product's scope.
 | user stories, units, dev handoff | `requirements-drafting`; client doc cross-check: `requirements-gap-analysis` |
 | visual direction (greenfield, or a brownfield revamp), a mood board, style tiles | `design-direction` |
 | a design system | `figma-library`, `claude-design-library`, or `code-library` (+ `code-build-contract`) |
+| a component or token a design needs that the system lacks; adopting drafts into the system | `proposed-components` (`/uxos:adopt`) |
 | screens in Figma, Claude Design, a design prompt, or a functional prototype in code | `design-handoff` |
 | a screen to be built in code from an approved design | `artboard-preflight` first, then `design-handoff` (Path C) + `code-build-contract` |
 | a built screen to be checked against its design | `design-parity` |

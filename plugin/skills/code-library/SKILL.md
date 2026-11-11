@@ -47,8 +47,9 @@ Follow `code-build-contract` throughout; its rules are why this is built the way
 4. If Storybook (or an equivalent) already exists, give each atom/molecule/organism stories
    for its variants and the states from `screen-spec` / `edge-cases`. Don't introduce one
    uninvited.
-5. **A piece found missing later** (by a screen-spec or a screen) is added here at its own
-   level, with the levels beneath it confirmed to exist first.
+5. **A piece found missing later** (by a screen-spec or a screen) is built here at its own
+   level, with the levels beneath it confirmed to exist first — as a **proposed draft** in
+   the proposed area until a design using it is approved (`proposed-components`).
 
 *(Pages — real screens — aren't built here. `design-handoff`'s code path assembles them from
 this library.)*

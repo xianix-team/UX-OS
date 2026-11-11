@@ -64,11 +64,13 @@ the designer names another. The recommended pairing is **Claude Design + code**:
    **Compose, don't draw.** A screen is a *Page* — a template filled with real content,
    assembled from organism, molecule, and atom **instances** from the library, with every
    value bound to a foundation variable. If a screen needs an element the library doesn't
-   have, stop: name its atomic level, check the levels beneath it exist, and add it through
-   `figma-library` at that level first — then use the instance. Never draw a one-off, and
-   say which components were added.
+   have, stop: name its atomic level, check the levels beneath it exist, and reuse or create
+   a **proposed draft** at that level (`proposed-components`) on the file's Proposed page —
+   then use the instance. Never draw a one-off, and say which drafts were used or made.
 5. Build one screen (or step) at a time. After each, tell the designer to check it in Figma
    and confirm before continuing to the next. Don't build the whole journey unattended.
+   When the designer approves the journey's screens, set the design record's `status:
+   approved` and offer to adopt the drafts it uses (`proposed-components`).
 6. Record the outcome in `uxos/design-records/<journey-id>.md` — Figma file/frame links, which
    screens were built vs referenced, open items.
 
@@ -117,8 +119,9 @@ screen. Read it before building.
    already covers a step; build new ones only for steps that are new or changed. When a
    `screen-specs` block exists, build everything it specifies (entry point, sub-actions,
    controls, nav updates, states), not just the journey step. Compose **only from library
-   components**; if one is missing, stop and add it **at its own level** via `code-library`
-   (an atom before the molecule that needs it) — never inline, never as a one-off.
+   components**; if one is missing, stop and reuse or create a **proposed draft** at its own
+   level (`proposed-components`, built through `code-library` in the proposed area) — an atom
+   before the molecule that needs it, never inline, never as a one-off.
 6. **Build the shared shell first, and confirm it before any section.** The page column and
    gutter, the header, anything sticky, and the section rhythm — from the Composition
    block's Shell table. Measure the built shell against the artboard and show the designer
@@ -162,7 +165,8 @@ screen. Read it before building.
    Scope boundary: no real backend, auth, or persistence beyond in-memory. Say explicitly
    what a developer still has to wire (APIs, auth, storage).
 9. Before finishing, a `code-review` / `simplify` pass over the changed code for reuse and
-   duplication.
+   duplication. When the designer approves the prototype, set the design record's
+   `status: approved` and offer to adopt the drafts it uses (`proposed-components`).
 10. Record the outcome in `uxos/design-records/<journey-id>.md` — files created/changed, branch
    name, how to run it (command + route), the state switcher, fixtures and the `BR`
    constants file, audit result and overrides, the parity table per screen (and the
@@ -201,8 +205,9 @@ screen. Read it before building.
      updates;
    - user-visible business rules (limits, messages, fees) with values taken from the `BR`
      entries in `business-rules.md`, never invented;
-   - composed from the design system's components; a missing component goes back to
-     `claude-design-library` at its atomic level, not drawn as a one-off;
+   - composed from the design system's components; a missing one is reused or created as a
+     **proposed draft** at its atomic level (`proposed-components`), labelled `proposed` on
+     the canvas, not drawn as a one-off;
    - arranged as the screen spec's **Composition** block says, where it decides anything;
    - **annotation that can't be mistaken for design.** A specimen frame, label, or callout is
      a hairline, a muted rule, or nothing — never a surface, fill, radius, or elevation the
@@ -219,8 +224,9 @@ screen. Read it before building.
    then answered on the thread — only threads the designer sent to Claude can be replied
    to or resolved; list the others for the designer.
 8. **Approval.** When the designer (or client, through them) approves the canvas, set the
-   design record's `status: approved`. On `design_master: claude-design` that is what
-   makes `promote-to-code` available; on `code` it means "build it in Path C".
+   design record's `status: approved`, then offer to adopt the drafts it uses
+   (`proposed-components`). On `design_master: claude-design` that is what makes
+   `promote-to-code` available; on `code` it means "build it in Path C".
 9. Record the outcome in `uxos/design-records/<journey-id>.md` — `target: claude-design`,
    `claude_design_url`, screens and states built, components used or added, open items,
    and a revision log. If `uxos/requirements/<id>.md` exists, set each unit's

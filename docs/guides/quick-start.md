@@ -451,6 +451,15 @@ Claude Design matches.
 
 ---
 
+**New components wait for approval.** When a design needs a component the system doesn't
+have, uxos builds it properly but as a **proposed draft**: a `proposed/` area in code, a
+Proposed page in Figma, and a table in `patterns.md`. Other designs reuse that one draft
+rather than making their own, so nothing drifts. Drafts join the design system when a design
+using them is approved, or when you adopt them directly with `/uxos:adopt`, which is useful
+once two designs share a draft. A rejected design leaves nothing behind in the system.
+
+---
+
 ## 9. A client asks for a design change — check the impact first
 
 "Can we make the button blue darker?" Before touching anything:
@@ -503,6 +512,7 @@ writes nothing.
 | `/uxos:requirements <journey>` | dev handoff: Units (Who/Why/What/How + acceptance criteria), folding in screen specs, edge cases, UX issues |
 | `/uxos:screen-spec <journey>` | per-screen spec — entry points, sub-actions, controls, nav updates, states |
 | `/uxos:figma-library` | build/update the Figma design system bottom-up by atomic level, confirmed stage by stage (run once) |
+| `/uxos:adopt [component]` | review proposed components — drafts made for designs not yet approved — and adopt, merge, or remove them |
 | `/uxos:code-library` | build/extend the design system in code bottom-up, confirmed level by level (run once before the first code handoff) |
 | `/uxos:claude-design-library` | build/update the design system in Claude Design, bottom-up, confirmed level by level (run once before the first canvas) |
 | `/uxos:design <journey> [claude-design\|code\|figma\|prompt]` | hand off to a Claude Design canvas, a functional prototype in code, Figma, or a prompt |

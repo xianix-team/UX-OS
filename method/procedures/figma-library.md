@@ -62,8 +62,9 @@ undecided palette just relocates the inconsistency. On greenfield it also needs
    library unattended.
 6. **A missing piece found later is added at its own level** — if a journey or screen-spec
    needs an element the library lacks, name its atomic level, check the levels beneath it
-   exist (a missing atom comes before the molecule that needs it), and add it here. Never
-   draw it as a one-off in a screen.
+   exist (a missing atom comes before the molecule that needs it), and build it here on the
+   **Proposed** page until a design using it is approved (`proposed-components`). Never draw
+   it as a one-off in a screen.
 7. Record the outcome — file link, which levels were built vs pending, any scope the
    designer deferred.
 
