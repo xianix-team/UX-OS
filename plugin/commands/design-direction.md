@@ -29,7 +29,7 @@ Establish the design direction for this project.
    three options at each, one recommended; confirm before the next stage. Never ask a
    client to choose a framework.
    **Before showing the tiles, check them:** each one is a real candidate, not a rejected
-   option drawn to make a point; none looks like a named brand (no "exactly like Airbnb"
+   option drawn to make a point; none looks like a named brand (no "exactly like <brand>"
    tile, even as a counter-example — answer that in words); and the copy comes from the
    model or is neutral, with no invented features or claims.
 
