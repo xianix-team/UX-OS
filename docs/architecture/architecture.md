@@ -1,6 +1,11 @@
 # UX Designer OS — Architecture
 
-Status: working draft. Consolidates [context.md](../background/context.md), [initial-intent.md](../background/initial-intent.md),
+> **Original design notes.** Written before uxos was built, to plan it. Names, commands,
+> and scope here differ from today's — `uxos-diagnose`, `/uxos:respond`, and `/uxos:handoff`
+> were never built under those names. For how uxos works now, read the
+> [README](../../README.md) and the [quick start](../guides/quick-start.md).
+
+Consolidates [context.md](../background/context.md), [initial-intent.md](../background/initial-intent.md),
 the three process diagrams in [`images/`](images/), and the artifact templates.
 
 ---

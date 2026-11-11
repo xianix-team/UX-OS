@@ -7,7 +7,7 @@
 - [ ] Edited `method/` (not the generated `plugin/skills`, `plugin/templates`, `skill/`), and ran `bash scripts/build.sh`
 - [ ] Bumped the version in `plugin/.claude-plugin/plugin.json`
 - [ ] Added an entry to `CHANGELOG.md` under *Unreleased*
-- [ ] `claude plugin validate plugin` passes
+- [ ] `bash scripts/check.sh` and `claude plugin validate plugin` pass
 - [ ] Ran the changed command(s) against a fixture (with `--add-dir ./plugin`)
 - [ ] Keeps the rules: review gates, evidence tags, template shape, read-only on the product
 

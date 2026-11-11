@@ -8,6 +8,23 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.32.1] — 2026-11-11
+
+### Fixed
+- `next-steps` pointed to `/uxos:respond`, which doesn't exist; it now suggests
+  `/uxos:feature-mapping` or `/uxos:journey-design`. `/uxos:design-direction` named a
+  `/uxos:capture-users` command that doesn't exist.
+- The claude.ai Skill described itself as brownfield-only.
+
+### Added
+- `scripts/check.sh` and a GitHub Actions check on every pull request: generated files match
+  `method/`, manifests parse, every skill and command has its frontmatter, referenced
+  templates and `/uxos:` commands exist, the version has a changelog entry, scripts parse.
+- Versions are tagged and published as GitHub releases from this one on.
+
+### Changed
+- `docs/architecture/` is labelled as the original design notes from before uxos was built.
+
 ## [0.32.0] — 2026-11-10
 
 Design direction for people who aren't designers, and for revamps.
@@ -242,3 +259,6 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - Git-URL repo extraction; business rules and journeys from code.
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
+
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.32.1...HEAD
+[0.32.1]: https://github.com/xianix-team/UX-OS/releases/tag/v0.32.1

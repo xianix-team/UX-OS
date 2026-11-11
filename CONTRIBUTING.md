@@ -42,8 +42,9 @@ bash scripts/build.sh
 and commit the regenerated files together with your source change. A pull request where
 `plugin/` or `skill/` disagrees with `method/` will be asked to rebuild.
 
-See [`docs/architecture/architecture.md`](docs/architecture/architecture.md) for how the
-pieces fit together.
+`method/orchestration.md` is the map of how the procedures fit together.
+[`docs/architecture/`](docs/architecture/) holds the original design notes from before uxos
+was built — useful background, but not a description of how it works today.
 
 ## Rules every procedure follows
 
@@ -74,6 +75,14 @@ Changes must keep these intact — they are what makes uxos trustworthy:
 7. Open a pull request using the template.
 
 ## Testing a change
+
+Run the repo checks — the same ones CI runs on every pull request. They rebuild `plugin/`
+and `skill/` and fail if the result differs from what's committed, and check manifests,
+frontmatter, template and command references, and the changelog entry:
+
+```bash
+bash scripts/check.sh
+```
 
 Validate the plugin:
 

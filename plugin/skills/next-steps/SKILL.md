@@ -103,8 +103,9 @@ on?" interaction model.
 ## Rules
 - Non-binding. Never say "you must". The designer picks.
 - Base every suggestion on actual model state, not a fixed script.
-- If the model looks complete for Part A, point at Part B (`/uxos:respond`, once built) and
-  at sharing `problems.md` / `to-be-solved.md` with stakeholders.
+- If the model looks complete for Part A (to-be-solved decided), point at Part B — on
+  add-feature `/uxos:feature-mapping`, otherwise `/uxos:journey-design` for the first scoped
+  item — and at sharing `problems.md` / `to-be-solved.md` with stakeholders.
 - Output only — never modify the model.
 
 ## Format
