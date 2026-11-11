@@ -1,6 +1,6 @@
 ---
 name: uxos
-description: UX Designer OS — a brownfield co-pilot. Given an existing product (web, iOS, Android, or desktop) and whatever material the designer has, it builds a persistent project model, runs UX analysis, and produces a prioritised, traceable problems register and to-be-solved list. Trigger when the user wants to understand, audit, or plan changes to an existing product: 'analyse this product', 'UX audit', 'build a feature map', 'find the UX problems in X', 'improve this flow'.
+description: UX Designer OS — a co-pilot for UX and product designers, for existing products (web, iOS, Android, desktop) and new ones. It builds a persistent project model from whatever the designer has, runs the UX analysis, scopes what to solve, designs journeys and screens, and writes development Units with acceptance criteria. Trigger when the user wants to understand, audit, or plan changes to a product, or start one from scratch: 'analyse this product', 'UX audit', 'build a feature map', 'find the UX problems in X', 'improve this flow', 'design a new product', 'write the dev handoff'.
 ---
 
 # UX Designer OS — the method

@@ -1,7 +1,11 @@
 # Part A — `uxos-diagnose`: what gets built & how you use it
 
-Read this before I build. It shows the plugin structure and the end-to-end workflow you'd
-run. The example product (`acme-portal`, a clinic-appointment site) is made up.
+> **Original design notes.** Written before uxos was built, to plan it. Names, commands,
+> and scope here differ from today's — `uxos-diagnose`, `/uxos:respond`, and `/uxos:handoff`
+> were never built under those names. For how uxos works now, read the
+> [README](../../README.md) and the [quick start](../guides/quick-start.md).
+
+It showed the planned plugin structure and the end-to-end workflow you'd run. The example product (`acme-portal`, a clinic-appointment site) is made up.
 
 ---
 

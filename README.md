@@ -115,7 +115,7 @@ folder.
 | [`scripts/build.sh`](scripts/build.sh) | regenerates `plugin/` and `skill/` from `method/` |
 | [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) | makes this repo an installable plugin marketplace |
 | [`docs/guides/`](docs/guides/) | [quick start](docs/guides/quick-start.md), [testing the plugin](docs/guides/testing-the-plugin.md), team settings |
-| [`docs/architecture/`](docs/architecture/) | [architecture](docs/architecture/architecture.md), [Part A workflow](docs/architecture/part-a-workflow.md), process diagrams |
+| [`docs/architecture/`](docs/architecture/) | the original design notes, from before uxos was built: [architecture](docs/architecture/architecture.md), [Part A workflow](docs/architecture/part-a-workflow.md), process diagrams |
 | [`docs/background/`](docs/background/) | the original product intent, context, users, and personas behind uxos |
 
 ## Status

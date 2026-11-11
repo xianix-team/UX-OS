@@ -8,7 +8,7 @@ Establish the design direction for this project.
 
 1. Read `uxos/domain.md` and confirmed `uxos/user-groups.md` / `uxos/personas/*.md` —
    decisions here are grounded in them. If they don't exist yet, tell the designer to run
-   `/uxos:init` and `/uxos:capture-users`'s flow first. Read `uxos/competitors.md` if it
+   `/uxos:init` first (it captures user groups and personas). Read `uxos/competitors.md` if it
    exists, for references.
 
 2. **Is this the right step?** Greenfield: yes. Brownfield: only for a **revamp** — ask if
