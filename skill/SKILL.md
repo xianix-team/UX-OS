@@ -58,7 +58,7 @@ skips all of them and drifts out of the product's scope.
 | a new or changed journey | `journey-design`, then `edge-case-analysis` (suggested) |
 | screen specs | `screen-specification` |
 | user stories, units, dev handoff | `requirements-drafting`; client doc cross-check: `requirements-gap-analysis` |
-| visual direction (greenfield) | `design-direction` |
+| visual direction (greenfield, or a brownfield revamp), a mood board, style tiles | `design-direction` |
 | a design system | `figma-library`, `claude-design-library`, or `code-library` (+ `code-build-contract`) |
 | screens in Figma, Claude Design, a design prompt, or a functional prototype in code | `design-handoff` |
 | a screen to be built in code from an approved design | `artboard-preflight` first, then `design-handoff` (Path C) + `code-build-contract` |
@@ -170,6 +170,8 @@ evidence), never invented.
 | 8 | Problems register | `procedures/problems-register.md` then `procedures/problem-discussion.md` (uses `procedures/ux-critique.md`) | `problems` |
 | — | **Gate G2 — scope** | see below | — |
 | 9 | To-be-solved list | `procedures/to-be-solved.md`, `grouping: user-group` | `to-be-solved` (the contract for design work) |
+| 10r | Design direction *(revamp only)* | `procedures/design-direction.md` | `design-direction` — keep / change / drop the as-is design, then the new direction; works for non-designers |
+| 11r | Pattern study, again *(revamp only)* | `procedures/pattern-study.md` (**revamp branch**) | `patterns` — §6 now follows the direction, each item `kept` / `changed` / `new` |
 
 ## Brownfield — `add-feature` objective
 

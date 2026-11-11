@@ -45,6 +45,14 @@ sections; state that plainly rather than leaving them silently blank. Check for
   clearly implies; mark `(proposed)`. Anything new that surfaces later is added at its
   proper level via `figma-library`, not drawn ad hoc.
 
+## Revamp — extract first, then the new direction
+On a brownfield **revamp**, extract the as-is patterns as for any brownfield product — they
+are the "before" picture `design-direction` needs for keep / change / drop. Once
+`uxos/design-direction.md` exists, re-run this step: the canonical patterns (§6) then follow
+the direction instead of consolidating the as-is set. Keeps carry over from the extraction;
+changes and drops follow the decisions. Mark each canonical item `kept`, `changed`, or
+`new`, so the size of the revamp is visible.
+
 ## Extract (as-is) — brownfield only, by source, best first
 - **Repo / design system (any platform):** read token / theme / style files (CSS vars,
   Tailwind config, `Theme.kt` / `Color.xml` / `styles.xml`, SwiftUI `Color`/`Font`
@@ -91,6 +99,9 @@ Part B.
 
 **Greenfield:** per the section above — foundations are decided in `design-direction`;
 everything above them is a proposed starter set.
+
+**Revamp:** per the Revamp section — the canonical set follows `design-direction`, each item
+marked `kept`, `changed`, or `new`.
 
 ## Figma-file plan
 The 6-page atomic plan: Foundations / Atoms / Molecules / Organisms / Templates / Pages —

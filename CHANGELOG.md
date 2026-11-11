@@ -8,6 +8,30 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.32.0] — 2026-11-10
+
+Design direction for people who aren't designers, and for revamps.
+
+### Added
+- `design-direction` asks **who is answering** — a designer, someone else, or a workshop.
+  Anyone who isn't a designer gets plain-language mode: questions about their product and
+  customers instead of design terms, choices made by looking, and technical details derived
+  from the personas with a reason they can follow.
+- **Style tiles** — the same real piece of the product drawn in 2–3 directions, in
+  `uxos/design-direction/style-tiles.html`, every value a CSS custom property.
+- **Mood board** — share screenshots or links of what you have in mind; uxos reads each,
+  asks what you like about it, extracts the visual qualities with their source, and asks
+  about conflicts. References are inspiration: a brand's logo, artwork, or exact palette is
+  never copied.
+- Every decision records who made it (`client`, `designer`, `derived`), with
+  `needs_designer_review` when no designer was involved, and an **In plain words** summary
+  to share after a workshop.
+
+### Changed
+- `design-direction` now also runs on a brownfield **revamp**, starting from keep / change /
+  drop on the as-is design; `pattern-study` then re-runs with §6 following the direction,
+  each item marked `kept`, `changed`, or `new`. Improve and add-feature are unchanged.
+
 ## [0.31.0] — 2026-11-10
 
 ### Added

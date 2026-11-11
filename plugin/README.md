@@ -37,7 +37,7 @@ cd <your workspace or the product repo>
 ```
 /uxos:to-be-solved    # runs problem-validation internally: consolidates personas by theme
 /uxos:requirements-gap   # optional -- cross-check a client FR/NFR doc against it, both ways
-/uxos:design-direction   # philosophy, colour, type, spacing, a11y -- before any screen work
+/uxos:design-direction   # look and feel before any screen work -- greenfield or revamp; mood board, style tiles, works for non-designers
 /uxos:patterns        # populates canonical patterns from design-direction, not an as-is extraction
 ```
 
