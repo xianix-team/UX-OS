@@ -17,6 +17,7 @@
  *   node mcp/server.mjs --http                  http://127.0.0.1:3333/mcp
  *   node mcp/server.mjs --http --port 8787 --host 127.0.0.1
  */
+import { realpathSync } from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -361,8 +362,43 @@ function parseArgs(argv) {
   return { httpMode, port, host };
 }
 
-const entry = process.argv[1] ? path.resolve(process.argv[1]) : '';
-if (entry === fileURLToPath(import.meta.url)) {
+function stripLongPathPrefix(filePath) {
+  if (filePath.startsWith('\\\\?\\UNC\\')) return `\\\\${filePath.slice(8)}`;
+  if (filePath.startsWith('\\\\?\\')) return filePath.slice(4);
+  return filePath;
+}
+
+function canonicalPath(filePath, pathApi, realpath) {
+  const resolved = pathApi.resolve(stripLongPathPrefix(filePath));
+  try {
+    return pathApi.resolve(stripLongPathPrefix(realpath(resolved)));
+  } catch {
+    return resolved;
+  }
+}
+
+/**
+ * True when both paths name the same file.
+ * macOS and Linux npx run a symlink. Windows npx runs a cmd shim that passes
+ * node a path which may contain "..", a different drive-letter case, or a
+ * "\\?\" prefix. path.win32.relative treats drive-letter case as equal.
+ * @param {string | undefined} entry process.argv[1]
+ * @param {string | undefined} moduleFilename this file on disk
+ * @param {{ pathApi?: path.PlatformPath, realpath?: (filePath: string) => string }} [options]
+ */
+export function sameFile(entry, moduleFilename, { pathApi = path, realpath = realpathSync } = {}) {
+  if (!entry || !moduleFilename) return false;
+  const left = canonicalPath(entry, pathApi, realpath);
+  const right = canonicalPath(moduleFilename, pathApi, realpath);
+  return left === right || pathApi.relative(left, right) === '';
+}
+
+function invokedDirectly() {
+  if (import.meta.main === true) return true;
+  return sameFile(process.argv[1], fileURLToPath(import.meta.url));
+}
+
+if (invokedDirectly()) {
   try {
     const args = parseArgs(process.argv.slice(2));
     const count = (await listSkills()).length;

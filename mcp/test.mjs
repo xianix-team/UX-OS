@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
-import { readdir } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
+import { mkdtemp, readdir, rm, symlink } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -10,7 +12,7 @@ import { SkillsClient } from '@modelcontextprotocol/client/ext/skills';
 import { createMcpHandler } from '@modelcontextprotocol/server';
 
 import { referencedTemplates } from './catalog.mjs';
-import { createServer, startHttp } from './server.mjs';
+import { createServer, sameFile, startHttp } from './server.mjs';
 
 const PLUGIN_SKILLS = path.resolve(fileURLToPath(new URL('../plugin/skills/', import.meta.url)));
 const PLUGIN_AGENTS = path.resolve(fileURLToPath(new URL('../plugin/agents/', import.meta.url)));
@@ -223,4 +225,90 @@ test('http mode serves the skills on /mcp', async () => {
     await client.close();
     await started.close();
   }
+});
+
+function waitForReady(child) {
+  let stderr = '';
+  child.stderr.on('data', (chunk) => {
+    stderr += chunk;
+  });
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    const finish = (error, url) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      if (error) reject(error);
+      else resolve(url);
+    };
+    const timer = setTimeout(() => finish(new Error(`server did not start\n${stderr}`)), 10000);
+    child.stderr.on('data', () => {
+      const match = stderr.match(/http:\/\/127\.0\.0\.1:\d+\/mcp/);
+      if (match) finish(null, match[0]);
+    });
+    child.on('error', (error) => finish(error));
+    child.on('exit', (code) => finish(new Error(`server exited ${code}\n${stderr}`)));
+  });
+}
+
+async function assertHttpCli(args, options) {
+  const child = spawn(process.execPath, [...args, '--http', '--port', '0'], {
+    stdio: ['ignore', 'pipe', 'pipe'],
+    ...options,
+  });
+  try {
+    const ready = await waitForReady(child);
+    const response = await fetch(new URL('/', ready));
+    assert.equal(response.status, 404);
+    await response.text();
+  } finally {
+    child.kill();
+  }
+}
+
+test('http cli starts when the bin is a symlink, as npx does on macOS and Linux', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'uxos-bin-'));
+  const link = path.join(dir, 'uxos-skills-mcp');
+  await symlink(fileURLToPath(new URL('./server.mjs', import.meta.url)), link);
+  try {
+    await assertHttpCli([link]);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test('http cli starts from a relative path with .., as the Windows npm shim passes it', async () => {
+  await assertHttpCli([path.join('..', 'server.mjs')], {
+    cwd: fileURLToPath(new URL('./scripts/', import.meta.url)),
+  });
+});
+
+test('entry check matches npm bin paths on windows, macOS, and linux', async () => {
+  const modulePath = fileURLToPath(new URL('./server.mjs', import.meta.url));
+  const dir = await mkdtemp(path.join(tmpdir(), 'uxos-entry-'));
+  const link = path.join(dir, 'uxos-skills-mcp');
+  await symlink(modulePath, link);
+  try {
+    assert.equal(sameFile(modulePath, modulePath), true);
+    assert.equal(sameFile(link, modulePath), true);
+    assert.equal(sameFile(path.join(path.dirname(modulePath), 'scripts', '..', 'server.mjs'), modulePath), true);
+    assert.equal(sameFile(path.join(dir, 'other.mjs'), modulePath), false);
+    assert.equal(sameFile(undefined, modulePath), false);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+
+  const win = path.win32;
+  const target = 'C:\\pkg\\node_modules\\@99x-ai-dlc\\uxos-skills-mcp\\server.mjs';
+  const shim = 'C:\\pkg\\node_modules\\.bin\\..\\@99x-ai-dlc\\uxos-skills-mcp\\server.mjs';
+  const windows = { pathApi: win, realpath: (filePath) => filePath };
+  assert.equal(sameFile(shim, target, windows), true);
+  assert.equal(sameFile('c:\\pkg\\server.mjs', 'C:\\pkg\\server.mjs', windows), true);
+  assert.equal(sameFile('C:/pkg/server.mjs', 'C:\\pkg\\server.mjs', windows), true);
+  assert.equal(sameFile('\\\\?\\C:\\pkg\\server.mjs', 'C:\\pkg\\server.mjs', windows), true);
+  assert.equal(
+    sameFile('\\\\?\\UNC\\server\\share\\pkg\\server.mjs', '\\\\server\\share\\pkg\\server.mjs', windows),
+    true
+  );
+  assert.equal(sameFile('D:\\pkg\\server.mjs', 'C:\\pkg\\server.mjs', windows), false);
 });
