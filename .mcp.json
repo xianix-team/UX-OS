@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "uxos-skills": {
+      "command": "node",
+      "args": ["mcp/server.mjs"]
+    }
+  }
+}
