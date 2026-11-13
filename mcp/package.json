@@ -1,6 +1,6 @@
 {
   "name": "@99x-ai-dlc/uxos-skills-mcp",
-  "version": "0.31.0",
+  "version": "0.33.0",
   "description": "MCP server that exposes the uxos skills, agents, templates, and method.",
   "license": "MIT",
   "author": "99x Asia",
