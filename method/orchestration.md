@@ -318,6 +318,25 @@ authority; for proposed designs it only informs, and mismatches go to the design
 
 ## Design master — Claude Design and code, one source of truth
 
+**Finding Claude Design in this session.** Claude Design is reached through whatever this session provides, and that varies by
+Claude Code version and setup. Load deferred tools with ToolSearch first, then use the first
+of these that exists:
+1. the **Artifact** tool's `quickstart` action;
+2. the **Artifact** tool's `list` with `scope: "types"`, then `publish` with the type's
+   `type_url`;
+3. an **artifacts connector's** type tools (`list_types`, `describe_type`,
+   `create_from_type`, then its publish or file tools).
+Only if none of them exists, say so plainly and offer the alternatives. **Never use
+`DesignSync` to build or edit a design** — it only serves the designer's own `/design-sync`,
+which syncs a code-built library. Never fake Claude Design with a local HTML file.
+
+**Standalone Claude Design (claude.ai/design) closes by December 14, 2026; Claude Design now
+lives in Claude.** Create design systems and canvases as artifacts in Claude (the Design
+System and Design types), not as standalone claude.ai/design projects, and tell the designer
+this once when a project still points at one. If any call is refused because a project has
+closed or moved, give the designer the server's message as written and stop — don't work
+around it.
+
 The recommended design setup is **Claude Design + a functional prototype in code**.
 `product-context.md` records `design_master`, and every design procedure follows it:
 - **Greenfield, before code** — `claude-design`. The design system is built in Claude

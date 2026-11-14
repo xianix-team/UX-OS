@@ -178,10 +178,11 @@ screen. Read it before building.
     that Claude Design is now behind and suggest `design-mirror` push (`/design-sync`).
 
 ## Path D — Claude Design
-1. **Availability check.** Claude Design is reached through the **Artifact** tool. If it
-   isn't available in this session (check deferred tools too, loading with ToolSearch before
-   deciding), say so and offer Figma, a design prompt, or code — stop here. Never substitute
-   an HTML file.
+1. **Availability check.** Find Claude Design the way the method's "Finding Claude Design
+   in this session" describes: Artifact `quickstart`, then an Artifact `scope: types`
+   listing, then an artifacts connector's type tools — the first that exists. Only if none
+   does, say so and offer Figma, a design prompt, or code — stop here. Never use `DesignSync`
+   to make a canvas, and never substitute an HTML file.
 2. **Design system.** If `uxos/design-records/design-system.md` records a Claude Design System,
    attach it. If none exists, say so and offer `claude-design-library` first (recommended);
    the designer may proceed without it, in which case tokens come straight from
@@ -189,8 +190,9 @@ screen. Read it before building.
 3. **Revising an existing canvas?** If `uxos/design-records/<journey-id>.md` already has a
    `claude_design_url`, read the artifact and its comments first, list what the comments ask
    for, confirm with the designer, revise that same canvas (keep its URL), and log the
-   changes in the design record. Otherwise start a new one: Artifact `quickstart` with
-   intent `design`, then publish from the **Design** type it names, titled `J<n> —
+   changes in the design record. Otherwise start a new one from the **Design** type — found
+   through `quickstart` with intent `design`, a `scope: types` listing, or the connector's
+   type tools — and publish it titled `J<n> —
    <journey name>`, attaching the design system.
 4. **What goes on the canvas** — one canvas per journey. Before the main build, if the
    designer wants options, lay out **2–3 directions** for the key screen side by side

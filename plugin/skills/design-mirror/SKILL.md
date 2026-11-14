@@ -23,6 +23,10 @@ Not set → ask the designer, and record it. Brownfield with a code library → 
   System type's own instructions when writing.
 - **`/design-sync` is the designer's command** (a built-in Claude Code skill). uxos never
   runs it or its tool on its own; it says when to run it and what for, then verifies.
+- **Standalone Claude Design (claude.ai/design) closes by December 14, 2026;** Claude Design
+  now lives in Claude, and `/design-sync` targets design-system projects. If a push, read, or
+  verify is refused because a project has closed or moved, give the designer the server's
+  message as written and stop — don't patch the system another way.
 - A system synced from code is marked `editing: code` and is read-only on its page. Don't
   write to it with Artifact `publish` either — it changes only through `/design-sync`.
 

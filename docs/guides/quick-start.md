@@ -432,6 +432,11 @@ never decides scope. Re-run it later to refresh.
 
 ## 8. Designing in Claude Design, prototyping in code
 
+> **Note:** standalone Claude Design (claude.ai/design) closes by December 14, 2026 — Claude
+> Design now lives in Claude. uxos creates design systems and canvases as artifacts in
+> Claude. If a project you set up earlier has closed or moved, uxos shows the message and
+> stops rather than working around it.
+
 The recommended setup — no Figma licence, and one design system instead of two.
 
 **Greenfield (no code yet):** design starts in Claude Design.
