@@ -57,6 +57,7 @@ skips all of them and drifts out of the product's scope.
 | what to solve, scope, prioritisation | `problem-validation` (greenfield), `to-be-solved` |
 | a new or changed journey | `journey-design`, then `edge-case-analysis` (suggested) |
 | screen specs | `screen-specification` |
+| a screen that isn't working — explore eight different directions, Crazy 8s, a sketching workshop | `crazy8` (`/uxos:crazy8`, optional) |
 | user stories, units, dev handoff | `requirements-drafting`; client doc cross-check: `requirements-gap-analysis` |
 | visual direction (greenfield, or a brownfield revamp), a mood board, style tiles | `design-direction` |
 | a design system | `figma-library`, `claude-design-library`, or `code-library` (+ `code-build-contract`) |

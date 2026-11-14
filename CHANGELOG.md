@@ -8,6 +8,17 @@ versions fix them.
 
 ## [Unreleased]
 
+### Added
+- **`/uxos:crazy8 <journey> <screen>`** — Crazy 8s for a screen that isn't working. A brief
+  from the model ends in a "How might we…?"; then, chosen each time, a **workshop** (people
+  sketch, uxos reads their photos into cards and groups duplicates, offering its own ideas
+  only afterwards) or **AI** (eight screens, each varying a different dimension: layout,
+  interaction, priority, disclosure, entry point, metaphor, density, one rule broken on
+  purpose). All directions are grey-box wireframes on one page. The designer picks one or
+  combines parts; nothing is written to the screen spec, journey, design system, or code
+  until the choice is confirmed, and new components still join the system only through
+  `design-handoff`.
+
 ## [0.32.1] — 2026-11-11
 
 ### Fixed

@@ -49,6 +49,7 @@ below the frontmatter follow each template.
 | `competitor` | `competitors/<slug>.md` | one deep dive: our journeys walked on their product, UX read, terminology, trust, review themes, patterns to borrow/avoid |
 | `validation-plan` | `research/<date>-<slug>/plan.md` | scope, bets ranked by risk, what would prove each wrong, method, screener and guide per user group, notes template, data handling |
 | `validation-findings` | `research/<date>-<slug>/findings.md` | participants by group (codes only), each bet's result with counts and quotes, persona outcomes, proposed model updates in order |
+| `crazy8` | `crazy8/<date>-<journey>-<screen>/session.md` + `sketches.html` | the brief, eight or more grey-box directions (workshop and/or AI), the designer's choice; applied to the screen spec only after the choice is confirmed |
 | `impact` | `impact/<date>-<slug>.md` | one requested design change → target kind, alias chain, uses per level and source, look-alikes, scope options with blast radius, contrast/state checks, decision |
 | `business-rules` | `business-rules.md` | rules `BR-<n>` grouped by object; `state` existing/proposed; evidence; `Used by` → journey steps + units; kept current by code-sync |
 | `design-record` | `design-records/<journey-id>.md`, `design-records/design-system.md`, `design-records/code-library.md` | the designer's working record, not for developers (their handoff is `requirements`);  `target`: figma \| code \| claude-design; links out to the Figma file, branch, or `claude_design_url`; revision log for canvases |

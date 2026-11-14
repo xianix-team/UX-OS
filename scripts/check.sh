@@ -40,7 +40,7 @@ for t in $(grep -ohE '\{\{TEMPLATES\}\}/[a-z-]+\.md' method/procedures/*.md | se
 done
 
 echo "==> referenced commands exist"
-for c in $(grep -ohE '/uxos:[a-z][a-z-]*' method plugin/commands plugin/hooks README.md docs/guides -r | sed 's#/uxos:##' | sort -u); do
+for c in $(grep -ohE '/uxos:[a-z][a-z0-9-]*' method plugin/commands plugin/hooks README.md docs/guides -r | sed 's#/uxos:##' | sort -u); do
   [ -f "plugin/commands/$c.md" ] || bad "/uxos:$c is mentioned but plugin/commands/$c.md doesn't exist"
 done
 
