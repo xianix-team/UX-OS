@@ -88,12 +88,16 @@ Rules:
 
 ## Intake (before phase 1)
 
-Ask, unless already known:
+A conversation, not a form: **one question at a time, in plain language** — never uxos's
+own terms ("greenfield", "brownfield", "domain", "platform"), which many product owners
+don't use. Ask in everyday words, offer choices to click or number, record the term
+yourself, and recap before starting. Ask, unless already known:
 
-- **Does this product already exist (brownfield), or is this starting from scratch
-  (greenfield)?** — asked first; it changes what else gets asked and which phases run.
-- **Project name** (slug).
-- **Where the model lives** — a `uxos/` path (plugin) or "artifacts in this chat" (skill).
+- **Project name** (slug) — asked first.
+- **Is this a new product starting from scratch (greenfield), or one that already exists
+  (brownfield)?** — it changes what else gets asked and which phases run.
+- **Where the model lives** — not asked: `./uxos` (plugin) or artifacts in this chat (skill),
+  said once so the user can change it.
 - **Platform** — web / iOS / Android / desktop / other.
 - **Brownfield — inputs available**, any combination, lean on the highest-fidelity one:
   code repo — local path or a **git URL** (cloned into a disposable local cache)

@@ -88,8 +88,11 @@ converted; it's kept as the input for `/uxos:requirements-gap`.
 /uxos:init
 ```
 
-First question: **does this product already exist (brownfield), or is this starting from
-scratch (greenfield)?** Everything after branches on the answer.
+Just type that and press enter. It asks what it needs **one question at a time, in plain
+words** — no design jargon. First the project name, then **is this a new product starting
+from scratch, or one that already exists?** Everything after branches on the answer (uxos
+calls these *greenfield* and *brownfield*; you don't need to). It recaps your answers and
+asks before it reads or crawls anything.
 
 **Brownfield** — answer the questions, or paste a block like this right after (adjust the
 bracketed parts — for a multi-app/connected product, list every surface, see the note

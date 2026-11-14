@@ -27,6 +27,14 @@ as 0.33.0 and 0.33.1, both containing plugin 0.32.1.
   `design-handoff`.
 - `check.sh` fails if the plugin and the npm package versions differ.
 
+### Changed
+- **`/uxos:init` needs nothing after it.** Type it and press enter; it asks one question at
+  a time, in plain language, with options to click where Claude Code supports it: the
+  project name, then "a new product starting from scratch, or one that already exists?"
+  (greenfield and brownfield are never asked by name), where people use it, what you can
+  share, and so on. The model folder defaults to `./uxos` without asking, and it recaps
+  the answers before reading anything. A name or link typed after the command still works.
+
 ## [0.32.1] — 2026-11-11
 
 ### Fixed
