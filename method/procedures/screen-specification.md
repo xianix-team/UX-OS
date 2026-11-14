@@ -21,6 +21,11 @@ From the journey's steps (and its `feature`/blueprint reference), work out which
 **screens** it touches — not one per step; several steps often land on the same screen.
 Where the journey has an Actor/surfaces split, note which surface each screen belongs to.
 
+## Ask about what, not how it looks
+Questions to the user are about **what** each screen holds and does — what's on it, what
+people do there, how they arrive, what happens when it's empty or fails — in plain words if
+`user_role` isn't designer. How it's laid out is never asked in words (see Composition).
+
 ## For each screen, one at a time
 Draft the full spec — present it, confirm with the designer, **then move to the next
 screen**. Don't draft the whole journey's screens in one unconfirmed pass; each is a
@@ -52,7 +57,12 @@ For each screen:
   arrangement, and any element whose *kind* carries meaning (a gate drawn as a diamond
   rather than a card, a label set as tracked type rather than a pill). Where an artboard
   exists, **read it and extract these** — do not describe it from memory. Where none exists
-  yet, decide with the designer or write `to be decided at design`; never guess. Specimen
+  yet, **don't ask arrangement questions in words** — "bottom sheet or full screen?",
+  "sticky or not?", "one column or two?" can't be answered well before anything is drawn.
+  Write `to be decided at design` and list each open choice under **Open layout questions**,
+  so the design step settles it visually and nothing is decided silently. Only if the user
+  wants to settle one now, draw the options as rough grey-box sketches side by side (one
+  page, like a Crazy 8) and ask which works better. Never guess. Specimen
   frames, labels, and callouts on an artboard are annotation, not composition: leave them
   out, and ask if you can't tell which is which.
 

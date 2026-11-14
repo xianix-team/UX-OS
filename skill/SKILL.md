@@ -392,6 +392,14 @@ In every draft, keep **what the designer said** apart from **what uxos inferred*
 lines are marked `Inferred —` (or `needs verification`), so nobody approves a guess thinking
 it was their own words.
 
+**Visual choices are shown, not asked.** Layout and presentation — a bottom sheet or a full
+screen, one column or two, what sticks, how a thing is drawn — are never asked in words before
+anything has been drawn; most people can't picture them, designers included. Either show the
+options as rough grey-box sketches side by side and ask which works better, or leave the
+choice open for the design step, where it's resolved on the canvas or in code. Questions in
+words are for what a screen holds and does. `user_role` in `product-context.md` says who is
+answering; anyone who isn't a designer also gets plain words throughout.
+
 **Only the main conversation writes the model.** Work may be handed to a helper — a
 subagent, a fork, the `context-extractor` agent — for research or reading, but a helper
 **never writes or edits files under `uxos/`**: it can't show the designer a draft and wait

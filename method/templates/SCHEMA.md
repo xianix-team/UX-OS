@@ -19,6 +19,7 @@ below the frontmatter follow each template.
 | `source` | domain, context, patterns | what backed it — url / repo / simulator walk / screenshots / figma / docs / reference material / designer's description |
 | `repo`, `repo_branch`, `synced_commit`, `synced_at` | product-context | the code-sync baseline — which repo and branch count as built, and the commit the model last matched |
 | `design_tools`, `design_master`, `design_master_since` | product-context | where the project designs, and which side — Claude Design or code — is the design system's source of truth (see design-mirror) |
+| `user_role` | product-context | who set the project up (designer, product owner, founder, developer, other); steps use plain words and never ask a non-designer an unseen visual choice |
 | `design_records_path` | product-context | only when the designer kept an older project's `uxos/handoff/` folder; omitted otherwise |
 | `mirrored_commit`, `mirrored_at` | design-records/design-system | the code commit Claude Design last mirrored via /design-sync |
 | `built` | requirements units | `not yet` \| `partial` (AC ids met) \| `<commit sha>` — set by code-sync |

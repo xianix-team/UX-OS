@@ -30,7 +30,9 @@ options. Don't run straight through.
 
 ## Before stage 0 — who is answering?
 Ask: **a designer**, **someone else** (a client, product owner, founder), or **a workshop**
-(a designer running the session with a client). Record it as `answered_by`.
+(a designer running the session with a client). Record it as `answered_by`. If
+`product-context.md` has a `user_role`, start from it ("You set this up as product owner —
+is it you answering, or a workshop?") rather than asking from scratch.
 
 For anyone who isn't a designer, **plain-language mode** applies to every stage:
 - Ask about what they know — their product, their customers, what they like — never for
