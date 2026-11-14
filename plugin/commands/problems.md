@@ -22,7 +22,8 @@ Build or update `uxos/problems.md`.
    verdicts inline and apply the ones the user accepts (downgrade / mark needs-verification
    / merge / drop).
 
-4. Write `problems.md` with the severity tables, coverage caveats, a severity summary, and
+4. **Show the finished register** (the severity summary, then the tables) and ask to save
+   it; write only on an explicit yes. Write `problems.md` with the severity tables, coverage caveats, a severity summary, and
    the **candidate routing** table (cluster → likely response type).
 
 5. Run the `next-steps` skill and present its block.

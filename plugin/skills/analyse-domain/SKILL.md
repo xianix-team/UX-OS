@@ -9,6 +9,13 @@ Goal: give the co-pilot and the designer a shared, evidence-backed understanding
 **domain**, so later analysis is not naive. This is domain-general — the specific product
 teardown happens in `study-product` (brownfield) or `problem-validation` (greenfield).
 
+## Which domain — confirm before researching
+The domain comes from the designer's description of the product (`product-context.md` →
+**What it is**, confirmed at intake) or from the product itself on brownfield — **never from
+the project name**. Before researching, state the domain in one line ("holiday cabin rentals
+in Norway, for owners and guests") and confirm it. If there's no description to go on,
+stop and ask for one; don't research a domain the name merely suggests.
+
 ## Depth dial
 Ask, or infer from the designer's `familiarity` answer:
 - `very` → skip this skill entirely.

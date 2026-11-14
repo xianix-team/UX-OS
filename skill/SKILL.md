@@ -96,6 +96,11 @@ yourself, and recap before starting. Ask, unless already known:
 - **Project name** (slug) — asked first.
 - **Is this a new product starting from scratch (greenfield), or one that already exists
   (brownfield)?** — it changes what else gets asked and which phases run.
+- **The idea, in their own words** — what it is, who it's for, what problem it solves (new);
+  what it does and who uses it (existing). Ask for who and what problem if missing; say back
+  what you understood, including the industry it sits in, and confirm. A project name is a
+  label, never a description: nothing — domain research, users, personas — is inferred from
+  it. If they can't describe it yet, stop and pick up later rather than guess.
 - **Where the model lives** — not asked: `./uxos` (plugin) or artifacts in this chat (skill),
   said once so the user can change it.
 - **Platform** — web / iOS / Android / desktop / other.
@@ -363,10 +368,28 @@ End each phase with a **ranked, non-binding** block (see `procedures/next-steps.
 Base it on the actual model state (including `project_type`), not a fixed script. The
 designer always chooses.
 
+## Show before saving (all phases)
+
+Nothing is written to the model without the designer seeing it first. Every new artifact
+under `uxos/` — and every change to an existing one — is **shown as a draft, then saved only
+on an explicit yes** ("save", "yes", "looks good"). "Continue" to the next question is not
+approval of a file. For a long artifact, show a short summary and the parts that matter
+most, and offer the full text; still save only on a yes. A change to an existing file is
+shown as what changes, not the whole file.
+
+In every draft, keep **what the designer said** apart from **what uxos inferred**: inferred
+lines are marked `Inferred —` (or `needs verification`), so nobody approves a guess thinking
+it was their own words.
+
+Exceptions: the designer's own edits; `open-questions.md` and `uxos/README.md` index entries
+that only list items already shown; and logs a procedure says to append (sync, mirror).
+
 ## Honesty rules (all phases)
 
 - Never fabricate an evidence row in the UX matrix (analytics, business data, interviews).
   Leave it empty until the designer supplies it.
+- Never infer the product, its industry, or its users from the project name. They come from
+  the designer's own description, confirmed back, or from real sources.
 - Never simulate users. Interview or survey evidence comes only from real sessions, tagged
   `[interviewed, <date>, n=<N>]` or `[surveyed, <date>, n=<N>]`.
 - Anything behind an auth wall or otherwise unobserved is `Assumption`-tier: keep it, label
