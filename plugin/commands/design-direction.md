@@ -11,7 +11,10 @@ Establish the design direction for this project.
    `/uxos:init` first (it captures user groups and personas). Read `uxos/competitors.md` if it
    exists, for references.
 
-2. **Is this the right step?** Greenfield: yes. Brownfield: only for a **revamp** — ask if
+2. **Is this the right step?** Greenfield: yes, **once the key journeys have screen specs**
+   — the order is to-be-solved → feature map → journeys → screen specs → design direction.
+   If they're missing, say so and suggest `/uxos:blueprint`, `/uxos:journey-design`, and
+   `/uxos:screen-spec` first; go ahead only if the user insists. Brownfield: only for a **revamp** — ask if
    unclear. Brownfield improve and add-feature keep the existing design language; say so
    and point to `/uxos:patterns` instead. On a revamp, `uxos/patterns.md` with its as-is
    extraction is needed first.

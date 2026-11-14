@@ -8,6 +8,19 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.3] — 2026-11-14
+
+### Fixed
+- **Greenfield order.** After the to-be-solved list, uxos suggested setting the design
+  direction — choosing the look and feel before anything was worked out about what the
+  product does. The order is now: to-be-solved → competitor analysis (optional) → feature
+  map → journeys → screen specs → **design direction** → patterns → design system → design.
+  `next-steps` suggests `/uxos:blueprint` after to-be-solved and never design direction before
+  key journeys have screen specs; `/uxos:design-direction` says so if run early. Style tiles
+  now use a real screen from the screen specs, and greenfield `pattern-study` takes its
+  organisms and templates from them instead of a guessed starter set. Quick start and README
+  follow the same order.
+
 ## [0.34.2] — 2026-11-14
 
 ### Fixed
@@ -317,7 +330,8 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.2...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.3...HEAD
+[0.34.3]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.3
 [0.34.2]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.2
 [0.34.1]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.1
 [0.34.0]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.0

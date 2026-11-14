@@ -16,8 +16,12 @@ doesn't run.
 
 ## Prerequisite
 `domain.md` and confirmed `user-groups.md`/`personas/*.md` should exist — design philosophy
-and density decisions are grounded in them, not invented independently. On a revamp,
-`patterns.md` with its as-is extraction should exist too: it is the "before" picture.
+and density decisions are grounded in them, not invented independently. **On greenfield,
+the key journeys should have screen specs** (after the feature map and journeys): the look
+and feel is chosen for screens that are known, and the style tiles use one of them. If
+they don't exist yet, say so and suggest `/uxos:blueprint` → `/uxos:journey-design` →
+`/uxos:screen-spec` first; proceed only if the designer insists. On a revamp, `patterns.md`
+with its as-is extraction should exist too: it is the "before" picture.
 
 ## Stage-gated — one decision at a time, like `new-feature-mapping`
 At each stage, present the options with one **recommended**, tied to domain/persona context,
@@ -78,8 +82,8 @@ repo. Either way, list every reference in `uxos/sources/INDEX.md` with its date,
 the direction's Mood board section.
 
 ## Style tiles — how choices are shown
-A style tile is the same small, real piece of this product — taken from the to-be-solved
-scope or a key journey (a product card with its heading, image, key detail and main button) — drawn
+A style tile is the same small, real piece of this product — taken from a key screen in
+`screen-specs/` (or, on a revamp, the to-be-solved scope) (a product card with its heading, image, key detail and main button) — drawn
 in one direction's colour, type, spacing, shape and imagery. Show 2–3 tiles side by side.
 - Write them as one HTML page, `uxos/design-direction/style-tiles.html`, every value a CSS
   custom property so the tiles double as draft tokens. Open it in the browser for the

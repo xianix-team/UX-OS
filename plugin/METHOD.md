@@ -201,9 +201,20 @@ After phase 3 (no phase 4 — no blueprint yet, nothing exists to build it from)
 | 5g | To-be-solved list | `procedures/to-be-solved.md`, `grouping: theme` | `to-be-solved` |
 | — | **Gate G2 — scope** | see below | — |
 | 6g | Requirements gap *(optional, only if a client doc exists)* | `procedures/requirements-gap-analysis.md` | `requirements-gap` — client requirements not yet reflected, to-be-solved items the client's doc missed, an explicit NFR sweep |
-| 7g | Design direction | `procedures/design-direction.md` | `design-direction` — philosophy, colour, type, spacing, accessibility baseline, iconography, platform stance; stage-gated, confirmed one decision at a time |
-| 8g | Pattern study | `procedures/pattern-study.md` (**greenfield branch** — no as-is extraction; §6 populated directly from `design-direction`) | `patterns` |
-| 9g | Feature map | `procedures/build-blueprint.md` (**create, greenfield** — built from the approved `to-be-solved` items) | `blueprint` |
+| 6g′ | Competitor analysis *(optional, suggested)* | `procedures/competitor-analysis.md` | `competitors` — see what users already get elsewhere before solving |
+| 7g | Feature map | `procedures/build-blueprint.md` (**create, greenfield** — the approved `to-be-solved` items solved into a high-level feature map) | `blueprint` |
+| 8g | User journeys | `procedures/journey-design.md` per key journey (then `edge-case-analysis`, suggested) | `journey` ×N, `state: proposed` |
+| 9g | Screen specs | `procedures/screen-specification.md` per journey | `screen-specs` — what each screen holds and how it's arranged |
+| 10g | Design direction | `procedures/design-direction.md` | `design-direction` — the look and feel, decided once the screens are known, with style tiles drawn from a real screen |
+| 11g | Pattern study | `procedures/pattern-study.md` (**greenfield branch** — no as-is extraction; foundations from `design-direction`, components from the screen specs) | `patterns` |
+
+Then the design system (`claude-design-library`, `code-library`, or `figma-library`) and
+`design-handoff`, as in the solve loop below.
+
+**Why this order.** What the product does comes before how it looks: the feature map solves
+the scope, journeys and screen specs work out the screens, and only then is the look and feel
+chosen — on real screens rather than in a vacuum. Don't suggest `design-direction` straight
+after the to-be-solved list.
 
 There is no Gate G1 on greenfield — nothing was crawled to review for conflicts. The first
 real human gate is G2, deciding what's actually worth building.
