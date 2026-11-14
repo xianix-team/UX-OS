@@ -8,6 +8,22 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.5] — 2026-11-14
+
+### Fixed
+- **Claude Design wasn't found in some sessions.** `claude-design-library` and design-handoff's
+  Claude Design path looked only for the Artifact tool's `quickstart` action, and stopped when
+  a session offered Claude Design another way. They now try each route in turn — `quickstart`,
+  an Artifact `scope: types` listing, an artifacts connector's type tools — and only stop if
+  none exists, offering code first (then `/design-sync`), Figma, or later. `DesignSync` is
+  never used to build a design; it only serves the designer's own `/design-sync`.
+
+### Changed
+- **Standalone Claude Design closes by December 14, 2026** (Claude Design now lives in Claude).
+  uxos creates design systems and canvases as artifacts in Claude, and if a call is refused
+  because a project has closed or moved, it passes on the server's message and stops. Noted in
+  the method, `claude-design-library`, `design-mirror`, and the quick start.
+
 ## [0.34.4] — 2026-11-14
 
 ### Fixed
@@ -347,7 +363,8 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.4...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.5...HEAD
+[0.34.5]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.5
 [0.34.4]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.4
 [0.34.3]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.3
 [0.34.2]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.2

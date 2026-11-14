@@ -26,8 +26,9 @@ Hand off journey `$ARGUMENTS` for design.
      `/uxos:figma-library` first. Then load the `figma-generate-design` skill (and
      `figma-use`) and follow the Figma path — one screen at a time, confirming each with
      the designer before the next.
-   - **Claude Design:** check the Artifact tool is available — if not, say so and offer the
-     other targets. Attach the Claude Design System from `design-records/design-system.md`; if
+   - **Claude Design:** find it the way the skill's availability check says — Artifact
+     `quickstart`, then an Artifact `scope: types` listing, then an artifacts connector's type
+     tools; never `DesignSync`. Only if none exists, say so and offer the other targets. Attach the Claude Design System from `design-records/design-system.md`; if
      none, offer `/uxos:claude-design-library` first. If the journey already has a canvas,
      read its comments and revise it — each comment becomes a model change or a reasoned
      no-change. One canvas per journey (optionally 2–3 directions for the key screen

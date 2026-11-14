@@ -10,11 +10,25 @@ journeys share the same buttons, fields, and tokens instead of each canvas re-in
 them.
 
 ## Availability check — first, every time
-Claude Design is reached through the **Artifact** tool (its `quickstart` and `publish`
-actions). It exists only in some setups (the Claude desktop app, claude.ai-linked
-sessions). If the Artifact tool isn't available in this session — check the deferred tool
-list too, loading it with ToolSearch before deciding — say so plainly and offer
-`figma-library` or `code-library` instead. Never fake it with an HTML file.
+Claude Design is reached through whatever this session provides, and that varies by
+Claude Code version and setup. Load deferred tools with ToolSearch first, then use the first
+of these that exists:
+1. the **Artifact** tool's `quickstart` action;
+2. the **Artifact** tool's `list` with `scope: "types"`, then `publish` with the type's
+   `type_url`;
+3. an **artifacts connector's** type tools (`list_types`, `describe_type`,
+   `create_from_type`, then its publish or file tools).
+Only if none of them exists, say so plainly and offer the alternatives. **Never use
+`DesignSync` to build or edit a design** — it only serves the designer's own `/design-sync`,
+which syncs a code-built library. Never fake Claude Design with a local HTML file.
+
+If none exists, offer: **build in code first** (`code-library`, then the designer runs
+`/design-sync` to bring it into Claude Design — code becomes the master, as it would after
+`promote-to-code`), **Figma** (`figma-library`), or **later**, in a session that has one.
+
+Standalone Claude Design (claude.ai/design) closes by December 14, 2026; Claude Design now
+lives in Claude. Make the system an artifact in Claude from the Design System type. If a call
+is refused because a project has closed or moved, pass on the server's message and stop.
 
 ## Prerequisite
 `patterns.md` with a canonical-patterns section (§6). On greenfield, `design-direction.md`
@@ -43,8 +57,9 @@ hex values, no one-off pieces.
    `components/<Comp>/README.md` and `preview.html`, `README.md` as the brand book, the
    index `project/design-system.json` written last. Read its `from-design-tool.md` /
    `format.md` references when relevant.
-1. **Find or start the system.** Run Artifact `quickstart` with intent `other` to see the
-   design systems this account can open. If `design-records/design-system.md` already records a
+1. **Find or start the system.** Using whichever route the availability check found —
+   `quickstart` with intent `other`, a `scope: types` listing, or the connector's type tools
+   — see the design systems this account can open. If `design-records/design-system.md` already records a
    Claude Design System for this project, read it (`action: read`) and update it; build
    only what's missing. Otherwise create one from the **Design System** type the quickstart
    or a `scope: types` listing names, titled `<product> design system`.

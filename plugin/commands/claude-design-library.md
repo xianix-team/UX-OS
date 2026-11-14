@@ -6,9 +6,10 @@ Build the Claude Design System for this project.
 
 ## Steps
 
-1. Run the `claude-design-library` skill's availability check. If Claude Design isn't
-   reachable in this session, say so and offer `/uxos:figma-library` or
-   `/uxos:code-library` instead.
+1. Run the `claude-design-library` skill's availability check — try Artifact `quickstart`,
+   then an Artifact `scope: types` listing, then an artifacts connector's type tools, before
+   deciding. Never use `DesignSync` to build. Only if none exists, say so and offer
+   `/uxos:code-library` (then `/design-sync`), `/uxos:figma-library`, or later.
 
 2. Read `uxos/patterns.md` (and `uxos/design-direction.md` on greenfield). If missing, point
    at `/uxos:patterns` (or `/uxos:design-direction`) first.
