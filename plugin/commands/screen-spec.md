@@ -20,8 +20,12 @@ Spec the screens for journey `$ARGUMENTS`.
    not re-drafted), sub-action items, screen-level controls, nav/menu updates, states,
    components, and **Composition** (shell, sections and their arrangement, meaningful
    element kinds, verbatim text). If the journey's design record has a `claude_design_url` or a
-   Figma file, read the artboards for Composition — don't describe them from memory;
-   otherwise decide it with the designer or write `to be decided at design`.
+   Figma file, read the artboards for Composition — don't describe them from memory.
+   Otherwise write `to be decided at design` and list each open choice under **Open layout
+   questions**. **Never ask a layout or presentation question in words** ("bottom sheet or
+   full screen?") — ask only about what the screen holds and does, in plain words if
+   `user_role` in `product-context.md` isn't designer. If the user wants to settle a layout
+   choice now, draw the options as grey-box sketches side by side and ask which works better.
    Present and confirm **one screen at a time**, not the whole set unconfirmed.
 
 3. Write `uxos/screen-specs/<id>.md`.

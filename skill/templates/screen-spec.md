@@ -56,9 +56,14 @@ it — before `design-handoff` builds the screen, so nothing is drawn as a one-o
 
 ### Composition
 
-How the screen is arranged. Extracted by **reading the artboard** where one exists; decided
-with the designer where one does not, and then drawn from. Left as
-`to be decided at design` is a legitimate answer — a guess is not.
+How the screen is arranged. Extracted by **reading the artboard** where one exists. Where
+none exists yet, write `to be decided at design` and list the open choices below — they're
+settled visually at the design step, never asked in words. A guess is never an answer.
+
+**Open layout questions** — choices to settle by looking, at design (or now, on grey-box sketches)
+| Question | Options | Settled |
+|---|---|---|
+| <e.g. Share summary: how does it open?> | <bottom sheet · full screen> | <open — or the choice, and where it was seen> |
 
 **Shell** — state once per journey, per artboard; note it if artboards disagree
 | | |

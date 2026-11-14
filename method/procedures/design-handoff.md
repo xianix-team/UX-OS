@@ -133,6 +133,9 @@ screen. Read it before building.
    Composition block** (`screen-specs/<id>.md`) — not from the canvas directly and never
    from memory of it. If the block is missing or says `to be decided at design` while an
    artboard exists, extract it from the artboard and confirm it with the designer first.
+   If there's no artboard and **Open layout questions** remain, draw each one's options as
+   grey-box sketches side by side, ask which works better, and write the choices into the
+   Composition block before building — never pick one silently.
    **After each screen, run the audit** from `code-build-contract`, including its rendered
    perceivability check, and fix what it finds.
    Then run `design-parity` for that screen against its artboard, and show the designer
@@ -204,6 +207,9 @@ screen. Read it before building.
    - composed from the design system's components; a missing component goes back to
      `claude-design-library` at its atomic level, not drawn as a one-off;
    - arranged as the screen spec's **Composition** block says, where it decides anything;
+   - each **Open layout question** drawn as its alternatives side by side, so the choice is
+     made by looking; the chosen one is built out, and the answer goes back into the screen
+     spec with the Composition write-back;
    - **annotation that can't be mistaken for design.** A specimen frame, label, or callout is
      a hairline, a muted rule, or nothing — never a surface, fill, radius, or elevation the
      system uses to mean something. On a canvas that says what the design is, a framed option

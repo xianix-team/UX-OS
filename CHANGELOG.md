@@ -8,6 +8,23 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.4] — 2026-11-14
+
+### Fixed
+- **Layout choices are shown, not asked.** Screen specs asked questions like "should the
+  summary open as a bottom sheet or a full screen?" before anything was drawn — a product
+  owner can't answer that, and a designer only partly. Screen specs now ask only what a
+  screen holds and does; without an artboard, Composition stays `to be decided at design`
+  with the choices listed under a new **Open layout questions** table. The design step
+  settles them by looking — alternatives on the Claude Design canvas, or grey-box sketches
+  before a code screen is built — and to decide one earlier, uxos draws the options side by
+  side. A method rule says so.
+
+### Added
+- `/uxos:init` asks **"What's your role on this project?"** (designer, product owner, founder,
+  developer, other) and records `user_role`, so every step pitches its questions to who's
+  answering; `design-direction` starts from it.
+
 ## [0.34.3] — 2026-11-14
 
 ### Fixed
@@ -330,7 +347,8 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.3...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.4...HEAD
+[0.34.4]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.4
 [0.34.3]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.3
 [0.34.2]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.2
 [0.34.1]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.1

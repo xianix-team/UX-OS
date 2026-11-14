@@ -18,7 +18,7 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
 
    **A project name is a label, not a description.** Never infer what the product is, its
    industry, its users, or its problems from the name. Everything uxos researches or drafts
-   rests on the idea as the user describes it (question 3).
+   rests on the idea as the user describes it (question 4).
 
    **Never use uxos's own terms in a question.** Many product owners don't know
    "greenfield", "brownfield", "domain", or "platform" in this sense. Ask in everyday words
@@ -26,11 +26,16 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
 
    Ask in this order:
    1. **"What's the project called?"** → the project name (make the slug yourself).
-   2. **"Is this a new product you're starting from scratch, or a product that already
+   2. **"What's your role on this project?"** — options: *designer* · *product owner or
+      manager* · *founder or business owner* · *developer* · *something else* → record
+      `user_role` in `product-context.md`. Every later step uses it to pitch its questions:
+      anyone who isn't a designer gets plain words, and no step asks them to make a visual
+      choice they haven't been shown.
+   3. **"Is this a new product you're starting from scratch, or a product that already
       exists?"** — options: *Starting from scratch* · *It already exists — we want to
       improve it, redesign it, or add to it* → record `greenfield` / `brownfield`. It
       changes everything that follows.
-   3. **"Tell me about the idea, in your own words."** For a new product: what is it, who
+   4. **"Tell me about the idea, in your own words."** For a new product: what is it, who
       is it for, and what problem does it solve for them? For an existing one: what does it
       do, and who uses it? A few sentences is fine; there's no wrong answer.
       - If the answer leaves out who it's for or what problem it solves, ask for that one
@@ -42,10 +47,10 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
       - If they can't describe it yet, don't guess and don't research from the name: say
         uxos needs the idea first, and offer to stop here and pick up later with
         `/uxos:init`.
-   4. **"Where do people use it?"** (or "will they use it", for a new product) — options:
+   5. **"Where do people use it?"** (or "will they use it", for a new product) — options:
       *a website or web app* · *an iPhone/iPad app* · *an Android app* · *a desktop app* ·
       *more than one* → `platform`.
-   5. **Existing product — "What can you share so I can learn how it works?"** Any
+   6. **Existing product — "What can you share so I can learn how it works?"** Any
       combination; say the first one helps most:
       - *the code* — a folder on this computer, or a GitHub/GitLab link (cloned into a
         disposable `uxos-repo-cache/`) — "shows how it really works, on any platform"
@@ -58,23 +63,23 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
       not the code. Skip only if code was already shared or the user says there's none.
       If parts sit behind a login: "Can you sign in for me when we get there, or share a
       test account?" (the user does any signing in; uxos stays read-only).
-   6. **New product — "Do you have anything written down already?"** Any combination, none
+   7. **New product — "Do you have anything written down already?"** Any combination, none
       needed: *a requirements or product document* · *brand guidelines* · *products you
       admire or compete with* · *a company design system to match*.
-   7. **"Have you already got any of this?"** — research about the industry, descriptions
+   8. **"Have you already got any of this?"** — research about the industry, descriptions
       of your users or personas, a map of features, user journeys, a UX review, a list of
       what to fix or build. Any format, any folder. If yes, run the `import-artifacts`
       skill (`/uxos:import`) *before* drafting anything — adopt what exists, generate only
       the gaps.
-   8. **"Where would you like screens designed?"** — recommend *Claude Design, with a
+   9. **"Where would you like screens designed?"** — recommend *Claude Design, with a
       working prototype in code* ("no Figma licence, one design system") · *Figma* ·
       *design prompts for another tool, such as Stitch* · *not sure yet — decide later* →
       `design_tools`; set `design_master`: `code` for an existing product with code,
       `claude-design` for a new one.
-   9. **"How well do you know this industry?"** — *new to it* · *somewhat* · *very well* →
+   10. **"How well do you know this industry?"** — *new to it* · *somewhat* · *very well* →
       domain familiarity; *very well* skips the industry research. On a new product, lean
       toward doing it anyway — it's the main evidence when there's no product to look at.
-      It researches the industry confirmed in question 3, never one guessed from the name.
+      It researches the industry confirmed in question 4, never one guessed from the name.
 
    Don't ask where to keep the model: use `./uxos` and say so once ("I'll keep everything
    in a `uxos/` folder here — tell me if you want it somewhere else").
