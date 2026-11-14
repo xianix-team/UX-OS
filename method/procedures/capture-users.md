@@ -51,6 +51,13 @@ dropped.
   rather than fabricate. If included, tag the source.
 - If the designer supplied research, ground personas in it and set `confidence: mixed`.
   Otherwise set `confidence: inferred` — these are working personas to be validated.
+- **Greenfield — keep the domain's specifics in the pain points, goals, and needs.** On
+  greenfield, personas are drawn from `domain.md`, and everything after them — to-be-solved,
+  journeys, screen specs — builds only on what they carry. So write each item as the concrete
+  situation the domain study found, cited, not a summary of it: "has to wait for the evening
+  SMS advisory and can't hear it again if they missed it [from domain.md §2]", not "wants
+  timely information". A specific that's flattened here is lost for every step that follows.
+  (Brownfield personas come from the product and are unchanged by this.)
 
 ## Output
 - `uxos/user-groups.md` from the template, listing each confirmed group's two persona slugs

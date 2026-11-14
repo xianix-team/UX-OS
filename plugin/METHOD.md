@@ -428,11 +428,11 @@ that only list items already shown; and logs a procedure says to append (sync, m
 
 - Never fabricate an evidence row in the UX matrix (analytics, business data, interviews).
   Leave it empty until the designer supplies it.
-- **Invented is forbidden; grounded is expected.** Detail with no source is never added. Detail
-  drawn from approved model research — `domain.md`, personas, business rules, competitors,
-  validation findings — is used, and cited (`[from domain.md §6]`), so screens are specific to
-  the domain instead of generic. Grounded ideas that go beyond what was asked are offered as
-  **Proposed — <idea> [from <source>]** for the designer to accept or reject.
+- **Greenfield: detail flows down the chain, not around it.** Each step builds on the one
+  before it — domain → user groups → personas → to-be-solved → feature map → journeys →
+  screen specs — so each step keeps the specifics it was given rather than summarising them
+  away. (Brownfield has its own chain, from the product and the UX matrix; unchanged.) Later steps don't reach back past the chain to add things; if a screen needs something
+  that isn't upstream, that's a gap in the to-be-solved list, and it's raised as one.
 - Never infer the product, its industry, or its users from the project name. They come from
   the designer's own description, confirmed back, or from real sources.
 - Never simulate users. Interview or survey evidence comes only from real sessions, tagged
