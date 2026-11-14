@@ -1,51 +1,69 @@
 ---
-description: Start (or resume setup of) a uxos project -- brownfield (existing product) or greenfield (starting from scratch) -- crawl available inputs, draft the project model, review at gate G1.
-argument-hint: "[product name or URL]"
+description: Start (or resume setup of) a uxos project. Just type /uxos:init — it asks what it needs, one question at a time, in plain language — then reads what you can share, drafts the project model, and reviews it with you at gate G1.
 ---
 
 Initialise a UX Designer OS project model in `uxos/` under the current working directory.
 
-Argument (optional): `$ARGUMENTS` — a product name or URL to pre-fill the intake.
+If the user typed something after the command (`$ARGUMENTS` — a name or a link), use it to
+pre-fill the answers and don't ask for it again. Nothing is required up front.
 
 ## Steps
 
-1. **Intake.** Ask the user (skip anything already given via the argument or an existing
-   `uxos/product-context.md`):
-   - **Does this product already exist (brownfield), or is this starting from scratch
-     (greenfield)?** — asked first; it changes what else gets asked.
-   - Project name (slug).
-   - Model location — default `./uxos`; accept an alternative path.
-   - **Platform:** `web` / `iOS` / `Android` / `desktop` / `other`.
-   - **Brownfield — inputs available**, any combination — and note which the extractor will
-     lean on:
-     - code repo — a local path, **or a git URL** (cloned into a disposable
-       `uxos-repo-cache/` alongside the model) *(best structural signal on any platform)*
-     - live URL *(web)*
-     - runnable build or project to launch *(iOS → simulator; Android → emulator if available)*
-     - screenshots / screen-recording folder *(fallback when no repo/build)*
-     - Figma link · docs/PRD paths · App Store / Play Store URL
+1. **Intake — a conversation, not a form.** Ask **one question at a time**, in plain
+   language, and wait for the answer before the next. Where the question tool is available
+   (AskUserQuestion), use it so the user can click an option; otherwise give numbered
+   options. Always allow "something else" and "not sure". Skip anything already answered —
+   by `$ARGUMENTS`, an earlier answer, or an existing `uxos/product-context.md` (then this
+   is a resume: say what's already set up and ask only what's missing).
 
-     **Always ask about code repo access**, even when a URL was given in the argument or
-     brief — a URL answers "live URL", not "inputs available". Skip the question only if a
-     repo path or git URL was already supplied, or the designer has said there is none.
-   - **Greenfield — reference material available**, any combination (none of this is
-     required): a PRD/BRD or requirements doc, brand guidelines, named competitor products
-     for inspiration, an existing company design system to align with.
-   - **Do you already have any of what this produces?** — a domain write-up, user groups,
-     personas, a feature map, journeys, an audit, a to-be-solved list, brand guidelines, in
-     any format and any folder. If yes, run the `import-artifacts` skill (`/uxos:import`)
-     *before* drafting anything: adopt what exists, and generate only the gaps. Don't
-     recreate what the designer already has.
-   - **Design tools:** where will screens be designed and prototyped? Recommend **Claude
-     Design + a functional prototype in code** (no Figma licence; one design system,
-     defined in code once there is code). Alternatives: Figma, design prompts for Stitch.
-     Record `design_tools` and `design_master` in `product-context.md` — `code` on
-     brownfield with a codebase, `claude-design` on greenfield.
-   - Domain familiarity: `not very` / `somewhat` / `very`. `very` → skip domain analysis.
-     On greenfield, lean toward *not* skipping it — domain research is the primary evidence
-     source when there's no product to observe instead.
-   - Brownfield only, if flows are behind auth/login: "Do you have test credentials for a
-     deeper walk?" (the user drives any sign-in; the extractor stays read-only).
+   **Never use uxos's own terms in a question.** Many product owners don't know
+   "greenfield", "brownfield", "domain", or "platform" in this sense. Ask in everyday words
+   and record the term yourself. Explain any option that needs it in a few words.
+
+   Ask in this order:
+   1. **"What's the project called?"** → the project name (make the slug yourself).
+   2. **"Is this a new product you're starting from scratch, or a product that already
+      exists?"** — options: *Starting from scratch* · *It already exists — we want to
+      improve it, redesign it, or add to it* → record `greenfield` / `brownfield`. It
+      changes everything that follows.
+   3. **"Where do people use it?"** (or "will they use it", for a new product) — options:
+      *a website or web app* · *an iPhone/iPad app* · *an Android app* · *a desktop app* ·
+      *more than one* → `platform`.
+   4. **Existing product — "What can you share so I can learn how it works?"** Any
+      combination; say the first one helps most:
+      - *the code* — a folder on this computer, or a GitHub/GitLab link (cloned into a
+        disposable `uxos-repo-cache/`) — "shows how it really works, on any platform"
+      - *a link to the live site or app*
+      - *a version I can run* (iOS → simulator; Android → emulator)
+      - *screenshots or a screen recording*
+      - *a Figma file · documents or specs · an app store listing*
+
+      **Always ask about the code**, even when a link was given — a link is the live site,
+      not the code. Skip only if code was already shared or the user says there's none.
+      If parts sit behind a login: "Can you sign in for me when we get there, or share a
+      test account?" (the user does any signing in; uxos stays read-only).
+   5. **New product — "Do you have anything written down already?"** Any combination, none
+      needed: *a requirements or product document* · *brand guidelines* · *products you
+      admire or compete with* · *a company design system to match*.
+   6. **"Have you already got any of this?"** — research about the industry, descriptions
+      of your users or personas, a map of features, user journeys, a UX review, a list of
+      what to fix or build. Any format, any folder. If yes, run the `import-artifacts`
+      skill (`/uxos:import`) *before* drafting anything — adopt what exists, generate only
+      the gaps.
+   7. **"Where would you like screens designed?"** — recommend *Claude Design, with a
+      working prototype in code* ("no Figma licence, one design system") · *Figma* ·
+      *design prompts for another tool, such as Stitch* · *not sure yet — decide later* →
+      `design_tools`; set `design_master`: `code` for an existing product with code,
+      `claude-design` for a new one.
+   8. **"How well do you know this industry?"** — *new to it* · *somewhat* · *very well* →
+      domain familiarity; *very well* skips the industry research. On a new product, lean
+      toward doing it anyway — it's the main evidence when there's no product to look at.
+
+   Don't ask where to keep the model: use `./uxos` and say so once ("I'll keep everything
+   in a `uxos/` folder here — tell me if you want it somewhere else").
+
+   Then recap the answers in a few lines, plain words, and ask "Shall I start?" before
+   reading or crawling anything.
 
 2. **Preflight, then extract.** If any input is a live URL (or competitor URLs on
    greenfield), run the `browser-preflight` skill **first** — confirm a real browser tool

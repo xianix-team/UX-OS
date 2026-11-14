@@ -73,11 +73,13 @@ then re-check `/help`.
 ## 4. Run the workflow
 
 ```
-/uxos:init https://app.example.com
+/uxos:init
 ```
 
-It asks: project name · model location · platform (web) · inputs you have · domain
-familiarity · test credentials. Answer them, then it crawls, drafts the model, and stops at
+It asks one question at a time, in plain words: the project name · whether it's new or
+already exists · where people use it · what you can share (code, a link such as
+`https://app.example.com`, screenshots…) · how well you know the industry. A name or link
+typed after the command is used to skip those questions. Answer them, then it crawls, drafts the model, and stops at
 **gate G1** with a review block.
 
 Review / fix, type `continue`, then walk the chain:

@@ -88,8 +88,11 @@ converted; it's kept as the input for `/uxos:requirements-gap`.
 /uxos:init
 ```
 
-First question: **does this product already exist (brownfield), or is this starting from
-scratch (greenfield)?** Everything after branches on the answer.
+Just type that and press enter. It asks what it needs **one question at a time, in plain
+words** — no design jargon. First the project name, then **is this a new product starting
+from scratch, or one that already exists?** Everything after branches on the answer (uxos
+calls these *greenfield* and *brownfield*; you don't need to). It recaps your answers and
+asks before it reads or crawls anything.
 
 **Brownfield** — answer the questions, or paste a block like this right after (adjust the
 bracketed parts — for a multi-app/connected product, list every surface, see the note
@@ -501,6 +504,7 @@ writes nothing.
 | `/uxos:journey-design <journey>` | create / update / enrich a journey in full detail |
 | `/uxos:edge-cases <journey>` | systematic edge-case register — suggested, never forced |
 | `/uxos:requirements <journey>` | dev handoff: Units (Who/Why/What/How + acceptance criteria), folding in screen specs, edge cases, UX issues |
+| `/uxos:crazy8 <journey> <screen>` | optional: eight different directions for a screen that isn't working — as a workshop or by AI — grey-box, pick one, nothing applied until you confirm |
 | `/uxos:screen-spec <journey>` | per-screen spec — entry points, sub-actions, controls, nav updates, states |
 | `/uxos:figma-library` | build/update the Figma design system bottom-up by atomic level, confirmed stage by stage (run once) |
 | `/uxos:code-library` | build/extend the design system in code bottom-up, confirmed level by level (run once before the first code handoff) |

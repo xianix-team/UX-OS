@@ -8,6 +8,33 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.0] — 2026-11-14
+
+From this release the Claude Code plugin and the npm MCP package
+(`@99x-ai-dlc/uxos-skills-mcp`) share **one version** and are released together from one
+`vX.Y.Z` tag. The number jumps from 0.32.1 because the npm package had already been published
+as 0.33.0 and 0.33.1, both containing plugin 0.32.1.
+
+### Added
+- **`/uxos:crazy8 <journey> <screen>`** — Crazy 8s for a screen that isn't working. A brief
+  from the model ends in a "How might we…?"; then, chosen each time, a **workshop** (people
+  sketch, uxos reads their photos into cards and groups duplicates, offering its own ideas
+  only afterwards) or **AI** (eight screens, each varying a different dimension: layout,
+  interaction, priority, disclosure, entry point, metaphor, density, one rule broken on
+  purpose). All directions are grey-box wireframes on one page. The designer picks one or
+  combines parts; nothing is written to the screen spec, journey, design system, or code
+  until the choice is confirmed, and new components still join the system only through
+  `design-handoff`.
+- `check.sh` fails if the plugin and the npm package versions differ.
+
+### Changed
+- **`/uxos:init` needs nothing after it.** Type it and press enter; it asks one question at
+  a time, in plain language, with options to click where Claude Code supports it: the
+  project name, then "a new product starting from scratch, or one that already exists?"
+  (greenfield and brownfield are never asked by name), where people use it, what you can
+  share, and so on. The model folder defaults to `./uxos` without asking, and it recaps
+  the answers before reading anything. A name or link typed after the command still works.
+
 ## [0.32.1] — 2026-11-11
 
 ### Fixed
@@ -260,5 +287,6 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.32.1...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.0...HEAD
+[0.34.0]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.0
 [0.32.1]: https://github.com/xianix-team/UX-OS/releases/tag/v0.32.1

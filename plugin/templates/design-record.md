@@ -83,5 +83,10 @@ All four dimensions reported per screen: <screen: inventory ✓ geometry ✓ sem
 | Date | Change | From (comment / designer) |
 |---|---|---|
 
+## Crazy 8 sessions
+| Date | Screen | Mode | Chosen | Session |
+|---|---|---|---|---|
+| <YYYY-MM-DD> | <screen> | workshop / ai | <direction or combination> | `crazy8/<folder>/` |
+
 ## Open items
 <anything not yet built; for code, what's left for a developer to wire up (data, backend logic)>

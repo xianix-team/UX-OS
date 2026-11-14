@@ -68,6 +68,12 @@ on?" interaction model.
    the sessions are done. Findings with model updates still `pending` → gap slot. Mention it
    at most once per session if the designer passes on it.
 
+   **Crazy 8 (optional):** the designer says a screen isn't working, or a canvas has had
+   repeated revisions or comments on the same screen → offer `/uxos:crazy8 <journey>
+   <screen>` in the independent slot. A Crazy 8 session with `status: chosen` but not yet
+   applied → gap slot: apply it. After one is applied → usual slot: `/uxos:design` for that
+   screen.
+
    **Change impact:** if the designer mentions a client-requested visual change (a colour,
    font, spacing, a component), suggest `/uxos:impact "<change>"` before any library or
    design edit. If an impact report has `decision: pending`, list it in the gap slot.
