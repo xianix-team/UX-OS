@@ -8,6 +8,13 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.0] — 2026-11-14
+
+From this release the Claude Code plugin and the npm MCP package
+(`@99x-ai-dlc/uxos-skills-mcp`) share **one version** and are released together from one
+`vX.Y.Z` tag. The number jumps from 0.32.1 because the npm package had already been published
+as 0.33.0 and 0.33.1, both containing plugin 0.32.1.
+
 ### Added
 - **`/uxos:crazy8 <journey> <screen>`** — Crazy 8s for a screen that isn't working. A brief
   from the model ends in a "How might we…?"; then, chosen each time, a **workshop** (people
@@ -18,6 +25,7 @@ versions fix them.
   combines parts; nothing is written to the screen spec, journey, design system, or code
   until the choice is confirmed, and new components still join the system only through
   `design-handoff`.
+- `check.sh` fails if the plugin and the npm package versions differ.
 
 ## [0.32.1] — 2026-11-11
 
@@ -271,5 +279,6 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.32.1...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.0...HEAD
+[0.34.0]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.0
 [0.32.1]: https://github.com/xianix-team/UX-OS/releases/tag/v0.32.1

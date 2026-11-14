@@ -21,6 +21,17 @@ for f in plugin/.claude-plugin/plugin.json .claude-plugin/marketplace.json plugi
   python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f" 2>/dev/null || bad "$f is not valid JSON"
 done
 
+echo "==> plugin and npm package share one version"
+if [ -f mcp/package.json ]; then
+  npm_version=$(python3 -c "import json; print(json.load(open('mcp/package.json'))['version'])")
+  plugin_version=$(python3 -c "import json; print(json.load(open('plugin/.claude-plugin/plugin.json'))['version'])")
+  [ "$npm_version" = "$plugin_version" ] || bad "mcp/package.json is $npm_version but plugin.json is $plugin_version — they release together under one version"
+  if [ -f mcp/package-lock.json ]; then
+    lock_version=$(python3 -c "import json; print(json.load(open('mcp/package-lock.json'))['version'])")
+    [ "$lock_version" = "$npm_version" ] || bad "mcp/package-lock.json is $lock_version but mcp/package.json is $npm_version — run npm install in mcp/"
+  fi
+fi
+
 echo "==> version has a changelog entry"
 version=$(python3 -c "import json; print(json.load(open('plugin/.claude-plugin/plugin.json'))['version'])")
 grep -q "^## \[$version\]" CHANGELOG.md || bad "CHANGELOG.md has no '## [$version]' entry for plugin.json version $version"

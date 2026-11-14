@@ -76,6 +76,11 @@ Changes must keep these intact — they are what makes uxos trustworthy:
 
 ## Testing a change
 
+**Versions:** the plugin (`plugin/.claude-plugin/plugin.json`) and the npm package
+(`mcp/package.json` and its lock file) always carry the same version, and a release is one
+`vX.Y.Z` tag — it publishes the GitHub release and, through `publish-npm.yml`, the npm
+package. `check.sh` fails if the versions differ.
+
 Run the repo checks — the same ones CI runs on every pull request. They rebuild `plugin/`
 and `skill/` and fail if the result differs from what's committed, and check manifests,
 frontmatter, template and command references, and the changelog entry:
