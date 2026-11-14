@@ -8,6 +8,30 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.6] — 2026-11-14
+
+From a greenfield incident report: the prototype came out generic because concrete domain
+research never reached the screens, and the domain study itself drifted into a product
+teardown and was barely reviewed.
+
+### Fixed
+- **Screens use the domain research.** Journey design and screen specs re-read `domain.md`
+  and ground each step and screen in its real mechanics — how information reaches users, their
+  terms, their limits — cited `[from domain.md §n]`. Screen specs gain a **Domain grounding**
+  table per screen. Grounded ideas beyond the brief are offered as **Proposed — … [from …]**.
+  `problem-validation` keeps the mechanics in to-be-solved items instead of flattening them
+  into themes. A method rule separates *invented* detail (still forbidden) from *grounded*
+  detail (expected).
+- **The domain study is reviewed properly.** `analyse-domain` walks the designer through it
+  section by section — researched vs inferred, "anything wrong or missing?", "what do you
+  know that I haven't found?" — before saving, and records `reviewed` in the frontmatter.
+- **The domain study stays domain-general.** Specific products are listed by name and left
+  for `/uxos:competitors`; their features, partners, and figures don't go in `domain.md`.
+
+### Added
+- `/uxos:init` asks "Have you sketched or mocked up this idea already — even roughly, or with
+  AI?", and design direction's mood board asks about the designer's own mockups by name.
+
 ## [0.34.5] — 2026-11-14
 
 ### Fixed
@@ -363,7 +387,8 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.5...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.6...HEAD
+[0.34.6]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.6
 [0.34.5]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.5
 [0.34.4]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.4
 [0.34.3]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.3

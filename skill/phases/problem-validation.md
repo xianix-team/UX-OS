@@ -35,6 +35,12 @@ under-consolidated — merge themes with only one or two items into a related on
 
 For each theme: Problems to Solve · Goals to Achieve · Needs to Meet.
 
+**Keep the mechanics, not just the theme.** Re-read `domain.md` and carry concrete findings
+into each item — the channel information really arrives by, the terms users use, the numeric
+limits they work within — cited (`[from domain.md §6]`). "Advisories must be trustworthy" is a
+theme; "advisories arrive by SMS from the fisheries department and must work without data
+[from domain.md §2]" is something a screen can be built for.
+
 ## Prioritise
 For each theme, assess:
 - **Severity** — Critical / High / Medium / Low: what happens if this goes unsolved?

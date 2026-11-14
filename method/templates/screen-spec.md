@@ -54,6 +54,13 @@ Cite `patterns.md`'s nav model — reuse the existing pattern, don't invent a ne
 Anything marked missing gets added at its own level — an atom before the molecule that needs
 it — before `design-handoff` builds the screen, so nothing is drawn as a one-off.
 
+### Domain grounding
+What the research says that this screen should reflect — so it's specific, not generic.
+| Finding | Source | How this screen uses it |
+|---|---|---|
+| <e.g. advisories arrive by SMS, with a voice replay for low literacy> | `domain.md §2` | <e.g. "Listen" action on the advisory; message source shown> |
+| <proposed: …> | `domain.md §6` | **Proposed** — <idea>; accepted / rejected |
+
 ### Composition
 
 How the screen is arranged. Extracted by **reading the artboard** where one exists. Where

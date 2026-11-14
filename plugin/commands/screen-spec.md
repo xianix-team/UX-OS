@@ -26,6 +26,10 @@ Spec the screens for journey `$ARGUMENTS`.
    full screen?") — ask only about what the screen holds and does, in plain words if
    `user_role` in `product-context.md` isn't designer. If the user wants to settle a layout
    choice now, draw the options as grey-box sketches side by side and ask which works better.
+   **Re-read `uxos/domain.md` before each screen** and fill its **Domain grounding** table:
+   the findings that bear on the screen, their source, and how the screen uses them; offer
+   grounded extras as **Proposed — … [from …]**. Don't drop concrete domain mechanics in
+   favour of generic patterns.
    Present and confirm **one screen at a time**, not the whole set unconfirmed.
 
 3. Write `uxos/screen-specs/<id>.md`.
