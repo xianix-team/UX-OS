@@ -40,9 +40,9 @@ sections; state that plainly rather than leaving them silently blank. Check for
 - **Atoms and molecules (§6.4-6.5)** — a standard starter set for the platform, shaped by
   the design philosophy, accessibility baseline, and platform convention stance. Mark
   `(proposed)`.
-- **Organisms and templates (§6.6-6.7)** — provisional until journeys and screen-specs
-  exist and reveal what's actually needed. List only what the approved `to-be-solved` scope
-  clearly implies; mark `(proposed)`. Anything new that surfaces later is added at its
+- **Organisms and templates (§6.6-6.7)** — from the screen specs' Components tables and
+  Composition blocks, which exist by now on greenfield. If a journey has no screen spec
+  yet, list only what the approved scope clearly implies, marked `(proposed)`. Anything new that surfaces later is added at its
   proper level via `figma-library`, not drawn ad hoc.
 
 ## Revamp — extract first, then the new direction

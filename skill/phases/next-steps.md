@@ -91,12 +91,15 @@ on?" interaction model.
    current as its author's last look.
 
    **Greenfield-specific checks:** after `/uxos:init`, point straight at `/uxos:to-be-solved`
-   (there's no product to map journeys from yet). After `to-be-solved` is confirmed, suggest
-   `/uxos:requirements-gap` if the designer mentioned a client requirements document, and
-   suggest `/uxos:design-direction` before any journey heads toward `design-handoff` (on a
-   brownfield **revamp** too, once to-be-solved exists and before any redesign) — a
-   greenfield journey with no `design-direction.md` yet will hit `pattern-study`'s hard stop
-   (it depends on it; there's no as-is to fall back to).
+   (there's no product to map journeys from yet). Then follow the greenfield order:
+   to-be-solved → feature map → journeys → screen specs → design direction → patterns →
+   design system → design. After `to-be-solved` is confirmed, the usual next step is
+   `/uxos:blueprint`; offer `/uxos:competitors` as optional and `/uxos:requirements-gap` if
+   the designer mentioned a client requirements document. **Never suggest
+   `/uxos:design-direction` before key journeys have screen specs** — suggest it once they
+   do, and before the first design system or `design-handoff` (a greenfield journey with no
+   `design-direction.md` will hit `pattern-study`'s hard stop). On a brownfield **revamp**,
+   suggest it once to-be-solved exists and before any redesign.
 2. Produce **up to four** suggestions, ranked, in this shape:
    1. **the usual next step** on the canonical path
    2. **a gap worth closing now** — a flagged conflict, an inferred artifact that will drive

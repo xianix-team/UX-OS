@@ -72,7 +72,7 @@ journeys, patterns    (optional)            business rules               require
 |---|---|
 | Set up | `/uxos:init` · `/uxos:import` · `/uxos:status` |
 | Brownfield analysis | `/uxos:journeys` · `/uxos:matrix <J>` · `/uxos:patterns` · `/uxos:problems` |
-| Greenfield direction | `/uxos:to-be-solved` · `/uxos:requirements-gap` · `/uxos:design-direction` (also for a revamp; mood board, style tiles, works for non-designers) · `/uxos:patterns` |
+| Greenfield, in order | `/uxos:to-be-solved` · `/uxos:competitors` (optional) · `/uxos:blueprint` · `/uxos:journey-design` · `/uxos:screen-spec` · `/uxos:design-direction` (also for a revamp; mood board, style tiles, works for non-designers) · `/uxos:patterns` |
 | Scope | `/uxos:to-be-solved` · `/uxos:competitors` (optional) · `/uxos:validate` (optional) · `/uxos:feature-mapping <feature>` · `/uxos:blueprint` |
 | Solve | `/uxos:journey-design <J>` · `/uxos:edge-cases <J>` · `/uxos:screen-spec <J>` · `/uxos:crazy8 <J> <screen>` (optional) |
 | Design system | `/uxos:claude-design-library` · `/uxos:code-library` · `/uxos:figma-library` |

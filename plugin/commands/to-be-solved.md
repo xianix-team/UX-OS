@@ -39,6 +39,8 @@ Build or update `uxos/to-be-solved.md` -- the contract handed to Part B.
 
 5. If the designer has a client-supplied requirements document (functional/non-functional),
    suggest `/uxos:requirements-gap` next — not required, but most useful right here before
-   work fans out into journeys. Run the `next-steps` skill and present its block.
+   work fans out into journeys. Run the `next-steps` skill and present its block — on
+   greenfield the usual next step is `/uxos:blueprint` (with `/uxos:competitors` offered as
+   optional), never `/uxos:design-direction`, which comes after journeys and screen specs.
 
 Templates: `${CLAUDE_PLUGIN_ROOT}/templates/to-be-solved.md`.

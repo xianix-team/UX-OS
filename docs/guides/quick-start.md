@@ -162,7 +162,10 @@ key journeys, and patterns all exist. Everything below builds on this.
 
 ---
 
-## 2B. Greenfield — establish scope and design direction
+## 2B. Greenfield — from scope to screens, then the look and feel
+
+The order matters: **what the product does comes before how it looks.** to-be-solved →
+feature map → journeys → screen specs → design direction → patterns → design.
 
 ```
 /uxos:to-be-solved
@@ -183,14 +186,31 @@ scalability, privacy, localization, reliability, data retention, maintainability
 category clients forget most). Catches what the client's requirements missed, and what you
 have that they didn't ask for.
 
+*(optional)* `/uxos:competitors` — see what people already use before you solve anything
+(§7).
+
+```
+/uxos:blueprint
+```
+Solves the approved to-be-solved items into a high-level feature map. It grows as
+journeys and screen specs get designed — that's expected, not a gap.
+
+```
+/uxos:journey-design "<journey>"
+/uxos:screen-spec "<journey>"
+```
+Detail each key journey — every step with How, Why and Technical delight — then spec the
+screens it touches: entry points, actions, controls, states, and how each is arranged. Same
+commands as adding a feature; see §3 for what each one does.
+
 ```
 /uxos:design-direction
 ```
-Before any screen gets designed. Stage-gated — one decision at a time, confirmed before the
+Once the key screens are specified, before any of them is designed. Stage-gated — one decision at a time, confirmed before the
 next: already-fixed brand constraints, design philosophy, colour, typography, spacing/
 density, accessibility baseline, iconography, platform convention stance. There's no
 existing product to extract patterns from, so this *is* the source of truth for visual
-direction.
+direction — and because the screens are known by now, the style tiles show one of them.
 
 **Not a designer, or running it with a client?** It asks who is answering first. Anyone who
 isn't a designer is asked about their product and customers, not design terms, and chooses
@@ -209,18 +229,12 @@ then re-runs to follow the new direction.
 /uxos:patterns
 ```
 On greenfield this doesn't reverse-engineer anything. The foundations (colour, typography,
-spacing…) come straight from `design-direction.md`; the atoms, molecules, organisms and
-templates above them are a proposed starter set, marked provisional until journeys and
-screen specs show what's really needed.
+spacing…) come straight from `design-direction.md`; the organisms and templates come from
+your screen specs, and the atoms and molecules are a proposed starter set shaped by the
+direction.
 
-```
-/uxos:blueprint
-```
-Builds the initial (sparse) feature map from the approved to-be-solved items. It grows as
-journeys and screen specs get designed — that's expected, not a gap.
-
-**The project is now "ready"** for greenfield — domain, user groups, personas, to-be-solved,
-design direction, patterns, and an initial blueprint all exist. Continue at §3.
+**The project is now ready to design** — scope, feature map, journeys, screen specs, design
+direction and patterns all exist. Build the design system and the screens next (§8).
 
 ---
 
