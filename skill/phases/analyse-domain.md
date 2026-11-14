@@ -16,6 +16,12 @@ the project name**. Before researching, state the domain in one line ("holiday c
 in Norway, for owners and guests") and confirm it. If there's no description to go on,
 stop and ask for one; don't research a domain the name merely suggests.
 
+## Research may be handed off; the file is not
+The research can run in a helper (a subagent or fork) to save time, but the helper only
+researches and reports back — it never writes `domain.md` or any other file under `uxos/`.
+The main conversation drafts `domain.md` from its findings, shows it, and saves it on the
+designer's yes.
+
 ## Depth dial
 Ask, or infer from the designer's `familiarity` answer:
 - `very` → skip this skill entirely.

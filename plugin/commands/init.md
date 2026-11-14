@@ -100,6 +100,11 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
    save only on a yes. Start with `product-context.md` — built from the intake answers and
    the confirmed description, before any research.
 
+   If you hand research or reading to a helper (a subagent, a fork, the `context-extractor`
+   agent), it reports back and **writes nothing under `uxos/`**; you draft each file from
+   its findings, show it, and save on approval. Give the helper only its task — "research
+   and report back, don't write any files" — not the steps after it.
+
    Skip any artifact that was imported and
    confirmed (its `confidence: designer-supplied`); use it as an input to what follows
    instead (e.g. imported user groups feed `capture-users`' persona step, an imported

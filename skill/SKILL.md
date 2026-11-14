@@ -381,6 +381,13 @@ In every draft, keep **what the designer said** apart from **what uxos inferred*
 lines are marked `Inferred —` (or `needs verification`), so nobody approves a guess thinking
 it was their own words.
 
+**Only the main conversation writes the model.** Work may be handed to a helper — a
+subagent, a fork, the `context-extractor` agent — for research or reading, but a helper
+**never writes or edits files under `uxos/`**: it can't show the designer a draft and wait
+for a yes. It returns its findings; the main conversation drafts the artifact, shows it, and
+saves it on approval. When handing work off, say so in the task ("research and report back —
+don't write any files"), and give it only that task, not the next steps.
+
 Exceptions: the designer's own edits; `open-questions.md` and `uxos/README.md` index entries
 that only list items already shown; and logs a procedure says to append (sync, mirror).
 

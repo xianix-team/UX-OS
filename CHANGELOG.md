@@ -8,6 +8,17 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.2] — 2026-11-14
+
+### Fixed
+- **Helpers never write the model.** In one run, research was handed to a background fork
+  told to write `uxos/domain.md` itself — which would save it without the designer seeing
+  it, and the fork went on to unrelated work. Now only the main conversation writes under
+  `uxos/`: a subagent, fork, or the `context-extractor` agent researches and reports back,
+  and the main conversation drafts, shows, and saves on approval. Handed-off tasks say "don't
+  write any files" and carry only that task. In the method, `analyse-domain`, `/uxos:init`,
+  and the uxos hook.
+
 ## [0.34.1] — 2026-11-14
 
 ### Fixed
@@ -306,7 +317,8 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.1...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.2...HEAD
+[0.34.2]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.2
 [0.34.1]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.1
 [0.34.0]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.0
 [0.32.1]: https://github.com/xianix-team/UX-OS/releases/tag/v0.32.1
