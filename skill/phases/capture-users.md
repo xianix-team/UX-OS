@@ -10,8 +10,9 @@ segments** (behavioural variants within a group) — so journeys and the UX matr
 someone concrete to be about. The designer chooses scope; this doesn't decide it alone.
 
 ## Candidate user groups — propose, then let the designer choose
-Derive candidates from domain analysis (its Roles & Responsibilities section) and the
-product's observed structure. For each candidate, apply:
+Derive candidates from domain analysis (its Roles & Responsibilities section), the
+product's observed structure, and the designer's own description of who it's for — never
+from the project name. For each candidate, apply:
 - **Central to the core workflow** — directly involved, not peripheral
 - **Distinct in needs** — meaningfully different pain points, goals, or context from the
   other candidates

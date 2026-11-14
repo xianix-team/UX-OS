@@ -96,6 +96,11 @@ yourself, and recap before starting. Ask, unless already known:
 - **Project name** (slug) — asked first.
 - **Is this a new product starting from scratch (greenfield), or one that already exists
   (brownfield)?** — it changes what else gets asked and which phases run.
+- **The idea, in their own words** — what it is, who it's for, what problem it solves (new);
+  what it does and who uses it (existing). Ask for who and what problem if missing; say back
+  what you understood, including the industry it sits in, and confirm. A project name is a
+  label, never a description: nothing — domain research, users, personas — is inferred from
+  it. If they can't describe it yet, stop and pick up later rather than guess.
 - **Where the model lives** — not asked: `./uxos` (plugin) or artifacts in this chat (skill),
   said once so the user can change it.
 - **Platform** — web / iOS / Android / desktop / other.
@@ -367,6 +372,8 @@ designer always chooses.
 
 - Never fabricate an evidence row in the UX matrix (analytics, business data, interviews).
   Leave it empty until the designer supplies it.
+- Never infer the product, its industry, or its users from the project name. They come from
+  the designer's own description, confirmed back, or from real sources.
 - Never simulate users. Interview or survey evidence comes only from real sessions, tagged
   `[interviewed, <date>, n=<N>]` or `[surveyed, <date>, n=<N>]`.
 - Anything behind an auth wall or otherwise unobserved is `Assumption`-tier: keep it, label

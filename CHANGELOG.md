@@ -8,6 +8,18 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.1] — 2026-11-14
+
+### Fixed
+- **`/uxos:init` no longer guesses the product from its name.** With no documents and no
+  industry knowledge, it could research a domain and draft users from the project name
+  alone. Intake now asks "Tell me about the idea, in your own words" — what it is, who it's
+  for, what problem it solves — asks for whatever's missing, says back what it understood
+  (including the industry), and confirms before anything else. If the idea can't be
+  described yet, it stops rather than guessing. `analyse-domain` confirms the domain from
+  that description before researching, and `capture-users` draws on it; neither uses the
+  project name. A new honesty rule says so.
+
 ## [0.34.0] — 2026-11-14
 
 From this release the Claude Code plugin and the npm MCP package
@@ -287,6 +299,7 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.0...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.1...HEAD
+[0.34.1]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.1
 [0.34.0]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.0
 [0.32.1]: https://github.com/xianix-team/UX-OS/releases/tag/v0.32.1
