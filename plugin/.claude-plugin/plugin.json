@@ -1,6 +1,6 @@
 {
   "name": "uxos",
-  "version": "0.34.6",
+  "version": "0.34.7",
   "description": "UX Designer OS — a co-pilot for UX and product designers, brownfield and greenfield. Builds a persistent project model, runs the analysis, and carries the designer through journeys, a functional prototype (Claude Design + code), and development Units.",
   "author": {
     "name": "Rasika Mahindasiri",

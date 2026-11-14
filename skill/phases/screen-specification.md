@@ -71,18 +71,7 @@ For each screen:
   only this says *where*.
 
 Don't invent sub-actions, controls, or nav changes that have no real basis — if a screen
-genuinely has none beyond the primary action, say so rather than padding the spec. **A
-finding in `domain.md` is a real basis**: grounded detail isn't padding.
-
-## Domain grounding — per screen
-Before drafting each screen, re-read `domain.md` (and `competitors.md`, validation findings,
-business rules if they exist) and fill the screen's **Domain grounding** table: each finding
-that bears on this screen, its source, and how the screen uses it — or why it doesn't apply.
-This is what stops a screen being generic: the research said how information really reaches
-these users, the terms they use, the limits they work within; the screen should show it.
-Grounded ideas beyond the journey are offered as **Proposed — <idea> [from <source>]** for the
-designer to accept or reject. A screen with an empty grounding table, where `domain.md` has
-relevant findings, isn't finished.
+genuinely has none beyond the primary action, say so rather than padding the spec.
 
 ## Output
 `uxos/screen-specs/<journey-id>.md` from `templates/screen-spec.md`, one block per

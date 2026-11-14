@@ -41,14 +41,6 @@ For every step, fill three columns (plus Actor, if this journey crosses actors/s
   delight genuinely needs a new pattern, say so explicitly rather than quietly introducing
   one.
 
-**Ground every step in the research.** Before drafting, re-read `domain.md` (and
-`competitors.md`, validation findings, business rules if they exist). Each step's How and
-Technical delight should use the domain's real mechanics where they apply — how information
-arrives, the terms users use, the limits they work within — cited (`[from domain.md §2]`).
-Grounded ideas that go beyond the to-be-solved item are offered as **Proposed — <idea>
-[from <source>]**, for the designer to accept or reject. Detail with no source is still never
-added.
-
 Write the **Primary user goal** and the one-line **Core Experience** that distils the whole
 journey. Draw the flow diagram (steps + the decisions that matter, per `map-journey-steps`'s
 diagramming rule).

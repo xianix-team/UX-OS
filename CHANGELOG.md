@@ -8,6 +8,20 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.7] — 2026-11-14
+
+### Changed
+- **Detail flows down the chain, not around it (greenfield).** 0.34.6 had journey design and
+  screen specs re-read `domain.md` and offer "Proposed" extras from it. That went around the
+  chain (domain → user groups → personas → to-be-solved → feature map → journeys → screen
+  specs) and around the to-be-solved scope gate. Reverted: journeys and screen specs build on
+  what's upstream, as before, and the Domain grounding table and Proposed extras are gone. The
+  real loss was earlier, so the fix is there: on greenfield, `capture-users` writes each
+  persona pain point, goal, and need as the concrete situation the domain study found, cited,
+  and `problem-validation` carries those specifics into the to-be-solved items. If a screen
+  needs something that isn't upstream, it's raised as a gap in the to-be-solved list.
+  Brownfield is unchanged.
+
 ## [0.34.6] — 2026-11-14
 
 From a greenfield incident report: the prototype came out generic because concrete domain
@@ -387,7 +401,8 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.6...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.7...HEAD
+[0.34.7]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.7
 [0.34.6]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.6
 [0.34.5]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.5
 [0.34.4]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.4
