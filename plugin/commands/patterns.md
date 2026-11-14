@@ -28,6 +28,11 @@ Build or update `uxos/patterns.md` for the current project.
 3. State coverage honestly (e.g. unauthenticated pages only); push gated-screen pattern
    gaps to `open-questions.md`.
 
+   **Show before saving:** present the draft — foundations, the inconsistency register,
+   and the canonical patterns, with a summary for long sections and the full text on
+   request — and write `uxos/patterns.md` only on an explicit yes. Mark inferred values
+   (`[measured ~]`, `(proposed)`) so they aren't mistaken for confirmed ones.
+
 4. Run the `next-steps` skill and present its block.
 
 Templates: `${CLAUDE_PLUGIN_ROOT}/templates/patterns.md`.

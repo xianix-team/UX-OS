@@ -19,6 +19,13 @@ versions fix them.
   described yet, it stops rather than guessing. `analyse-domain` confirms the domain from
   that description before researching, and `capture-users` draws on it; neither uses the
   project name. A new honesty rule says so.
+- **Nothing is saved without approval.** `/uxos:init` wrote its files first and reviewed
+  them afterwards, and `/uxos:patterns` didn't review at all. Now every new or changed file
+  under `uxos/` is shown as a draft and saved only on an explicit yes — answering the next
+  question doesn't count. `init` goes one file at a time, starting with `product-context.md`;
+  `problems` and `to-be-solved` show the finished file before saving. Drafts keep what the
+  designer said apart from what uxos inferred (`Inferred —`). The rule is in the method and
+  reminded on every prompt by the uxos hook.
 
 ## [0.34.0] — 2026-11-14
 

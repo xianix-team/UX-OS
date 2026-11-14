@@ -31,7 +31,9 @@ Build or update `uxos/to-be-solved.md` -- the contract handed to Part B.
    `new-feature` or `journey-redesign` on greenfield, since there's no existing journey to
    merely adjust) but let the designer choose.
 
-4. Write `to-be-solved.md` with `grouping` set (`user-group` or `theme`), the decision +
+4. **Show the finished list** — every decision and response type, the deferred and
+   needs-verification items — and ask to save it; write only on an explicit yes. Write
+   `to-be-solved.md` with `grouping` set (`user-group` or `theme`), the decision +
    response type per item, a deferred list, and a needs-verification list mirrored into
    `open-questions.md`. Update `uxos/README.md`.
 

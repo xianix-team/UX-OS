@@ -8,6 +8,7 @@ dir="${CLAUDE_PROJECT_DIR:-$PWD}"
 
 cat <<EOF
 [uxos skill-first rule] This is a uxos project. For any task that produces work for this product (UX or not), first check the routing table in ${CLAUDE_PLUGIN_ROOT}/METHOD.md ("Skill-first rule"). If a uxos skill covers it, load and follow that skill and name it in one line. Do not substitute general knowledge or another plugin's/global skill for a job a uxos skill covers. If no uxos skill fits, say "uxos has no procedure for <task>; I'll use general capabilities for this", label the output [outside uxos], and don't write it into a model artifact unless the designer asks.
+[uxos show-before-saving] Never write or change a file under uxos/ until the designer has seen the draft (or the change) and said yes to saving it. Answering a question is not approval. Mark inferred lines "Inferred —" so they aren't mistaken for the designer's own words.
 EOF
 
 ctx="$dir/uxos/product-context.md"

@@ -91,11 +91,20 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
    reference-material read + domain web research (greenfield). Wait for its source-tagged
    report.
 
-3. **Draft the model — only what's missing.** Skip any artifact that was imported and
+3. **Draft the model — only what's missing, one artifact at a time, each shown before it's
+   saved.** For every artifact: show the draft, ask "Shall I save this, or change
+   something?", and write the file **only on an explicit yes**. Answering the next question
+   is not approval. In each draft, keep what the user told you apart from what you inferred,
+   and mark every inferred line `Inferred —` or `needs verification`. For long drafts
+   (domain research), show a summary and the key sections, offer the full text, and still
+   save only on a yes. Start with `product-context.md` — built from the intake answers and
+   the confirmed description, before any research.
+
+   Skip any artifact that was imported and
    confirmed (its `confidence: designer-supplied`); use it as an input to what follows
    instead (e.g. imported user groups feed `capture-users`' persona step, an imported
    feature map stands in for `build-blueprint`). Follow these skills for the rest, writing
-   files under the model dir:
+   files under the model dir only after each is approved:
    - `analyse-domain` → `domain.md` (skip only if familiarity = `very`)
    - **Brownfield:** `study-product` → `product-context.md` + a named journey list, then
      `capture-users` → `user-groups.md` + `personas/*.md` (with the candidate-selection
@@ -110,7 +119,8 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
    extractor's report — so `code-sync` can tell later what developers built since.
    Also write `uxos/README.md` — an index of the artifacts written and the steps still to do.
 
-4. **Gate G1 — context review.** Present a single review block:
+4. **Gate G1 — context review.** Every file has already been approved one by one; this is
+   the overall check across them. Present a single review block:
    - `CONFLICTS` — where sources disagree or a node was guessed.
    - `UNKNOWNS` — now in `open-questions.md`.
    - `LOW-CONFIDENCE GUESSES` — inferred items that will drive later analysis.
