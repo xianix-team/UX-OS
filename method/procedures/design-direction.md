@@ -58,7 +58,9 @@ fixed for the rest of this step, like stage 0; changes and drops are what the st
 
 ## Mood board — optional, offered to everyone
 Ask whether they have references in mind: screenshots, images, or links to apps and sites
-whose look they like (or dislike). Competitors from `competitors.md`, if it exists, can be
+whose look they like (or dislike) — **including their own sketches or mockups of this idea,
+however rough or AI-made**. People often don't think of those as "references", so ask about
+them by name. Competitors from `competitors.md`, if it exists, can be
 offered as a starting point.
 
 1. **Read each one.** Images with the Read tool. Links in a browser after
@@ -96,8 +98,8 @@ in one direction's colour, type, spacing, shape and imagery. Show 2–3 tiles si
 - Never use a referenced brand's assets, palette, or type in a tile. Placeholder imagery is
   neutral.
 - **Tile copy comes from the model** — screen and step names from the journeys, the
-  to-be-solved scope — or is plainly neutral ("Item name", "Continue"). Never invent product
-  claims or features in a tile.
+  to-be-solved scope, real terms and values from `domain.md` — or is plainly neutral ("Item
+  name", "Continue"). Never invent product claims or features in a tile.
 - Ask this-or-that ("A or B — which feels more like your product?") and what they like and
   dislike about each; turn the answers into the decision and re-render the chosen tile.
 - Publishing the page to share with colleagues is the designer's or client's call.

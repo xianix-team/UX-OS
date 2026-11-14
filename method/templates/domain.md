@@ -5,6 +5,8 @@ status: draft
 confidence: mixed
 source: <web research / articles / competitor products / the product itself>
 depth: <shallow | standard | deep>
+reviewed: <YYYY-MM-DD — set after the section-by-section review with the designer>
+reviewed_sections: <all | list, with any skipped>
 ---
 
 # Domain — <domain name>

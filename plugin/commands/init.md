@@ -70,7 +70,10 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
       of your users or personas, a map of features, user journeys, a UX review, a list of
       what to fix or build. Any format, any folder. If yes, run the `import-artifacts`
       skill (`/uxos:import`) *before* drafting anything — adopt what exists, generate only
-      the gaps.
+      the gaps. Then ask separately, because people rarely count these as research:
+      **"Have you sketched or mocked up this idea already — even roughly, or with AI?"** If
+      yes, take them as references (stored like other sources, used to understand the idea
+      and later in design direction), never as a spec to copy.
    9. **"Where would you like screens designed?"** — recommend *Claude Design, with a
       working prototype in code* ("no Figma licence, one design system") · *Figma* ·
       *design prompts for another tool, such as Stitch* · *not sure yet — decide later* →
@@ -115,7 +118,9 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
    instead (e.g. imported user groups feed `capture-users`' persona step, an imported
    feature map stands in for `build-blueprint`). Follow these skills for the rest, writing
    files under the model dir only after each is approved:
-   - `analyse-domain` → `domain.md` (skip only if familiarity = `very`)
+   - `analyse-domain` → `domain.md` (skip only if familiarity = `very`) — reviewed with the
+     user **section by section** before saving, not approved in one go; domain-general only
+     (specific products are listed by name and left for `/uxos:competitors`)
    - **Brownfield:** `study-product` → `product-context.md` + a named journey list, then
      `capture-users` → `user-groups.md` + `personas/*.md` (with the candidate-selection
      gate), then `build-blueprint` (create, brownfield) → `blueprint.md`.

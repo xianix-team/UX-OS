@@ -24,6 +24,10 @@ Design or revise the journey `$ARGUMENTS`.
    - draft the full journey — Primary user goal, the Step / How / Why / Technical-delight
      table (Why tied to a real persona need where one exists; Technical delights checked
      against `uxos/patterns.md` first), Core Experience, and the flow diagram
+   - **re-read `uxos/domain.md` first** and ground each step in it: use the domain's real
+     mechanics (channels, terms, limits), cited `[from domain.md §n]`; offer grounded extras as
+     **Proposed — … [from …]**. A journey with no domain citations where `domain.md` has
+     relevant findings isn't finished
    - present it as one complete draft and take corrections (or go step-by-step if the
      designer prefers)
    - set `state: proposed` (create/update) or keep `existing` (enrich), and add a change

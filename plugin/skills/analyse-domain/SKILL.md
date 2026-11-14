@@ -52,6 +52,26 @@ metrics), leave that section thin or omit it rather than filling it with a guess
 8. **Baseline metrics** — current-state performance data, only if research actually
    surfaces it.
 
+## Stay domain-general — no product teardowns
+This describes the domain, not any one product in it. When research turns up specific
+products or services (a competitor, a government app), **list them by name only**, with a
+one-line note of what kind of thing each is, under Domain overview — and suggest
+`/uxos:competitors` for a proper look. Don't write their features, partners, launch dates,
+usage figures, or claims into `domain.md`; that's competitor analysis, with its own evidence
+rules. Mechanics that belong to the domain itself — how information typically reaches these
+users, the terms they use, the limits they work within — do belong here, sourced.
+
+## Review with the designer — before saving
+A long domain study approved with one "yes" is a rubber stamp. Instead:
+1. Confirm the domain in one line (see above).
+2. Go **section by section**: for each, give the key findings, each marked researched (with
+   its source) or `Inferred —`, and ask "Anything wrong or missing here?". The designer may
+   skip a section; record that it was skipped.
+3. Finally ask "What do you know about this domain that I haven't found?" — local practice,
+   regulations, how people really work. Their answers go in, tagged `[designer]`.
+4. Save `domain.md` only after the walk-through and an explicit yes. Set `reviewed: <date>`
+   and `reviewed_sections` in the frontmatter.
+
 ## Output
-`uxos/domain.md` from `${CLAUDE_PLUGIN_ROOT}/templates/domain.md`. Set `depth` in frontmatter. Every "needs
+`uxos/domain.md` from `${CLAUDE_PLUGIN_ROOT}/templates/domain.md`, only after the review above. Set `depth` in frontmatter. Every "needs
 verification" line is also appended to `uxos/open-questions.md`.
