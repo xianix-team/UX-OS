@@ -8,6 +8,17 @@ versions fix them.
 
 ## [Unreleased]
 
+### Changed
+- **The claude.ai skill is frozen at 0.35.0** and no longer generated from `method/`: its
+  instructions were written for Claude Code (files, slash commands, hooks), so parts don't
+  work in claude.ai, and there's no known user. `skill/` stays as a labelled snapshot; the
+  plugin and the MCP server are the maintained ways to use uxos. `build.sh` and `check.sh`
+  cover `plugin/` only.
+- README: "Three ways to use uxos" with each one's status; the quick start explains the MCP
+  server; `/uxos:crazy8` added to the plugin README.
+- CI runs the MCP server's tests on every pull request, not only at release; `npm pkg fix`
+  applied to `mcp/package.json` (the `bin` path) to clear npm's publish warning.
+
 ## [0.35.0] — 2026-11-17
 
 Fixes from a full audit of the method, commands, templates, and docs.

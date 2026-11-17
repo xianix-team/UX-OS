@@ -4,7 +4,7 @@
 ## Why
 
 ## Checklist
-- [ ] Edited `method/` (not the generated `plugin/skills`, `plugin/templates`, `skill/`), and ran `bash scripts/build.sh`
+- [ ] Edited `method/` (not the generated `plugin/skills`, `plugin/templates`), and ran `bash scripts/build.sh`
 - [ ] Bumped the version in `plugin/.claude-plugin/plugin.json`
 - [ ] Added an entry to `CHANGELOG.md` under *Unreleased*
 - [ ] `bash scripts/check.sh` and `claude plugin validate plugin` pass

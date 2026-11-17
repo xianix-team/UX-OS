@@ -7,12 +7,12 @@ fail=0
 bad () { echo "FAIL: $*"; fail=1; }
 
 echo "==> generated files match method/"
-snapshot () { find plugin skill -type f ! -name '.DS_Store' -print0 | sort -z | xargs -0 shasum; }
+snapshot () { find plugin -type f ! -name '.DS_Store' -print0 | sort -z | xargs -0 shasum; }
 before=$(snapshot)
 bash scripts/build.sh >/dev/null
 after=$(snapshot)
 if [ "$before" != "$after" ]; then
-  bad "plugin/ or skill/ was out of date with method/ — it has now been rebuilt; review and commit the result"
+  bad "plugin/ was out of date with method/ — it has now been rebuilt; review and commit the result"
   diff <(echo "$before") <(echo "$after") | grep '^[<>]' | awk '{print "   " $3}' | sort -u
 fi
 

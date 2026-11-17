@@ -95,15 +95,15 @@ Everything uxos produces is a git-tracked `uxos/` folder in your project. Team-w
 [`docs/guides/team-settings.example.json`](docs/guides/team-settings.example.json) as
 `.claude/settings.json`.
 
-## Two packages
+## Three ways to use uxos
 
-| Package | For | Install |
-|---|---|---|
-| **Claude Code plugin** ([`plugin/`](plugin/README.md)) | designers in a terminal or VS Code | the marketplace commands above |
-| **claude.ai Skill** ([`skill/`](skill/README.md)) | designers and POs in claude.ai chat | `cd skill && zip -r ../uxos-skill.zip .`, upload in claude.ai → Settings → Capabilities → Skills; then type `/uxos` |
+| Package | For | Install | Status |
+|---|---|---|---|
+| **Claude Code plugin** ([`plugin/`](plugin/README.md)) | designers in a terminal, VS Code, or the Claude desktop app | the marketplace commands above | **maintained** — the full experience |
+| **MCP server** ([`mcp/`](mcp/)) | other MCP clients — Claude Desktop, Cursor, and others | `npx -y @99x-ai-dlc/uxos-skills-mcp` (in Claude Code: `claude mcp add -s user uxos-skills -- npx -y @99x-ai-dlc/uxos-skills-mcp`) | **maintained** — serves the skills, templates, and method; not yet the plugin's commands or hook |
+| **claude.ai Skill** ([`skill/`](skill/README.md)) | claude.ai chat | upload a zip of `skill/` in claude.ai → Settings → Capabilities → Skills | **frozen at 0.35.0, not maintained** — parts don't work in claude.ai |
 
-The Skill has no filesystem: it produces one artifact per phase instead of a `uxos/`
-folder.
+The plugin and the MCP server share one version and are released together.
 
 ## Repo layout
 
@@ -111,8 +111,10 @@ folder.
 |---|---|
 | [`method/`](method/README.md) | **single source of truth** — orchestration, procedures, templates |
 | [`plugin/`](plugin/README.md) | Claude Code plugin, generated from `method/` (commands and hooks are hand-written) |
-| [`skill/`](skill/README.md) | claude.ai Skill, generated from `method/` |
-| [`scripts/build.sh`](scripts/build.sh) | regenerates `plugin/` and `skill/` from `method/` |
+| [`mcp/`](mcp/) | MCP server serving the skills, templates, and method (npm: `@99x-ai-dlc/uxos-skills-mcp`) |
+| [`skill/`](skill/README.md) | claude.ai Skill — frozen at 0.35.0, not maintained |
+| [`scripts/build.sh`](scripts/build.sh) | regenerates `plugin/` from `method/` |
+| [`scripts/check.sh`](scripts/check.sh) | repo checks, run by CI on every pull request |
 | [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) | makes this repo an installable plugin marketplace |
 | [`docs/guides/`](docs/guides/) | [quick start](docs/guides/quick-start.md), [testing the plugin](docs/guides/testing-the-plugin.md), team settings |
 | [`docs/architecture/`](docs/architecture/) | the original design notes, from before uxos was built: [architecture](docs/architecture/architecture.md), [Part A workflow](docs/architecture/part-a-workflow.md), process diagrams |
