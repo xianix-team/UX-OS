@@ -8,6 +8,18 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.34.8] — 2026-11-17
+
+### Fixed
+- **Research no longer takes over your browser.** In a session without background web tools,
+  domain research fell back to driving the designer's own Chrome (Claude in Chrome) without
+  asking — their logged-in profile, in the browser they were using. Now research uses
+  background web search and fetch; if those are missing, the isolated built-in browser pane;
+  the designer's Chrome only after they say yes; otherwise it stops and says what's missing.
+  `browser-preflight` prefers the built-in pane over Chrome for live pages too, and asks before
+  using Chrome every session. In `analyse-domain`, `competitor-analysis`, `browser-preflight`,
+  and the method.
+
 ## [0.34.7] — 2026-11-14
 
 ### Changed
@@ -401,7 +413,8 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.7...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.8...HEAD
+[0.34.8]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.8
 [0.34.7]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.7
 [0.34.6]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.6
 [0.34.5]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.5

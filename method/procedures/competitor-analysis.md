@@ -54,7 +54,9 @@ removes, and picks the deep dives. **Stop for confirmation** — and go on only 
 confirms the list itself; an answer to the framing questions alone is not that. Ask again.
 
 ## Stage 3 — Landscape (desk, every confirmed competitor)
-Desk research only — web search and page fetches; no browser needed, so don't run
+Desk research only — web search and page fetches, in the background (if they're missing, see
+`browser-preflight`'s "Research is not browsing"; never the designer's Chrome without
+asking); no browser needed, so don't run
 `browser-preflight` yet.
 Per competitor, from public sources: positioning and target users, platforms (web / iOS /
 Android / desktop), business model and public pricing, notable integrations, market
