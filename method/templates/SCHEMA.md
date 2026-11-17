@@ -11,14 +11,14 @@ below the frontmatter follow each template.
 | `artifact` | all | the artifact type (see list below) |
 | `project` | all | project slug |
 | `project_type` | product-context | `brownfield` \| `greenfield` — set at `/uxos:init`, shapes which procedures apply |
-| `status` | all | `draft` \| `reviewed` \| `stale` |
+| `status` | all | `draft` (not yet approved) \| `approved` (the designer said yes to saving it — set on save; for a design record, the design itself was approved) \| `stale` (something it was built from has changed since it was approved — set by `next-steps` when it notices) |
 | `confidence` | most | `observed` \| `inferred` \| `mixed` \| `assumption` \| `designer-supplied` (imported — adopted, not validated) |
 | `imported_from` | any imported artifact | the original file(s) it was built from, as listed in `sources/INDEX.md` |
 | `state` | journeys, screens, patterns | `existing` \| `proposed` |
 | `platform` | product-context | `web` \| `iOS` \| `Android` \| `desktop` \| `other` |
 | `source` | domain, context, patterns | what backed it — url / repo / simulator walk / screenshots / figma / docs / reference material / designer's description |
 | `repo`, `repo_branch`, `synced_commit`, `synced_at` | product-context | the code-sync baseline — which repo and branch count as built, and the commit the model last matched |
-| `design_tools`, `design_master`, `design_master_since` | product-context | where the project designs, and which side — Claude Design or code — is the design system's source of truth (see design-mirror) |
+| `design_tools`, `design_master`, `design_master_since` | product-context (`design_master` only when Claude Design is in `design_tools`) | where the project designs, and which side — Claude Design or code — is the design system's source of truth (see design-mirror) |
 | `user_role` | product-context | who set the project up (designer, product owner, founder, developer, other); steps use plain words and never ask a non-designer an unseen visual choice |
 | `design_records_path` | product-context | only when the designer kept an older project's `uxos/handoff/` folder; omitted otherwise |
 | `mirrored_commit`, `mirrored_at` | design-records/design-system | the code commit Claude Design last mirrored via /design-sync |
@@ -41,7 +41,8 @@ below the frontmatter follow each template.
 | `ux-matrix` | `ux-matrix/<journey-id>.md` | `journey` + `personas[]`; columns = journey phases |
 | `problems-register` | `problems.md` | each row → matrix cell ref; → affected personas |
 | `product-pattern-study` | `patterns.md` | brownfield: inconsistency rows → PRB ids; greenfield: §6 populated from `design-direction` |
-| `design-direction` | `design-direction.md` | greenfield only; feeds `patterns.md` §6 directly |
+| `design-direction` | `design-direction.md` | greenfield, and brownfield revamp; feeds `patterns.md` §6 directly |
+| `design-prompt` | `design-prompts/<journey-id>.md` | one prompt block per step or screen, for Stitch or another AI design tool (`design-handoff` Path B) |
 | `to-be-solved` | `to-be-solved.md` | items → PRB ids (improve/revamp) or theme consolidation (greenfield) + `response_type` |
 | `requirements-gap` | `requirements-gap.md` | `to-be-solved`; cross-checks a client-supplied FR/NFR document, both directions + an NFR sweep |
 | `sources-index` | `sources/INDEX.md` | every imported document → where it was copied, what it was classified as, which artifact(s) it produced; originals are never modified |
@@ -56,8 +57,6 @@ below the frontmatter follow each template.
 | `design-record` | `design-records/<journey-id>.md`, `design-records/design-system.md`, `design-records/code-library.md` | the designer's working record, not for developers (their handoff is `requirements`);  `target`: figma \| code \| claude-design; links out to the Figma file, branch, or `claude_design_url`; revision log for canvases |
 | `open-questions` | `open-questions.md` | — |
 | `new-feature-mapping` | `feature-mapping/<slug>.md` | `driver` + `source_problem` + touchpoints → journey steps |
-| `decision` | `decisions/<id>.md` | → affected artifacts |
-| `work-package` | `work-packages/<id>/` | → to-be-solved items |
 
 ## Traceability spine
 

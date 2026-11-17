@@ -13,8 +13,8 @@ This is the handoff to a **design tool**, not to developers. Their handoff is th
 record.
 
 ## Prerequisite
-The journey must be confirmed (`state: proposed`, from `journey-design`) — don't run this on
-a draft still being corrected. `patterns.md` must exist; it's what keeps new screens
+The journey must be approved (`status: approved`; usually `state: proposed`, from
+`journey-design`) — don't run this on a draft still being corrected. `patterns.md` must exist; it's what keeps new screens
 coherent with the existing product instead of novel. If `uxos/edge-cases/<id>.md` doesn't
 exist yet, say so and offer to run `edge-case-analysis` first — non-blocking, the designer
 can proceed without it.

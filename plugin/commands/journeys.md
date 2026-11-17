@@ -20,7 +20,8 @@ Manage the key-journey set for the current `uxos/` project.
 
 3. For each key journey without a doc, run the `map-journey-steps` skill → write
    `uxos/journeys/<id>--<slug>.md` (flow steps, `*(inferred)*` marks, a mermaid diagram,
-   notes). Do not force the How/Why/Technical-delight enrichment.
+   notes). Do not force the How/Why/Technical-delight enrichment. Present each journey's
+   draft (steps and diagram) and save it only on an explicit yes — one journey at a time.
 
 4. Update `uxos/README.md` (steps-done table) and add any new gaps to `open-questions.md`.
 

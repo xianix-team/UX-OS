@@ -12,8 +12,8 @@ Design tools build exactly what they're given; if that's only the sequence, that
 gets designed. This procedure closes that gap before design-handoff, not during it.
 
 ## Prerequisite
-The journey should be confirmed (`state: proposed` from `journey-design`, or `existing`
-from `map-journey-steps`). `patterns.md` should exist — it's the source for the existing
+The journey should be approved (`status: approved` — `state: proposed` from
+`journey-design`, or `existing` from `map-journey-steps`). `patterns.md` should exist — it's the source for the existing
 nav model, so entry points and menu updates reuse it instead of inventing a new pattern.
 
 ## Identify the screens

@@ -15,7 +15,7 @@ Analyse edge cases for journey `$ARGUMENTS`.
    proposed handling (or `needs decision`). Present the whole draft at once — not gated
    category by category. Skip categories that genuinely don't apply; don't pad them.
 
-3. Write `uxos/edge-cases/<id>.md`.
+3. Present the finished list and save it only on an explicit yes. Write `uxos/edge-cases/<id>.md`.
 
 4. Note the routing for `open` items:
    - `state: existing` journey → candidates for `/uxos:problems`

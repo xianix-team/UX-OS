@@ -8,6 +8,36 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.35.0] — 2026-11-17
+
+Fixes from a full audit of the method, commands, templates, and docs.
+
+### Fixed
+- **`/uxos:blueprint` on greenfield** ran the product extractor in create mode; it now builds
+  from the approved to-be-solved list, and shows the tree before saving.
+- **Competitor analysis timing** still followed the old greenfield order (offered before the
+  to-be-solved list); it's now offered after to-be-solved and before the feature map.
+- **`design_master`** was set to Claude Design for every new product, even when the designer
+  chose Figma or prompts. It's now set only when Claude Design is in `design_tools`, and the
+  promote and mirror suggestions apply only then.
+- **The research helper and your browser.** `context-extractor` runs as a helper and can't
+  ask, so the browser is settled in the main conversation first and passed in its task; it
+  never uses Claude in Chrome unless the task says the designer agreed.
+- **Units come after screen specs** in the solve loop (they're built from them), and are
+  refreshed when the design is built.
+- **Status means something.** `status` is now `draft` → `approved` (set when the designer says
+  yes to saving) → `stale` (set by `next-steps` when something upstream changes later).
+  "Confirmed" journeys now mean `status: approved`.
+- `matrix`, `journeys`, and `edge-cases` show their draft and save only on a yes, in the
+  command itself.
+
+### Changed
+- SCHEMA: added `design-prompt`; design direction covers revamp; removed the `decision` and
+  `work-package` artifacts nothing produces (and `feeds: work-packages/` from to-be-solved).
+- Product context, user groups, persona, and open-questions templates are named by path in
+  their procedures.
+- The method's intake asks the user's role, as `/uxos:init` does.
+
 ## [0.34.8] — 2026-11-17
 
 ### Fixed
@@ -413,7 +443,8 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.34.8...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.35.0...HEAD
+[0.35.0]: https://github.com/xianix-team/UX-OS/releases/tag/v0.35.0
 [0.34.8]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.8
 [0.34.7]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.7
 [0.34.6]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.6

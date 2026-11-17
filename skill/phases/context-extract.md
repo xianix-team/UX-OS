@@ -29,6 +29,12 @@ and list what you could not capture (rendered DOM, computed styles, screenshots,
 anything behind a login) under **Needs verification**. The designer is asked to choose how
 to proceed by the main session; you cannot prompt them yourself.
 
+**Use only the browser your task names.** The main session settles it with the designer
+before launching you. Prefer the built-in browser pane. **Never use Claude in Chrome unless
+your task says the designer agreed to it** — it drives their own logged-in browser. If the
+task names no browser, or says not to use Chrome, and you need one, report back with
+`BROWSER NOT AUTHORISED` instead of using it.
+
 ## Pick the approach from what's available
 
 The **method is the same** on every platform — inventory screens/surfaces, capture flow

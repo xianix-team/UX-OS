@@ -23,7 +23,7 @@ Build the UX Matrix for journey `$ARGUMENTS`.
      If the user has any of that data, let them paste it into the cells.
    - Number findings (`H1`, `O1 [IA]`…), give each an estimated severity and an evidence note.
 
-3. Write `uxos/ux-matrix/<id>-<slug>.md`. Add coverage gaps to `open-questions.md`.
+3. Present the finished matrix and save it only on an explicit yes. Write `uxos/ux-matrix/<id>-<slug>.md`. Add coverage gaps to `open-questions.md`.
 
 4. Run the `next-steps` skill and present its block (it should notice which key journeys
    still lack a matrix).

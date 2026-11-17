@@ -42,8 +42,13 @@ on?" interaction model.
    brownfield with no `repo`, keep one line in the gap slot: "got code access now?
    `/uxos:sync <repo>` enriches the existing documents with business logic from the code".
 
-   **Design master:** read `design_tools` and `design_master` from `product-context.md`
-   (unset → suggest recording them). `claude-design` with at least one design record
+   **Stale files:** compare dates — a file whose `status: approved` predates a later approved
+   change to something it was built from (its personas, journey, screen spec, or to-be-solved
+   item) is out of date: mark it `status: stale` and suggest revisiting it in the gap slot.
+
+   **Design master:** read `design_tools` and `design_master` from `product-context.md`.
+   `design_tools` unset → suggest recording it. `design_master` applies only when Claude
+   Design is in `design_tools` — otherwise skip the promote and mirror suggestions below. `claude-design` with at least one design record
    `status: approved` and a stack in `design-direction.md` → suggest `/uxos:promote` as the
    usual next step. `code` and the code library or prototype changed since
    `design-records/design-system.md` → `mirrored_commit` → suggest `/uxos:mirror` (push, via
@@ -52,9 +57,10 @@ on?" interaction model.
    code path over Figma when `design_tools` says so.
 
    **Competitor analysis (optional — suggest, never push):** no `competitors.md` and
-   (greenfield) `domain.md` exists but `to-be-solved.md` doesn't, or (brownfield) journeys
-   exist but `to-be-solved.md` doesn't → offer `/uxos:competitors` in the independent slot,
-   one line: "optional — see what users already get elsewhere before scoping". The designer
+   (greenfield) `to-be-solved.md` exists but `blueprint.md` doesn't — "optional — see what
+   people already use before solving" — or (brownfield) journeys exist but `to-be-solved.md`
+   doesn't — "optional — see what users already get elsewhere before scoping" → offer
+   `/uxos:competitors` in the independent slot, one line. The designer
    cites a competitor as the reason for a feature → suggest it in the gap slot.
    `competitors.md` dated more than six months ago → suggest a refresh. Mention it at most
    once per session if the designer passes on it.
