@@ -1,11 +1,17 @@
 # uxos — claude.ai Skill
 
+> **Frozen at 0.35.0 — not maintained.** This package is no longer regenerated from
+> `../method/`, and its instructions were written for Claude Code (files, slash commands,
+> hooks), so parts of it don't work in claude.ai. Use the **Claude Code plugin** or the
+> **MCP server** instead (see the main [README](../README.md)). If claude.ai users become a
+> real audience, it can be rebuilt properly from `../method/`, which is unchanged.
+
 The UX Designer OS method packaged as a **Claude Skill** for claude.ai chat. No install for
 the designer once it's shared — they type `/uxos` (or "analyse this product: …") in any
 conversation.
 
-**Generated from `../method/` — do not hand-edit `SKILL.md`, `phases/`, or `templates/`.**
-Edit `../method/`, run `../scripts/build.sh`.
+*(While it was maintained, this folder was generated from `../method/` by
+`../scripts/build.sh`. It no longer is.)*
 
 ## Contents
 | Path | What |

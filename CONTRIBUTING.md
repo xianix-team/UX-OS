@@ -22,14 +22,16 @@ Not sure whether something fits? Open an issue first; it saves rework.
 ## How the repo is built
 
 `method/` is the **single source of truth**. Everything in `plugin/skills/`,
-`plugin/agents/`, `plugin/templates/`, `plugin/METHOD.md`, and `skill/` is **generated**
-from it by `scripts/build.sh`.
+`plugin/agents/`, `plugin/templates/`, and `plugin/METHOD.md` is **generated** from it by
+`scripts/build.sh`. (`skill/`, the claude.ai skill, is frozen at 0.35.0 and no longer
+generated — leave it alone.) The MCP server in `mcp/` reads `plugin/` and is hand-written.
 
 | Edit this | Not this |
 |---|---|
-| `method/procedures/<name>.md` | `plugin/skills/<name>/SKILL.md`, `skill/phases/<name>.md` |
-| `method/templates/<name>.md` | `plugin/templates/`, `skill/templates/` |
-| `method/orchestration.md` | `plugin/METHOD.md`, `skill/SKILL.md` |
+| `method/procedures/<name>.md` | `plugin/skills/<name>/SKILL.md` |
+| `method/templates/<name>.md` | `plugin/templates/` |
+| `method/orchestration.md` | `plugin/METHOD.md` |
+| `mcp/*.mjs` (hand-written) | — |
 | `plugin/commands/*.md` (hand-written) | — |
 | `plugin/hooks/` (hand-written) | — |
 
@@ -40,7 +42,7 @@ bash scripts/build.sh
 ```
 
 and commit the regenerated files together with your source change. A pull request where
-`plugin/` or `skill/` disagrees with `method/` will be asked to rebuild.
+`plugin/` disagrees with `method/` fails CI.
 
 `method/orchestration.md` is the map of how the procedures fit together.
 [`docs/architecture/`](docs/architecture/) holds the original design notes from before uxos
@@ -82,7 +84,7 @@ Changes must keep these intact — they are what makes uxos trustworthy:
 package. `check.sh` fails if the versions differ.
 
 Run the repo checks — the same ones CI runs on every pull request. They rebuild `plugin/`
-and `skill/` and fail if the result differs from what's committed, and check manifests,
+and fail if the result differs from what's committed, and check manifests,
 frontmatter, template and command references, and the changelog entry:
 
 ```bash
@@ -93,6 +95,12 @@ Validate the plugin:
 
 ```bash
 claude plugin validate plugin
+```
+
+If you changed the MCP server, run its tests (CI runs them on every pull request too):
+
+```bash
+cd mcp && npm ci && npm test
 ```
 
 Then run the commands you touched against a small fixture project — a scratch folder with

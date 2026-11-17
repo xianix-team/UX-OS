@@ -6,7 +6,7 @@
   "author": "99x Asia",
   "type": "module",
   "bin": {
-    "uxos-skills-mcp": "./server.mjs"
+    "uxos-skills-mcp": "server.mjs"
   },
   "files": [
     "server.mjs",
