@@ -40,12 +40,13 @@ sources backed the understanding in the `product-context.md` frontmatter (`sourc
    (cancellation at a counter, physical confirmation). Do NOT write flow steps.
 
 ## Output
-- `uxos/product-context.md` from the template.
+- `uxos/product-context.md` from `${CLAUDE_PLUGIN_ROOT}/templates/product-context.md`.
 - `uxos/business-rules.md` in the exact shape of `${CLAUDE_PLUGIN_ROOT}/templates/business-rules.md` (sections
   per object, all six columns) — if the project already
   has one, add to it; never renumber existing `BR` ids.
 - Return the named journey list to the caller (used by `/uxos:journeys`).
-- Append every unresolved question to `uxos/open-questions.md`.
+- Append every unresolved question to `uxos/open-questions.md` (`${CLAUDE_PLUGIN_ROOT}/templates/open-questions.md`
+  if it doesn't exist yet).
 
 ## Honesty
 If key journeys sit behind an auth wall, say so — the model will lean on assumptions for

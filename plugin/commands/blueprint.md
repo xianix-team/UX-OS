@@ -10,8 +10,15 @@ Create or update `uxos/blueprint.md`.
 0. Run the `code-sync` skill in **check** mode — silent unless the repo has new commits
    since the last sync; then it offers to sync first.
 
-1. If `uxos/blueprint.md` doesn't exist: this is **create** mode. Run the `context-extractor`
-   agent if not already done this session, then the `build-blueprint` skill's create method.
+1. If `uxos/blueprint.md` doesn't exist: this is **create** mode, and it depends on
+   `project_type` in `uxos/product-context.md`:
+   - **Brownfield:** run the `context-extractor` agent if not already done this session, then
+     the `build-blueprint` skill's create method (brownfield).
+   - **Greenfield:** don't run the extractor — there's no product to extract. Build from the
+     approved `uxos/to-be-solved.md` with the `build-blueprint` skill's greenfield create
+     method; if there's no approved to-be-solved list yet, say so and point to
+     `/uxos:to-be-solved` first.
+   Show the draft tree and save `uxos/blueprint.md` only on an explicit yes.
 
 2. If `uxos/blueprint.md` exists: this is **update** mode. Read `$ARGUMENTS` if given
    (a `uxos/feature-mapping/<slug>.md` file or a `uxos/to-be-solved.md` row); if not given,

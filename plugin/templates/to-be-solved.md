@@ -4,7 +4,6 @@ project: <slug>
 status: draft
 derived_from: <problems.md | problem-validation>
 grouping: <user-group | theme>
-feeds: work-packages/
 ---
 
 # To-Be-Solved List — <product name>

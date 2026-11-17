@@ -60,7 +60,9 @@ dropped.
   (Brownfield personas come from the product and are unchanged by this.)
 
 ## Output
-- `uxos/user-groups.md` from the template, listing each confirmed group's two persona slugs
+- `uxos/user-groups.md` from `{{TEMPLATES}}/user-groups.md`, listing each confirmed group's two persona slugs
   and the excluded candidates with reasons.
-- `uxos/personas/<slug>.md` per persona, `user_group` set in frontmatter.
-- Anything still uncertain goes to `open-questions.md`.
+- `uxos/personas/<slug>.md` per persona from `{{TEMPLATES}}/persona.md`, `user_group` set in
+  frontmatter.
+- Anything still uncertain goes to `open-questions.md` (`{{TEMPLATES}}/open-questions.md` if it
+  doesn't exist yet).

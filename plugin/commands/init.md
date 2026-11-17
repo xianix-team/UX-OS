@@ -77,8 +77,10 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
    9. **"Where would you like screens designed?"** — recommend *Claude Design, with a
       working prototype in code* ("no Figma licence, one design system") · *Figma* ·
       *design prompts for another tool, such as Stitch* · *not sure yet — decide later* →
-      `design_tools`; set `design_master`: `code` for an existing product with code,
-      `claude-design` for a new one.
+      `design_tools`. Set `design_master` **only when Claude Design is part of
+      `design_tools`**: `code` for an existing product with code, `claude-design` for a new
+      one. For Figma, design prompts, or "not sure yet", leave `design_master` out — Claude
+      Design promote and mirror steps don't apply until Claude Design is chosen.
    10. **"How well do you know this industry?"** — *new to it* · *somewhat* · *very well* →
       domain familiarity; *very well* skips the industry research. On a new product, lean
       toward doing it anyway — it's the main evidence when there's no product to look at.
@@ -94,7 +96,11 @@ pre-fill the answers and don't ask for it again. Nothing is required up front.
    greenfield), run the `browser-preflight` skill **first** — confirm a real browser tool
    exists in this session. If not, stop and walk the designer through their options (set up
    Claude in Chrome with their consent, proceed in clearly-labelled reduced mode, or switch
-   to a repo/screenshots input) before extracting anything. Then launch the
+   to a repo/screenshots input) before extracting anything. **Settle the browser here, in
+   the main conversation**, because the extractor runs as a helper and can't ask the user:
+   prefer the built-in browser pane; if only Claude in Chrome would do, ask the user first.
+   Put the answer in the extractor's task — "browser: built-in pane", "browser: Chrome —
+   the user agreed", or "no browser: don't use Claude in Chrome". Then launch the
    `context-extractor` agent with the inputs — product crawl (brownfield) or
    reference-material read + domain web research (greenfield). Wait for its source-tagged
    report.

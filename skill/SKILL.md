@@ -94,6 +94,8 @@ don't use. Ask in everyday words, offer choices to click or number, record the t
 yourself, and recap before starting. Ask, unless already known:
 
 - **Project name** (slug) — asked first.
+- **Their role on the project** — designer, product owner or manager, founder, developer,
+  other → `user_role`, so every step pitches its questions to who's answering.
 - **Is this a new product starting from scratch (greenfield), or one that already exists
   (brownfield)?** — it changes what else gets asked and which phases run.
 - **The idea, in their own words** — what it is, who it's for, what problem it solves (new);
@@ -118,8 +120,9 @@ yourself, and recap before starting. Ask, unless already known:
 - **Design tools** — where screens will be designed and prototyped. Recommend **Claude
   Design + a functional prototype in code** (no Figma licence; one design system, defined
   in code once there is code). Alternatives: Figma, design prompts for Stitch. Record
-  `design_tools`, and set `design_master`: `code` on brownfield with a codebase,
-  `claude-design` on greenfield (until `promote-to-code`).
+  `design_tools`. Set `design_master` only when Claude Design is in `design_tools`: `code` on
+  brownfield with a codebase, `claude-design` on greenfield (until `promote-to-code`). For
+  Figma, design prompts, or "not sure yet", leave it out.
 - **Domain familiarity** — not very / somewhat / very. `very` → skip phase 1. On
   greenfield, lean toward *not* skipping — domain research is the primary evidence when
   there's no product to observe instead.
@@ -214,7 +217,8 @@ After phase 3 (no phase 4 — no blueprint yet, nothing exists to build it from)
 | 11g | Pattern study | `procedures/pattern-study.md` (**greenfield branch** — no as-is extraction; foundations from `design-direction`, components from the screen specs) | `patterns` |
 
 Then the design system (`claude-design-library`, `code-library`, or `figma-library`) and
-`design-handoff`, as in the solve loop below.
+`design-handoff`, as in the solve loop below. Development Units (`requirements-drafting`)
+can be written once a journey has screen specs, and are refreshed when its design is built.
 
 **Why this order.** What the product does comes before how it looks: the feature map solves
 the scope, journeys and screen specs work out the screens, and only then is the look and feel
@@ -241,8 +245,8 @@ User journeys → wireframing → solution test). These steps are runnable, in t
 | 1 | `procedures/build-blueprint.md` (**update mode**) | `blueprint` — the confirmed node actually added to the tree |
 | 2 | `procedures/journey-design.md` | `journey` — full detail: Step / How / Why / Technical-delight table, Core Experience, `state: proposed` |
 | 2a | `procedures/edge-case-analysis.md` *(suggested, never forced)* | `edge-cases` — input/data, state/timing, actor/permission, system/network, cross-surface handoff, accessibility/device, each with severity and proposed handling |
-| 2b | `procedures/requirements-drafting.md` *(suggested, never forced)* | `requirements` — development Units (Who/Why/What/How + acceptance criteria), the single dev handoff, folding in edge cases + any `problems.md` rows scoped to this journey |
-| 2c | `procedures/screen-specification.md` *(suggested, strongly — this is what design-handoff was missing)* | `screen-specs` — per screen the journey touches: entry points, sub-action items, controls, nav/menu updates, states, Composition (arrangement — what the code path builds from), one screen at a time confirmed |
+| 2b | `procedures/screen-specification.md` *(suggested, strongly — this is what design-handoff was missing)* | `screen-specs` — per screen the journey touches: entry points, sub-action items, controls, nav/menu updates, states, Composition (arrangement — what the code path builds from), one screen at a time confirmed |
+| 2c | `procedures/requirements-drafting.md` *(suggested, never forced — after screen specs, since units are built from them; refreshed when the design is built)* | `requirements` — development Units (Who/Why/What/How + acceptance criteria), the single dev handoff, folding in edge cases + any `problems.md` rows scoped to this journey |
 | 2d | `procedures/figma-library.md` *(once, before the first Figma handoff — on greenfield this runs only after `design-direction` → `pattern-study`)* | the Figma design system, built bottom-up by atomic level — colour → typography → spacing/radius/elevation → atoms → molecules → organisms → templates — confirmed stage by stage; not tied to any one journey. Screens (Pages) come later from `design-handoff`, composed from these |
 | 2e | `procedures/code-library.md` *(once, before the first code-path handoff — needed wherever no component library exists: greenfield, or a brownfield product styled by one-off overrides)* | the design system in code, built bottom-up and confirmed level by level, held to `procedures/code-build-contract.md` |
 | 3 | `procedures/design-handoff.md` | Figma screens, reusing the library above and any `screen-specs` (delegates to `figma-generate-design`, needs the connector authorized) **or** a `design-prompt` for Stitch/another tool **or** real screen code built in the repo from existing components — warns explicitly if no `screen-specs` exist |
@@ -366,7 +370,8 @@ substitute, and analogous competitors in the model's own terms: coverage against
 blueprint (or themes) → table stakes, differentiators, whitespace; live, read-only walks of
 our key journeys on 2-3 competitors; public review themes; and implications linked to
 to-be-solved rows, journey steps, and personas. Never required — `next-steps` suggests it
-after domain analysis (greenfield), before scoping (brownfield), when a feature is
+after the to-be-solved list and before the feature map (greenfield), before scoping
+(brownfield), when a feature is
 justified by "a competitor has it", and when the analysis is over six months old.
 Competitor parity is supporting evidence, never a driver on its own.
 
@@ -425,6 +430,12 @@ subagent, a fork, the `context-extractor` agent — for research or reading, but
 for a yes. It returns its findings; the main conversation drafts the artifact, shows it, and
 saves it on approval. When handing work off, say so in the task ("research and report back —
 don't write any files"), and give it only that task, not the next steps.
+
+**Status records approval.** When a file is saved on the designer's yes, set `status:
+approved`; if they ask to keep it as work in progress, `status: draft`. When something a file
+was built from is changed and re-approved later (a persona under a journey, a journey under
+its screen specs), `next-steps` marks the dependent file `status: stale` and suggests
+revisiting it. "Confirmed" anywhere in uxos means `status: approved`.
 
 Exceptions: the designer's own edits; `open-questions.md` and `uxos/README.md` index entries
 that only list items already shown; and logs a procedure says to append (sync, mirror).
