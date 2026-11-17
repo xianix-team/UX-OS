@@ -30,7 +30,10 @@ Ask, or infer from the designer's `familiarity` answer:
   primary evidence source (no product exists to observe instead), so don't shortcut it.
 
 ## Research, don't assume
-Use web search and web fetch — aim for research-backed findings, not invented ones. Cite
+Use web search and web fetch, in the background — aim for research-backed findings, not
+invented ones. If they aren't available, follow `browser-preflight`'s "Research is not
+browsing": the built-in browser pane, then the designer's own Chrome **only after asking**,
+otherwise stop and say what's missing. Never take over the designer's browser silently. Cite
 sources inline (`[from <source>]`). Where research doesn't turn up something (e.g. baseline
 metrics), leave that section thin or omit it rather than filling it with a guess.
 

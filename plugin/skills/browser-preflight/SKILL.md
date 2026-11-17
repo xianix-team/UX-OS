@@ -9,6 +9,15 @@ Goal: a live-URL run that silently can't browse is worse than one that stops and
 Check first, tell the designer plainly, and let them choose — never discover it halfway
 through an extraction.
 
+## Research is not browsing
+Reading the web for research — domain analysis, competitor desk research, public reviews —
+needs no browser and should be invisible to the designer. Use, in this order:
+1. **Web search and web fetch** (load them with ToolSearch if deferred) — in the background.
+2. If those aren't available: the **built-in browser pane**, which is isolated.
+3. **The designer's own Chrome only after asking**, as below — never take it over silently.
+4. Otherwise stop, say which web tools are missing, and offer to continue later or work from
+   sources the designer supplies.
+
 ## When this runs
 Before any step that needs a live page: `init` with a live URL (or competitor URLs on
 greenfield), `patterns` on a live URL, `matrix`, `journeys` walking a live flow, `competitor-analysis`
@@ -21,12 +30,14 @@ they are loaded with ToolSearch. A tool missing from the active list is **not** 
 from the session. Never report "no browser" from the active list alone — run these in
 order and stop at the first that works:
 
-1. **Claude in Chrome.** If any `mcp__claude-in-chrome__*` name is listed (loaded or
-   deferred), load the core set in **one** ToolSearch call:
-   `select:mcp__claude-in-chrome__tabs_context_mcp,mcp__claude-in-chrome__tabs_create_mcp,mcp__claude-in-chrome__navigate,mcp__claude-in-chrome__computer,mcp__claude-in-chrome__read_page,mcp__claude-in-chrome__get_page_text`
-   then call `tabs_context_mcp` to confirm the extension answers.
-2. **Built-in browser pane.** Otherwise, if any `mcp__Claude_Browser__*` name is listed,
-   load it the same way and confirm it can open a page.
+1. **Built-in browser pane.** If any `mcp__Claude_Browser__*` name is listed (loaded or
+   deferred), load the core set in **one** ToolSearch call and confirm it can open a page.
+   It's isolated from the designer's own browser, so prefer it.
+2. **Claude in Chrome.** Otherwise, if any `mcp__claude-in-chrome__*` name is listed, load
+   the core set in **one** ToolSearch call:
+   `select:mcp__claude-in-chrome__tabs_context_mcp,mcp__claude-in-chrome__tabs_create_mcp,mcp__claude-in-chrome__navigate,mcp__claude-in-chrome__computer,mcp__claude-in-chrome__read_page`
+   and call `tabs_context_mcp` to confirm the extension answers. **Don't start browsing with
+   it yet** — it drives the designer's own Chrome; see "If a browser tool exists".
 3. **Keyword search.** If neither family is listed, run one ToolSearch for
    `browser navigate screenshot` — a browser server may still be connecting.
 
@@ -43,9 +54,11 @@ rendered DOM for JavaScript apps, no computed styles, no screenshots, no clickin
 flows. Don't count it.
 
 ## If a browser tool exists
-Say which one and proceed. On Claude in Chrome, tell the designer it will open tabs in
-their own Chrome (sharing their logins) and will pause for them at any login page or
-CAPTCHA — they drive those, the extraction stays read-only.
+Say which one. The built-in pane: proceed. **Claude in Chrome: ask first, every session** —
+*"This would drive your own Chrome, with your logged-in profile (accounts, cookies, history),
+and open tabs in the browser you're using. OK to go ahead?"* — and proceed only on a yes. It
+pauses for them at any login page or CAPTCHA; they drive those, and the extraction stays
+read-only. If they say no and nothing else exists, treat it as no browser.
 
 ## If none exists — stop before extracting, and say so
 Tell the designer plainly: *"I can't browse live pages in this session, so a URL input

@@ -429,6 +429,11 @@ don't write any files"), and give it only that task, not the next steps.
 Exceptions: the designer's own edits; `open-questions.md` and `uxos/README.md` index entries
 that only list items already shown; and logs a procedure says to append (sync, mirror).
 
+**Never take over the designer's browser silently.** Research uses background web search and
+fetch; live pages use the built-in browser pane where it exists; the designer's own Chrome
+(Claude in Chrome) is used only after they've said yes for this session, because it carries
+their logins and history (`browser-preflight`).
+
 ## Honesty rules (all phases)
 
 - Never fabricate an evidence row in the UX matrix (analytics, business data, interviews).
