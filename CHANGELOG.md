@@ -16,6 +16,11 @@ versions fix them.
   cover `plugin/` only.
 - README: "Three ways to use uxos" with each one's status; the quick start explains the MCP
   server; `/uxos:crazy8` added to the plugin README.
+- **Smoke tests:** `tests/smoke.py` runs the key commands headless against made-up projects in
+  `tests/fixtures/` (empty, greenfield at three stages, a brownfield improve project) and
+  checks behaviours that broke this month — nothing saved without a yes, the greenfield order,
+  no guessing from the project name, no extractor on greenfield, no layout questions. Run by
+  hand before each release.
 - CI runs the MCP server's tests on every pull request, not only at release; `npm pkg fix`
   applied to `mcp/package.json` (the `bin` path) to clear npm's publish warning.
 

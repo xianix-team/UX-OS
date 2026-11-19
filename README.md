@@ -115,6 +115,7 @@ The plugin and the MCP server share one version and are released together.
 | [`skill/`](skill/README.md) | claude.ai Skill — frozen at 0.35.0, not maintained |
 | [`scripts/build.sh`](scripts/build.sh) | regenerates `plugin/` from `method/` |
 | [`scripts/check.sh`](scripts/check.sh) | repo checks, run by CI on every pull request |
+| [`tests/`](tests/README.md) | smoke tests against made-up projects, run by hand before each release |
 | [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) | makes this repo an installable plugin marketplace |
 | [`docs/guides/`](docs/guides/) | [quick start](docs/guides/quick-start.md), [testing the plugin](docs/guides/testing-the-plugin.md), team settings |
 | [`docs/architecture/`](docs/architecture/) | the original design notes, from before uxos was built: [architecture](docs/architecture/architecture.md), [Part A workflow](docs/architecture/part-a-workflow.md), process diagrams |
