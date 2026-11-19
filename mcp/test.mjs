@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { mkdtemp, readdir, rm, symlink } from 'node:fs/promises';
+import { mkdir, mkdtemp, readdir, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -12,10 +12,16 @@ import { SkillsClient } from '@modelcontextprotocol/client/ext/skills';
 import { createMcpHandler } from '@modelcontextprotocol/server';
 
 import { referencedTemplates } from './catalog.mjs';
-import { createServer, sameFile, startHttp } from './server.mjs';
+import { SKILL_PROMPT_PREFIX, createServer, sameFile, startHttp } from './server.mjs';
 
 const PLUGIN_SKILLS = path.resolve(fileURLToPath(new URL('../plugin/skills/', import.meta.url)));
 const PLUGIN_AGENTS = path.resolve(fileURLToPath(new URL('../plugin/agents/', import.meta.url)));
+const PLUGIN_COMMANDS = path.resolve(fileURLToPath(new URL('../plugin/commands/', import.meta.url)));
+const FIXTURES = path.resolve(fileURLToPath(new URL('../tests/fixtures/', import.meta.url)));
+
+async function commandNames() {
+  return (await readdir(PLUGIN_COMMANDS)).filter((name) => name.endsWith('.md')).map((name) => name.slice(0, -3)).sort();
+}
 
 async function skillDirectories() {
   const entries = await readdir(PLUGIN_SKILLS, { withFileTypes: true });
@@ -53,7 +59,7 @@ test('lists every plugin skill and loads one with its template', async () => {
   await withClient(async (client) => {
     const tools = await client.listTools();
     const toolNames = tools.tools.map((tool) => tool.name).sort();
-    assert.deepEqual(toolNames, ['get_skill', 'get_template', 'list_skills']);
+    assert.deepEqual(toolNames, ['check_project', 'get_skill', 'get_template', 'list_skills']);
     for (const tool of tools.tools) {
       assert.equal(tool.annotations.readOnlyHint, true);
       assert.equal(tool.annotations.destructiveHint, false);
@@ -156,13 +162,17 @@ test('each skill is a prompt and every named template exists', async () => {
   const expected = await procedureNames();
   await withClient(async (client) => {
     const prompts = await client.listPrompts();
+    const expectedPrompts = [
+      ...expected.map((name) => `${SKILL_PROMPT_PREFIX}${name}`),
+      ...(await commandNames()),
+    ].sort();
     assert.deepEqual(
       prompts.prompts.map((prompt) => prompt.name).sort(),
-      expected
+      expectedPrompts
     );
 
     const prompt = await client.getPrompt({
-      name: 'requirements-drafting',
+      name: `${SKILL_PROMPT_PREFIX}requirements-drafting`,
       arguments: { task: 'Draft units for checkout' },
     });
     assert.match(prompt.messages[0].content.text, /Draft units for checkout/);
@@ -178,6 +188,62 @@ test('each skill is a prompt and every named template exists', async () => {
           `${name} missing ${filename}`
         );
       }
+    }
+  });
+});
+
+test('every plugin command is a prompt with its placeholders filled', async () => {
+  const names = await commandNames();
+  assert.ok(names.includes('init') && names.includes('crazy8'));
+  await withClient(async (client) => {
+    for (const name of names) {
+      const prompt = await client.getPrompt({ name, arguments: { args: 'Cabin booking site' } });
+      const text = prompt.messages[0].content.text;
+      assert.match(text, new RegExp(`# uxos command: ${name}`), name);
+      assert.doesNotMatch(text, /\$\{CLAUDE_PLUGIN_ROOT\}/, `${name} still names the plugin root`);
+      assert.doesNotMatch(text, /\$ARGUMENTS/, `${name} still has $ARGUMENTS`);
+      assert.match(text, /check_project/, name);
+    }
+    const spec = await client.getPrompt({ name: 'screen-spec', arguments: { args: 'J1' } });
+    assert.match(spec.messages[0].content.text, /uxos:\/\/template\/screen-spec\.md/);
+    const init = await client.getPrompt({ name: 'init', arguments: {} });
+    assert.match(init.messages[0].content.text, /What's your role on this project/);
+  });
+});
+
+test('the server instructions carry the core rules', async () => {
+  await withClient(async (client) => {
+    const instructions = client.getInstructions();
+    for (const rule of [/Show before saving/, /Helpers never write the model/, /project name/, /browser/, /Visual choices are shown/, /check_project/]) {
+      assert.match(instructions, rule);
+    }
+  });
+});
+
+test('check_project reports the project, its artifacts, and an old handoff folder', async () => {
+  await withClient(async (client) => {
+    const green = await client.callTool({ name: 'check_project', arguments: { dir: path.join(FIXTURES, 'greenfield-after-tbs') } });
+    assert.equal(green.isError, undefined);
+    const report = green.structuredContent;
+    assert.equal(report.hasProject, true);
+    assert.equal(report.project_type, 'greenfield');
+    assert.equal(report.user_role, 'product owner');
+    assert.ok(report.artifacts.some((a) => a.path === 'uxos/to-be-solved.md' && a.status === 'approved'));
+    assert.equal(report.legacyHandoffFolder, undefined);
+
+    const empty = await client.callTool({ name: 'check_project', arguments: { dir: path.join(FIXTURES, 'empty') } });
+    assert.equal(empty.structuredContent.hasProject, false);
+    assert.match(empty.content[0].text, /init/);
+
+    const legacy = await mkdtemp(path.join(tmpdir(), 'uxos-legacy-'));
+    try {
+      await mkdir(path.join(legacy, 'uxos', 'handoff'), { recursive: true });
+      await writeFile(path.join(legacy, 'uxos', 'product-context.md'), '---\nartifact: product-context\nproject_type: brownfield\n---\n');
+      const old = await client.callTool({ name: 'check_project', arguments: { dir: legacy } });
+      assert.equal(old.structuredContent.legacyHandoffFolder, true);
+      assert.match(old.content[0].text, /design-records/);
+    } finally {
+      await rm(legacy, { recursive: true, force: true });
     }
   });
 });

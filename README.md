@@ -100,7 +100,7 @@ Everything uxos produces is a git-tracked `uxos/` folder in your project. Team-w
 | Package | For | Install | Status |
 |---|---|---|---|
 | **Claude Code plugin** ([`plugin/`](plugin/README.md)) | designers in a terminal, VS Code, or the Claude desktop app | the marketplace commands above | **maintained** — the full experience |
-| **MCP server** ([`mcp/`](mcp/)) | other MCP clients — Claude Desktop, Cursor, and others | `npx -y @99x-ai-dlc/uxos-skills-mcp` (in Claude Code: `claude mcp add -s user uxos-skills -- npx -y @99x-ai-dlc/uxos-skills-mcp`) | **maintained** — serves the skills, templates, and method; not yet the plugin's commands or hook |
+| **MCP server** ([`mcp/`](mcp/)) | other MCP clients — Claude Desktop, Cursor, and others | `npx -y @99x-ai-dlc/uxos-skills-mcp` (in Claude Code: `claude mcp add -s user uxos-skills -- npx -y @99x-ai-dlc/uxos-skills-mcp`) | **maintained** — serves the commands (as prompts), skills, templates, and method, the core rules in its instructions, and a `check_project` tool in place of the plugin's hook |
 | **claude.ai Skill** ([`skill/`](skill/README.md)) | claude.ai chat | upload a zip of `skill/` in claude.ai → Settings → Capabilities → Skills | **frozen at 0.35.0, not maintained** — parts don't work in claude.ai |
 
 The plugin and the MCP server share one version and are released together.

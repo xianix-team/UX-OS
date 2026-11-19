@@ -6,10 +6,12 @@
  *   skill://uxos/<name>/SKILL.md
  * plugin/skills are served as skills. plugin/agents (context-extractor,
  * ux-critic) are served in the same catalog; list_skills marks them as agents.
- * Tools for hosts that call tools: list_skills, get_skill, get_template.
+ * Tools for hosts that call tools: list_skills, get_skill, get_template, check_project.
  *   get_skill appends the plugin templates the procedure names.
+ *   check_project reports what the plugin's hook checks on every prompt.
  * Resources: uxos://template/<file>, uxos://method
- * Prompts: one per skill, registered at process start.
+ * Prompts: one per plugin command (plain names, e.g. init) and one per skill
+ *   (skill-<name>), registered at process start.
  * Restart the server after scripts/build.sh adds, removes, or edits a skill.
  *
  * Run:
@@ -37,7 +39,10 @@ import {
   CatalogError,
   METHOD_URI,
   catalogErrorText,
+  checkProject,
+  composeCommand,
   composeSkill,
+  listCommands,
   listSkills,
   listTemplates,
   pluginSkillFiles,
@@ -53,12 +58,24 @@ const READ_ONLY = {
   openWorldHint: false,
 };
 
+// Prompt names: commands are what people type, so they keep plain names; skills get a
+// prefix where the two would collide (seven names are both). Swap these to change scheme.
+export const COMMAND_PROMPT_PREFIX = '';
+export const SKILL_PROMPT_PREFIX = 'skill-';
+
 const INSTRUCTIONS = [
   'uxos skills are the procedures for UX and product-design work. They are served at skill://uxos/<name>/SKILL.md.',
   'context-extractor and ux-critic are agents in that same list. Run an agent when a skill tells you to.',
-  'Before producing project work, call list_skills, then get_skill for the one procedure that fits, and follow it, including its review gates.',
+  'At the start of a session, call check_project and act on its notes.',
+  'Prefer the uxos command prompts (init, status, journey-design, screen-spec, requirements, and the rest) when the user\'s request matches one. Otherwise call list_skills, then get_skill for the one procedure that fits, and follow it, including its review gates.',
   'Do not substitute a general UX workflow. get_skill returns the procedure and every plugin template it names.',
   'Project artifacts are written under uxos/ in the working directory.',
+  'Rules that always apply:',
+  '(1) Show before saving: never write or change a file under uxos/ until the user has seen the draft or the change and said yes to saving it; answering the next question is not approval; mark inferred lines "Inferred —".',
+  '(2) Helpers never write the model: subagents research and report back; this conversation drafts, shows, and saves.',
+  '(3) Never infer the product, its industry, or its users from the project name; they come from the user\'s own description.',
+  '(4) Research runs in the background; never take over the user\'s own browser (e.g. Claude in Chrome) without asking first.',
+  '(5) Visual choices are shown, not asked: no layout or presentation questions in words before anything is drawn.',
   'The full method, gates, and skill-first routing table are the resource uxos://method.',
 ].join(' ');
 
@@ -205,6 +222,39 @@ export async function createServer() {
     }
   );
 
+  server.registerTool(
+    'check_project',
+    {
+      title: 'Check the uxos project',
+      description:
+        'Read-only report on the uxos project in a folder: whether one exists, project type, user role, design tools, every artifact with its status, an old uxos/handoff/ folder, and new commits since the last code sync. Call it at the start of a session and act on its notes. It writes nothing.',
+      annotations: READ_ONLY,
+      inputSchema: z.object({
+        dir: z
+          .string()
+          .optional()
+          .describe('The project folder that contains uxos/. Defaults to the working directory.'),
+      }),
+    },
+    async ({ dir }) => {
+      const report = await checkProject(dir);
+      const lines = [];
+      if (!report.hasProject) {
+        lines.push(`No uxos project in ${report.projectDir}.`, ...report.notes);
+      } else {
+        lines.push(`uxos project in ${report.projectDir}`);
+        for (const key of ['project', 'project_type', 'user_role', 'design_tools', 'design_master']) {
+          if (report[key]) lines.push(`- ${key}: ${report[key]}`);
+        }
+        if (typeof report.commitsSinceSync === 'number') lines.push(`- commits since last sync: ${report.commitsSinceSync}`);
+        lines.push('', `Artifacts (${report.artifacts.length}):`);
+        for (const artifact of report.artifacts) lines.push(`- ${artifact.path}${artifact.status ? ` — ${artifact.status}` : ''}`);
+        if (report.notes.length) lines.push('', 'Act on these:', ...report.notes.map((note) => `- ${note}`));
+      }
+      return textResult(lines.join('\n'), report);
+    }
+  );
+
   server.registerResource(
     'method',
     METHOD_URI,
@@ -246,10 +296,30 @@ export async function createServer() {
     }
   );
 
+  for (const command of await listCommands()) {
+    server.registerPrompt(
+      `${COMMAND_PROMPT_PREFIX}${command.name}`,
+      {
+        title: `uxos ${command.name}`,
+        description: command.description,
+        argsSchema: z.object({
+          args: z
+            .string()
+            .optional()
+            .describe(command.argumentHint || 'Anything to pass to the command (optional)'),
+        }),
+      },
+      async ({ args }) => {
+        const loaded = await composeCommand(command.name, args);
+        return { messages: [{ role: 'user', content: { type: 'text', text: loaded.markdown } }] };
+      }
+    );
+  }
+
   const skills = await listSkills();
   for (const skill of skills) {
     server.registerPrompt(
-      skill.name,
+      `${SKILL_PROMPT_PREFIX}${skill.name}`,
       {
         title: skill.name,
         description: skill.description,
