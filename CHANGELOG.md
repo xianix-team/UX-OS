@@ -8,6 +8,17 @@ versions fix them.
 
 ## [Unreleased]
 
+### Added
+- **MCP server: commands, rules, and `check_project`.** The 26 plugin commands are served as
+  prompts with their plain names (`init`, `status`, `screen-spec`…), with `$ARGUMENTS` filled
+  from an `args` argument and plugin template paths turned into `uxos://template/` resources;
+  skill prompts are now `skill-<name>` (seven names were both a command and a skill). The
+  server instructions carry the core rules — show before saving, helpers never write, never
+  guess from the project name, never take over the user's browser, show layout choices rather
+  than asking — and a read-only `check_project` tool reports what the plugin's hook checks:
+  project type and role, artifacts and their status, an old `handoff/` folder, commits since
+  the last sync. The npm package now bundles the commands.
+
 ### Changed
 - **The claude.ai skill is frozen at 0.35.0** and no longer generated from `method/`: its
   instructions were written for Claude Code (files, slash commands, hooks), so parts don't

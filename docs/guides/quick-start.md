@@ -60,9 +60,11 @@ reduced mode.
 uxos is also an **MCP server**, for Claude Desktop, Cursor, and other tools that support MCP.
 Add it with the command `npx -y @99x-ai-dlc/uxos-skills-mcp` in that tool's MCP settings (in
 Claude Code: `claude mcp add -s user uxos-skills -- npx -y @99x-ai-dlc/uxos-skills-mcp`). It
-serves the same skills, templates, and method as the plugin, but not yet the plugin's slash
-commands or its hook — so ask in plain words ("start a uxos project for…") and the client
-fetches the right skill. The plugin is the full experience; use it where you can.
+serves the same commands (as prompts — `init`, `status`, `screen-spec`…; skills appear as
+`skill-<name>`), skills, templates, and method as the plugin, with the core rules in its
+instructions and a `check_project` tool that does what the plugin's hook checks. There's no
+reminder on every message as the plugin's hook gives, so the plugin is still the fuller
+experience where you can use it.
 
 ## 0.5 Already have some of this? Import it first
 

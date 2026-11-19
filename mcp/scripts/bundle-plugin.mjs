@@ -12,6 +12,7 @@ await mkdir(path.join(dest, '.claude-plugin'), { recursive: true });
 await cp(path.join(source, 'skills'), path.join(dest, 'skills'), { recursive: true });
 await cp(path.join(source, 'agents'), path.join(dest, 'agents'), { recursive: true });
 await cp(path.join(source, 'templates'), path.join(dest, 'templates'), { recursive: true });
+await cp(path.join(source, 'commands'), path.join(dest, 'commands'), { recursive: true });
 await cp(path.join(source, 'METHOD.md'), path.join(dest, 'METHOD.md'));
 await cp(path.join(source, '.claude-plugin', 'plugin.json'), path.join(dest, '.claude-plugin', 'plugin.json'));
 await cp(path.join(repoRoot, 'LICENSE'), path.join(mcpRoot, 'LICENSE'));

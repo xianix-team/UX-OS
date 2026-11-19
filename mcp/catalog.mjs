@@ -1,5 +1,6 @@
+import { execFile } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { readFile, readdir, realpath } from 'node:fs/promises';
+import { readFile, readdir, realpath, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -17,6 +18,7 @@ const PLUGIN_ROOT = resolvePluginRoot();
 export const SKILLS_ROOT = path.join(PLUGIN_ROOT, 'skills');
 export const AGENTS_ROOT = path.join(PLUGIN_ROOT, 'agents');
 export const TEMPLATES_ROOT = path.join(PLUGIN_ROOT, 'templates');
+export const COMMANDS_ROOT = path.join(PLUGIN_ROOT, 'commands');
 const METHOD_PATH = path.join(PLUGIN_ROOT, 'METHOD.md');
 const PLUGIN_JSON = path.join(PLUGIN_ROOT, '.claude-plugin', 'plugin.json');
 
@@ -340,6 +342,127 @@ export async function composeSkill(name, task) {
     }
   }
   return { ...skill, templates, missing, markdown: `${parts.join('\n').trimEnd()}\n` };
+}
+
+/**
+ * Slash commands in plugin/commands. Each is served as a prompt.
+ * @returns {Promise<Array<{ name: string, description: string, argumentHint: string }>>}
+ */
+export async function listCommands() {
+  if (!existsSync(COMMANDS_ROOT)) return [];
+  const entries = await readdir(COMMANDS_ROOT, { withFileTypes: true });
+  const commands = [];
+  for (const entry of entries) {
+    if (!entry.isFile() || !entry.name.endsWith('.md')) continue;
+    const name = entry.name.slice(0, -3);
+    if (!SKILL_NAME.test(name)) continue;
+    const { data } = parseFrontmatter(await readFile(path.join(COMMANDS_ROOT, entry.name), 'utf8'));
+    commands.push({ name, description: data.description || name, argumentHint: data['argument-hint'] || '' });
+  }
+  commands.sort((a, b) => a.name.localeCompare(b.name));
+  return commands;
+}
+
+/**
+ * One command as prompt text: $ARGUMENTS filled in, plugin template paths turned into
+ * uxos://template/ resources, and a short preamble for clients that don't run plugins.
+ * @param {string} name
+ * @param {string} [args]
+ */
+export async function composeCommand(name, args) {
+  assertSkillName(name);
+  const file = await insideRoot(COMMANDS_ROOT, path.join(COMMANDS_ROOT, `${name}.md`));
+  const { data, body } = parseFrontmatter(await readFile(file, 'utf8'));
+  const given = args && args.trim() ? args.trim() : '';
+  const text = body
+    .replaceAll('$ARGUMENTS', given || '(nothing given)')
+    .replace(TEMPLATE_REF, (_, filename) => templateUri(filename))
+    .replaceAll('${CLAUDE_PLUGIN_ROOT}', 'the uxos plugin');
+  const parts = [
+    `# uxos command: ${name}`,
+    '',
+    'Carry out these steps in order. When a step says to run a uxos skill, call `get_skill` with that name and follow it, including its review gates. Templates are the `uxos://template/<file>` resources (or `get_template`). Call `check_project` first if you haven\'t this session.',
+    '',
+    text.trim(),
+  ];
+  return { name, description: data.description || name, markdown: `${parts.join('\n')}\n` };
+}
+
+function run(cmd, args) {
+  return new Promise((resolve) => {
+    execFile(cmd, args, { timeout: 5000 }, (error, stdout) => resolve(error ? null : stdout.trim()));
+  });
+}
+
+/**
+ * What the plugin's hook checks on every prompt, as one read-only report.
+ * @param {string} dir project folder (the one that contains uxos/)
+ */
+export async function checkProject(dir) {
+  const projectDir = path.resolve(dir || process.cwd());
+  const uxos = path.join(projectDir, 'uxos');
+  const report = { projectDir, hasProject: false, notes: [] };
+  try {
+    if (!(await stat(uxos)).isDirectory()) return report;
+  } catch {
+    report.notes.push('No uxos/ folder here. Start with the init command.');
+    return report;
+  }
+  report.hasProject = true;
+
+  let context = {};
+  try {
+    context = parseFrontmatter(await readFile(path.join(uxos, 'product-context.md'), 'utf8')).data;
+  } catch {
+    report.notes.push('uxos/product-context.md is missing.');
+  }
+  for (const key of ['project', 'project_type', 'user_role', 'design_tools', 'design_master']) {
+    if (context[key]) report[key] = context[key];
+  }
+
+  const artifacts = [];
+  const walk = async (folder, rel) => {
+    for (const entry of await readdir(folder, { withFileTypes: true })) {
+      if (entry.name.startsWith('.') || entry.name === 'sources') continue;
+      const full = path.join(folder, entry.name);
+      const relPath = rel ? `${rel}/${entry.name}` : entry.name;
+      if (entry.isDirectory()) await walk(full, relPath);
+      else if (entry.name.endsWith('.md')) {
+        const { data } = parseFrontmatter(await readFile(full, 'utf8'));
+        artifacts.push({ path: `uxos/${relPath}`, status: data.status || '' });
+      }
+    }
+  };
+  await walk(uxos, '');
+  report.artifacts = artifacts.sort((a, b) => a.path.localeCompare(b.path));
+
+  if (existsSync(path.join(uxos, 'handoff')) && !existsSync(path.join(uxos, 'design-records'))) {
+    report.legacyHandoffFolder = true;
+    report.notes.push(
+      context.design_records_path
+        ? 'Design records live in uxos/handoff/ (the user chose to keep it). Read and write there wherever a skill says uxos/design-records/.'
+        : 'Design records are in the old uxos/handoff/ folder. Wherever a skill says uxos/design-records/, use uxos/handoff/. Ask the user once whether to rename it to uxos/design-records/ (never without a yes); if they decline, set design_records_path: uxos/handoff in product-context.md.'
+    );
+  }
+
+  if (context.repo && context.synced_commit) {
+    const branch = context.repo_branch || 'main';
+    const remote = /:\/\/|^git@/.test(context.repo);
+    const repoDir = remote
+      ? path.join(projectDir, 'uxos-repo-cache', path.basename(context.repo, '.git'))
+      : path.resolve(projectDir, context.repo);
+    const ref = remote ? `origin/${branch}` : branch;
+    const count = await run('git', ['-C', repoDir, 'rev-list', '--count', `${context.synced_commit}..${ref}`]);
+    if (count !== null) {
+      report.commitsSinceSync = Number(count);
+      if (report.commitsSinceSync > 0) {
+        report.notes.push(
+          `${report.commitsSinceSync} new commit(s) on ${branch} since the last sync. Before work that reads the model, ask the user whether to sync first (the code-sync skill).`
+        );
+      }
+    }
+  }
+  return report;
 }
 
 /**
