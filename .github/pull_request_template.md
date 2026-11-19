@@ -8,7 +8,7 @@
 - [ ] Bumped the version in `plugin/.claude-plugin/plugin.json`
 - [ ] Added an entry to `CHANGELOG.md` under *Unreleased*
 - [ ] `bash scripts/check.sh` and `claude plugin validate plugin` pass
-- [ ] Ran the changed command(s) against a fixture (with `--add-dir ./plugin`)
+- [ ] Ran the changed command(s) against a fixture (with `--add-dir ./plugin`); before a release, `python3 tests/smoke.py`
 - [ ] Keeps the rules: review gates, evidence tags, template shape, read-only on the product
 
 ## How I tested it

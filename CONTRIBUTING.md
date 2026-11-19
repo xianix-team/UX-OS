@@ -97,6 +97,15 @@ Validate the plugin:
 claude plugin validate plugin
 ```
 
+Before a release, run the smoke tests against the made-up projects in `tests/fixtures/`
+(they need a logged-in Claude Code CLI and cost a little per run — see `tests/README.md`):
+
+```bash
+python3 tests/smoke.py
+```
+
+When something breaks, add a scenario to `tests/smoke.py` that would have caught it.
+
 If you changed the MCP server, run its tests (CI runs them on every pull request too):
 
 ```bash
