@@ -1,6 +1,6 @@
 ---
 name: idea
-description: Take a rough idea as far as mockups through the normal uxos flow, without it becoming part of the product. Its journeys, screen specs and mockups live in uxos/rough-ideas/<name>/, and what it adds to shared files is flagged "idea: <name>". Edge cases, requirements and the dev handoff wait until, after seeing the mockups, the user decides to go ahead, park or discard. Nothing changes without their yes.
+description: Take a rough idea as far as mockups through the normal uxos flow, without it becoming part of the product. Its journeys, screen specs and mockups live in uxos/rough-ideas/<name>/, and what it adds to shared files is flagged with the idea's name. Edge cases, requirements and the dev handoff wait until, after seeing the mockups, the user decides to go ahead, park or discard. Nothing changes without their yes.
 ---
 
 # idea
