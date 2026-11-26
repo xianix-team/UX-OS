@@ -24,6 +24,10 @@ item so Part B knows which playbook to run.
   whitespace → candidates labelled `[competitive]`, never pre-marked `yes`; `supports`
   implications → cited as extra evidence on the candidate they support.
 
+Rows flagged `idea:` belong to undecided ideas. Don't list them as candidates and don't
+decide them in a normal G2 pass. Keep them exactly as they are; the `idea` procedure adds and
+decides them.
+
 ## Gate G2 (the designer decides)
 For each candidate row, ask: `yes` / `no` / `defer` / `needs-verification`.
 For each `yes`, set the **response type**:

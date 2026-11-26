@@ -80,6 +80,13 @@ on?" interaction model.
    applied → gap slot: apply it. After one is applied → usual slot: `/uxos:design` for that
    screen.
 
+   **Ideas:** if `uxos/rough-ideas/` has ideas, report them in their own line, never as
+   build work: open ideas by state; one with a mockup but no decision → gap slot: decide on it
+   with `/uxos:idea`; `exploring` or `parked` with no activity for 60 days or more → gap slot:
+   keep or discard; ideas flagging the same entries → say they overlap. Ignore flagged entries
+   and `rough-ideas/` in every other check above and below (missing screen specs, Units,
+   stale files, competitor rows).
+
    **Change impact:** if the designer mentions a client-requested visual change (a colour,
    font, spacing, a component), suggest `/uxos:impact "<change>"` before any library or
    design edit. If an impact report has `decision: pending`, list it in the gap slot.

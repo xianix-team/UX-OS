@@ -28,6 +28,7 @@ Each scenario copies a fixture to a temporary folder first; nothing in `fixtures
 | `greenfield-after-init/` | a made-up holiday-cabin booking site: product context, a reviewed domain study, user groups, two personas |
 | `greenfield-after-tbs/` | the same, plus an approved to-be-solved list |
 | `greenfield-after-journeys/` | the same, plus a feature map and one approved journey |
+| `greenfield-with-idea/` | the same as after-journeys, plus one undecided idea (`split-payment`) with a flagged blueprint node and to-be-solved row, a journey, a screen spec and a mockup record |
 | `brownfield-improve/` | a made-up team to-do app being improved: product context, one existing journey, patterns |
 
 All data is made up. Never put a real client's project here — the repo is public.

@@ -8,6 +8,22 @@ versions fix them.
 
 ## [Unreleased]
 
+### Added
+- **`/uxos:idea` — rough ideas, as far as mockups, without becoming the product.** From
+  customer feedback: first thoughts were being saved into the model and treated as decided.
+  An idea now runs through the normal procedures in full (feature mapping or a to-be-solved
+  row, blueprint, journeys, screen specs, mockups), with no light path. Its own files live in
+  `uxos/rough-ideas/<name>/`, and what it adds to the blueprint or to-be-solved is flagged
+  `idea: <name>`, keeping the old text so a discard can restore it. Edge cases, Units and
+  the dev handoff wait. After seeing the mockups, the user goes ahead (the skipped steps
+  run, files move into the model, flags come off), parks it, or discards it, each on a yes.
+  Mockups for an idea never touch the design system, `patterns.md`, or the product's code.
+  Every procedure that treats the model as real ignores ideas: Units, code-sync,
+  promote-to-code, requirements-gap, competitor rows, change impact counts, G2.
+  `/uxos:status` lists ideas on their own, flags ones idle for 60 days, and flags
+  overlapping ideas (never blocks them). New template `idea.md`; spec in
+  `docs/specs/idea.md`.
+
 ### Changed
 - **The claude.ai skill is frozen at 0.35.0** and no longer generated from `method/`: its
   instructions were written for Claude Code (files, slash commands, hooks), so parts don't

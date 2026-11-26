@@ -51,6 +51,7 @@ cd <your workspace or the product repo>
 /uxos:requirements <journey>                # dev handoff: Units with Who/Why/What/How + acceptance criteria, in uxos/requirements/
 /uxos:screen-spec <journey>        # per-screen spec: entry points, sub-actions, filters, nav
 /uxos:crazy8 <journey> <screen>   # optional: eight directions for a screen that isn't working, workshop or AI
+/uxos:idea [idea]                 # a rough idea to mockups, kept apart until you go ahead, park, or discard
 /uxos:figma-library               # build/update the Figma design-system file (run once first)
 /uxos:code-library               # build the design system in code, bottom-up (before a code handoff)
 /uxos:claude-design-library      # build the design system in Claude Design (before the first canvas)

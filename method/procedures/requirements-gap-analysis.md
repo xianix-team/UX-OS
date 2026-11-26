@@ -15,6 +15,10 @@ client-supplied requirements artifact to check against (a PRD, BRD, a stakeholde
 functional/non-functional requirements list, meeting notes with explicit asks) — if there
 is none, say so and skip; this isn't a step every project needs.
 
+Ignore to-be-solved rows flagged `idea:` (undecided ideas). If a client requirement matches
+one, say so in the report ("covered only by the undecided idea `<name>`") rather than
+counting it as covered.
+
 ## Extract from the client's document
 Pull out discrete requirement statements. Classify each as:
 - **Functional** — a capability the system must provide

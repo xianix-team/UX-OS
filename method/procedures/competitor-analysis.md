@@ -61,7 +61,7 @@ asking); no browser needed, so don't run
 Per competitor, from public sources: positioning and target users, platforms (web / iOS /
 Android / desktop), business model and public pricing, notable integrations, market
 presence in the chosen region. Then the **coverage matrix**:
-- **Rows** — our capabilities: blueprint nodes if `blueprint.md` exists; otherwise
+- **Rows** — our capabilities: blueprint nodes (leaving out nodes flagged `idea:`) if `blueprint.md` exists; otherwise
   `to-be-solved` themes or persona needs; otherwise the union of competitor capabilities,
   clustered (say which).
 - **Cells** — `has` · `partial` · `none` · `not evaluable`, each with its evidence tag.

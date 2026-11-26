@@ -57,6 +57,16 @@ below the frontmatter follow each template.
 | `design-record` | `design-records/<journey-id>.md`, `design-records/design-system.md`, `design-records/code-library.md` | the designer's working record, not for developers (their handoff is `requirements`);  `target`: figma \| code \| claude-design; links out to the Figma file, branch, or `claude_design_url`; revision log for canvases |
 | `open-questions` | `open-questions.md` | — |
 | `new-feature-mapping` | `feature-mapping/<slug>.md` | `driver` + `source_problem` + touchpoints → journey steps |
+| `idea` | `rough-ideas/<name>/idea.md` (+ `feature-mapping.md`, `journeys/`, `screen-specs/`, `design-records/`, `design-prompts/`, `mockup.html` in the same folder) | the person's own words; `state` exploring / parked / going-ahead / adopted / discarded; every entry it flagged in shared files (with the old text), overlaps with other ideas, components drawn but not added. Its journeys use ids `<name>-J<n>` until go ahead. Read by nothing outside the `idea` procedure |
+
+## The `idea:` flag
+
+An entry in a shared file that an undecided idea added or changed carries plain text
+`idea: <name>`: in a blueprint node label (changed nodes also keep `was: <old label>`), and
+at the start of a to-be-solved row's item text. Several ideas on one entry are listed
+side by side; the first `was:` is the real original. **Every procedure except `idea` treats
+a flagged entry as not there** and ignores `uxos/rough-ideas/`. The flag comes off only
+when the user goes ahead with the idea.
 
 ## Traceability spine
 

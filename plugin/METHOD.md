@@ -53,6 +53,7 @@ skips all of them and drifts out of the product's scope.
 | a new or changed journey | `journey-design`, then `edge-case-analysis` (suggested) |
 | screen specs | `screen-specification` |
 | a screen that isn't working — explore eight different directions, Crazy 8s, a sketching workshop | `crazy8` (`/uxos:crazy8`, optional) |
+| a rough idea taken as far as mockups without it becoming part of the product, "what if…", "just an idea" | `idea` (`/uxos:idea`) |
 | user stories, units, dev handoff | `requirements-drafting`; client doc cross-check: `requirements-gap-analysis` |
 | visual direction (greenfield, or a brownfield revamp), a mood board, style tiles | `design-direction` |
 | a design system | `figma-library`, `claude-design-library`, or `code-library` (+ `code-build-contract`) |
@@ -425,6 +426,13 @@ subagent, a fork, the `context-extractor` agent — for research or reading, but
 for a yes. It returns its findings; the main conversation drafts the artifact, shows it, and
 saves it on approval. When handing work off, say so in the task ("research and report back —
 don't write any files"), and give it only that task, not the next steps.
+
+**Ideas stay out of the real model.** Work started with `/uxos:idea` goes through the normal
+procedures in full, but is saved in `uxos/rough-ideas/<name>/`, and what it adds to
+`blueprint.md` or `to-be-solved.md` is flagged `idea: <name>`. Every other procedure skips
+flagged entries and everything in `rough-ideas/` unless it is running for the `idea`
+procedure. An idea never reaches Units, code-sync, promote-to-code, or the design system
+until the user chooses to go ahead with it after seeing the mockups.
 
 **Status records approval.** When a file is saved on the designer's yes, set `status:
 approved`; if they ask to keep it as work in progress, `status: draft`. When something a file

@@ -533,6 +533,7 @@ writes nothing.
 | `/uxos:edge-cases <journey>` | systematic edge-case register — suggested, never forced |
 | `/uxos:requirements <journey>` | dev handoff: Units (Who/Why/What/How + acceptance criteria), folding in screen specs, edge cases, UX issues |
 | `/uxos:crazy8 <journey> <screen>` | optional: eight different directions for a screen that isn't working — as a workshop or by AI — grey-box, pick one, nothing applied until you confirm |
+| `/uxos:idea [idea]` | a rough idea taken as far as mockups through the normal steps, saved in `uxos/rough-ideas/` and flagged `idea:`; no edge cases, Units, or dev handoff until you go ahead — or park or discard it |
 | `/uxos:screen-spec <journey>` | per-screen spec — entry points, sub-actions, controls, nav updates, states |
 | `/uxos:figma-library` | build/update the Figma design system bottom-up by atomic level, confirmed stage by stage (run once) |
 | `/uxos:code-library` | build/extend the design system in code bottom-up, confirmed level by level (run once before the first code handoff) |

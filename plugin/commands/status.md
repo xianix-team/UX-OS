@@ -16,6 +16,8 @@ Report the state of the `uxos/` model in the current working directory.
    - artifact counts: journeys, matrices, problems (by severity)
    - to-be-solved: in scope / needs-verification / deferred
    - open questions: unresolved count
+   - ideas (`uxos/rough-ideas/`): open / parked / waiting for a decision, any old (60+ days
+     without activity) and any that overlap — kept separate from the real model's counts
    - any obvious inconsistency (e.g. a key journey with no matrix; a `yes` to-be-solved item
      with no response type; PRBs with no matrix cross-ref)
 
