@@ -26,6 +26,13 @@ controls, and navigation updates won't be included unless you run `screen-specif
 first."* Non-blocking — the designer can proceed anyway — but this warning must not be
 skipped; it is the fix for "only the best case got designed."
 
+**For an idea** (a journey in `uxos/rough-ideas/<name>/`, run by the `idea` procedure): the
+prerequisites above apply inside the idea's folder. Don't use Path C, whatever
+`design_master` says. Add nothing to the design system or `patterns.md`; draw new components
+in the mockup and list them in the idea record. Save the design record in the idea's folder
+and prefix the canvas, page, or file title with `idea: <name>`. A standalone `mockup.html` in
+the idea's folder, using the design system read-only, is also offered.
+
 ## Target
 Default to the project's `design_tools` in `product-context.md`; ask only if it's unset or
 the designer names another. The recommended pairing is **Claude Design + code**:

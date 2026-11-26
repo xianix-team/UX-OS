@@ -45,6 +45,11 @@ for f in plugin/commands/*.md; do
   head -4 "$f" | grep -q '^description: ' || bad "$f has no description:"
 done
 
+echo "==> frontmatter values parse as YAML (unquoted values can't contain ': ')"
+for f in plugin/skills/*/SKILL.md plugin/agents/*.md plugin/commands/*.md; do
+  awk 'NR==1{next} /^---$/{exit} {print}' "$f" | grep -E '^[a-z-]+: [^"'"'"'].*: ' >/dev/null && bad "$f has an unquoted frontmatter value containing ': ' — quote it or reword"
+done
+
 echo "==> referenced templates exist"
 for t in $(grep -ohE '\{\{TEMPLATES\}\}/[a-z-]+\.md' method/procedures/*.md | sed 's#.*/##' | sort -u); do
   [ -f "method/templates/$t" ] || bad "a procedure references templates/$t, which doesn't exist"

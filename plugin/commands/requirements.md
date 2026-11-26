@@ -10,8 +10,11 @@ Write the development Units for journey `$ARGUMENTS`.
 0. Run the `code-sync` skill in **check** mode — silent unless the repo has new commits
    since the last sync; then it offers to sync first.
 
-1. Read `uxos/journeys/<id>*.md`. If it doesn't exist, tell the designer to run
-   `/uxos:journeys` or `/uxos:journey-design` first.
+1. Read `uxos/journeys/<id>*.md`. If the journey is in `uxos/rough-ideas/` instead, it's an
+   undecided idea: write nothing, and say Units come after going ahead with it, which is
+   done with `/uxos:idea` (decide). Don't suggest editing the idea record or moving files by
+   hand. If it doesn't exist at all, tell the designer to run `/uxos:journeys` or
+   `/uxos:journey-design` first.
 
 2. Check the other sources and say which are missing: `screen-specs/<id>.md` (offer
    `/uxos:screen-spec`), `edge-cases/<id>.md` (offer `/uxos:edge-cases`). Both are

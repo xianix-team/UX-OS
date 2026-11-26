@@ -24,6 +24,11 @@ matrix, problems, feature-mapping) has a stable set of nodes to point at.
   `escalate` with a structural consequence, etc.). Add or change only what the source names
   — don't restructure nodes it doesn't touch.
 
+**Ideas.** When `idea` runs this in update mode, every node added or changed is flagged
+`idea: <name>` (changed nodes keep `was: <old label>`); see the `idea` procedure for the
+format. In every other run, leave flagged nodes exactly as they are, and in **create,
+greenfield** ignore to-be-solved rows flagged `idea:`.
+
 ## Structure
 Three levels:
 1. **Surface** — a top-level area of the product. Where possible these map 1:1 to user

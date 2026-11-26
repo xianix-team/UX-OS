@@ -20,6 +20,12 @@ confirms every change before it lands in the model.
 No `repo` → this procedure does nothing (greenfield before development, or no code access).
 When code appears later, the designer can add it with `/uxos:sync <repo>`.
 
+## Undecided ideas — every mode
+Blueprint nodes flagged `idea:` and anything in `uxos/rough-ideas/` are not part of the
+model yet. Never mark them built, changed, or removed, and never move or edit them. If new
+code matches an idea, report it as "built, but still an undecided idea: `<name>`" and
+suggest deciding on it with `/uxos:idea`. Don't resolve it yourself.
+
 ## Where rules go — every mode
 Product rules (limits, validation, eligibility, status transitions, calculations, cut-offs,
 permissions) are written only to `uxos/business-rules.md` as `BR-<n>` entries, in the exact shape of

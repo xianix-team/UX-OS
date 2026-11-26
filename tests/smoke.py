@@ -119,6 +119,32 @@ SCENARIOS = [
         [("no_writes", None, "nothing written"),
          ("says", r"(/uxos:patterns|existing design language|revamp)", "points improve work elsewhere")],
     ),
+    scenario(
+        "idea-start-says-back-first",
+        "greenfield-after-journeys",
+        "/uxos:idea what if owners could block dates from their phone",
+        "0.36.0 — a new idea is said back and confirmed before anything is saved",
+        [("no_writes", None, "nothing saved without a yes"),
+         ("says", r"(understood|understand|confirm|is that right|did I get)", "says back the idea to confirm")],
+    ),
+    scenario(
+        "requirements-refuses-idea",
+        "greenfield-with-idea",
+        "/uxos:requirements split-payment-J1",
+        "0.36.0 — Units are never written for an undecided idea",
+        [("no_writes", None, "nothing written"),
+         ("says", r"idea", "says it's an undecided idea"),
+         ("says", r"/uxos:idea", "points to deciding on the idea")],
+    ),
+    scenario(
+        "status-lists-ideas-apart",
+        "greenfield-with-idea",
+        "/uxos:status",
+        "0.36.0 — ideas are listed on their own, never suggested as build work",
+        [("no_writes", None, "status writes nothing"),
+         ("says", r"split-payment", "lists the idea"),
+         ("not_says", r"/uxos:requirements\s+split-payment", "doesn't suggest Units for the idea")],
+    ),
 ]
 
 

@@ -22,6 +22,11 @@ column names. Downstream agents parse
 this structure, so never merge, reorder, rename, or drop a section. A section with nothing
 to say gets `none` or `needs decision`, not deletion. Summary and Sources go at the end.
 
+**Not for ideas.** If the journey lives in `uxos/rough-ideas/`, stop: say it's an undecided
+idea and that Units come after going ahead with it, which is done with `/uxos:idea`
+(decide). Never suggest editing the idea record or moving its files by hand. Ignore to-be-solved rows
+and blueprint nodes flagged `idea:`.
+
 ## Sources
 Read before drafting. Missing sources lower readiness; they don't block drafting.
 

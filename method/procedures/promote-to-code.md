@@ -27,6 +27,9 @@ Read before anything else; if one can't be read, stop and say so.
 3. `patterns.md` §6, `design-direction.md`, `screen-specs/`, `requirements/`,
    `business-rules.md` — the model is the spec; the canvases show how it was drawn.
 
+Ignore `uxos/rough-ideas/` and anything flagged `idea:`. An idea's mockups are never
+promoted; going ahead with the idea comes first.
+
 ## Method
 1. **Inventory and diff.** List what Claude Design holds: tokens by family (with themes),
    components with their variants and states, templates, and the screens on approved

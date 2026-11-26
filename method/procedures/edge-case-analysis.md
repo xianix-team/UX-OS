@@ -15,6 +15,9 @@ Never automatically. It is *suggested* by `next-steps` after `journey-design` or
 `map-journey-steps` — a gap worth closing, not a forced step. The designer decides whether
 and when to run it, same as everything else in this method.
 
+Not on a journey in `uxos/rough-ideas/` while it is still an idea. Edge cases come after the
+user chooses to go ahead with it (`/uxos:idea`).
+
 ## Method
 Walk each category in `{{TEMPLATES}}/edge-cases.md` in turn — input/data, state/timing,
 actor/permission, system/network, cross-surface/handoff (only if the journey's `surfaces`
