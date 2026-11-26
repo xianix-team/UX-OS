@@ -8,6 +8,8 @@ versions fix them.
 
 ## [Unreleased]
 
+## [0.36.0] — 2026-11-26
+
 ### Added
 - **`/uxos:idea` — rough ideas, as far as mockups, without becoming the product.** From
   customer feedback: first thoughts were being saved into the model and treated as decided.
@@ -37,6 +39,8 @@ versions fix them.
   checks behaviours that broke this month — nothing saved without a yes, the greenfield order,
   no guessing from the project name, no extractor on greenfield, no layout questions. Run by
   hand before each release.
+- `check.sh` catches unquoted frontmatter values containing `: `, which the MCP server's
+  YAML parser rejects (the skill would be skipped).
 - CI runs the MCP server's tests on every pull request, not only at release; `npm pkg fix`
   applied to `mcp/package.json` (the `bin` path) to clear npm's publish warning.
 
@@ -475,7 +479,8 @@ right and the arrangement wrong, because nothing in the model said *where* thing
 - `/uxos:edge-cases`, `/uxos:requirements`, `/uxos:screen-spec`.
 - `docs/quick-start.md`.
 
-[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.35.0...HEAD
+[Unreleased]: https://github.com/xianix-team/UX-OS/compare/v0.36.0...HEAD
+[0.36.0]: https://github.com/xianix-team/UX-OS/releases/tag/v0.36.0
 [0.35.0]: https://github.com/xianix-team/UX-OS/releases/tag/v0.35.0
 [0.34.8]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.8
 [0.34.7]: https://github.com/xianix-team/UX-OS/releases/tag/v0.34.7
