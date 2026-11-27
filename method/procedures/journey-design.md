@@ -11,6 +11,11 @@ This is design work, not observation: it belongs to Part B, after a driver alrea
 (a `new-feature-mapping`, or a `to-be-solved` item with `response_type: journey-improvement`
 or `journey-redesign`).
 
+**Changing something approved?** If this run would change an approved file (`status:
+approved`) and the designer hasn't said they're sure, ask once before drafting: "Change it
+now, or try it as an idea first?" Idea → hand over to the `idea` procedure. Not for drafts,
+new work, or corrections of a mistake.
+
 ## Which mode
 Determine from context, or ask:
 - **create** — a brand-new journey (a `new-feature-mapping` named one, or greenfield)

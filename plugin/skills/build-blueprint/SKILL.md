@@ -8,6 +8,11 @@ description: Create the feature map from scratch, or update an existing one with
 Goal: one tree that shows what the product is made of, so every later artifact (journeys,
 matrix, problems, feature-mapping) has a stable set of nodes to point at.
 
+**Changing something approved?** If this run would change an approved file (`status:
+approved`) and the designer hasn't said they're sure, ask once before drafting: "Change it
+now, or try it as an idea first?" Idea → hand over to the `idea` procedure. Not for drafts,
+new work, or corrections of a mistake.
+
 ## Which mode
 - **create, brownfield** — no `uxos/blueprint.md` exists yet, and a product already exists.
   Build it fresh from the context-extractor's report and `product-context` (this is what

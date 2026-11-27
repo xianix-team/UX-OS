@@ -8,6 +8,15 @@ versions fix them.
 
 ## [Unreleased]
 
+### Added
+- **Ideas start without the command.** Floating an idea in plain words ("what if…", "I have
+  an idea", "just a thought") starts the idea flow. And when a request would change
+  something already approved (a journey, screen spec, to-be-solved item or blueprint node),
+  uxos asks once, before drafting: "Change it now, or try it as an idea first?" It doesn't
+  ask for drafts, new work, or fixes, and never twice for the same change. In the method,
+  the hook, the `idea` procedure, and the four procedures that change approved work.
+- Smoke tests `idea-from-plain-words` and `change-approved-offers-idea`.
+
 ## [0.36.0] — 2026-11-26
 
 ### Added

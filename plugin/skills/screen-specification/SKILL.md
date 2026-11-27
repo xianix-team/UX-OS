@@ -11,6 +11,11 @@ actions beside the primary one, filters/sort/search, whether a nav menu needs up
 Design tools build exactly what they're given; if that's only the sequence, that's all that
 gets designed. This procedure closes that gap before design-handoff, not during it.
 
+**Changing something approved?** If this run would change an approved file (`status:
+approved`) and the designer hasn't said they're sure, ask once before drafting: "Change it
+now, or try it as an idea first?" Idea → hand over to the `idea` procedure. Not for drafts,
+new work, or corrections of a mistake.
+
 ## Prerequisite
 The journey should be approved (`status: approved` — `state: proposed` from
 `journey-design`, or `existing` from `map-journey-steps`). `patterns.md` should exist — it's the source for the existing

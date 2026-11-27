@@ -17,6 +17,14 @@ requirements (Units), and the dev handoff.
 **Template is the contract.** Read `{{TEMPLATES}}/idea.md` before writing the idea record
 and keep its frontmatter keys and headings exactly. If it can't be read, stop and say so.
 
+## How it starts
+- `/uxos:idea`, or the designer floats an idea in plain words ("what if…", "I have an idea",
+  "just a thought"). Go straight to **Start a new idea** with what they said.
+- Another step was about to change something approved, asked "Change it now, or try it as
+  an idea first?", and they chose idea. Start a new idea from the requested change, and
+  say which approved file it would have changed: that's the idea's starting point (a change
+  to an existing journey, or a blueprint node).
+
 ## Ask what they want
 
 If the request doesn't already say, ask, as numbered choices:
