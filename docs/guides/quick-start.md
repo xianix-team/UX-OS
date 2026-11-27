@@ -551,7 +551,8 @@ handy for the client conversation.
 ## 10. A rough idea — try it before it becomes the product
 
 Some input is only a first thought. To see it as a mockup without it becoming part of the
-product:
+product, just say so ("what if owners could block dates from their phone?"), or use the
+command:
 ```
 /uxos:idea "what if owners could block dates from their phone"
 ```
@@ -570,6 +571,9 @@ Once you've seen the mockups, run `/uxos:idea` again and choose:
 - **park it:** kept for later, still apart;
 - **discard it:** uxos lists everything it will remove and restores what the idea changed,
   only on your yes.
+
+**Asked to change something already approved?** uxos asks once: *"Change it now, or try it
+as an idea first?"* So a half-meant comment doesn't quietly change an approved journey.
 
 `/uxos:status` lists ideas on their own, and flags ones untouched for 60 days or ideas that
 change the same thing.

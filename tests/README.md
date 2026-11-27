@@ -18,6 +18,8 @@ per scenario by default). So they run **by hand before every release**, not in C
 `scripts/check.sh` and the MCP server's tests, which are free.
 
 Each scenario copies a fixture to a temporary folder first; nothing in `fixtures/` changes.
+Runs load only this repo's plugin: MCP servers from your own setup are switched off
+(`--strict-mcp-config`), so an installed uxos MCP server can't compete with the plugin.
 `--keep` leaves the temporary folders for inspection.
 
 ## Fixtures

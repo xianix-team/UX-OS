@@ -128,6 +128,23 @@ SCENARIOS = [
          ("says", r"(understood|understand|confirm|is that right|did I get)", "says back the idea to confirm")],
     ),
     scenario(
+        "idea-from-plain-words",
+        "greenfield-after-journeys",
+        "what if guests could split the payment when the organiser books?",
+        "0.36.1 — an idea floated in plain words starts the idea flow without the command",
+        [("no_writes", None, "nothing saved without a yes"),
+         ("says", r"idea", "treats it as an idea"),
+         ("says", r"(understood|understand|confirm|is that right|did I get)", "says it back to confirm")],
+    ),
+    scenario(
+        "change-approved-offers-idea",
+        "greenfield-after-journeys",
+        "Change J1 so the organiser can see the price per person on the cabin page.",
+        "0.36.1 — a change to an approved journey asks: change it now, or try it as an idea first?",
+        [("no_writes", None, "nothing changed before the answer"),
+         ("says", r"idea first|as an idea", "offers to try it as an idea")],
+    ),
+    scenario(
         "requirements-refuses-idea",
         "greenfield-with-idea",
         "/uxos:requirements split-payment-J1",
@@ -153,6 +170,9 @@ def run_claude(workdir, prompt, budget):
         "claude", "-p", prompt,
         "--plugin-dir", str(PLUGIN), "--add-dir", str(PLUGIN),
         "--permission-mode", "acceptEdits",
+        # Only the plugin under test: no MCP servers from the user's own setup (e.g. the uxos
+        # MCP server installed for their account would compete with the plugin's skills).
+        "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}',
         "--max-budget-usd", str(budget),
         "--output-format", "stream-json", "--verbose",
     ]

@@ -9,6 +9,11 @@ Goal: convert either a problems register (improve/revamp) or a theme-consolidate
 problem-validation (greenfield) into an explicit scope decision, with a response type per
 item so Part B knows which playbook to run.
 
+**Changing something approved?** If this run would change an approved file (`status:
+approved`) and the designer hasn't said they're sure, ask once before drafting: "Change it
+now, or try it as an idea first?" Idea → hand over to the `idea` procedure. Not for drafts,
+new work, or corrections of a mistake.
+
 ## Determine grouping from the source
 - Candidates came from `problems.md` (a UX Matrix pass) → `grouping: user-group`.
 - Candidates came from `problem-validation` (greenfield, consolidated by theme) →

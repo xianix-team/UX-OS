@@ -434,6 +434,18 @@ flagged entries and everything in `rough-ideas/` unless it is running for the `i
 procedure. An idea never reaches Units, code-sync, promote-to-code, or the design system
 until the user chooses to go ahead with it after seeing the mockups.
 
+**When to offer an idea.** Two triggers, nothing else:
+- the designer floats one in plain words ("what if…", "I have an idea", "just a thought",
+  "try this") → the `idea` procedure, without them typing the command;
+- a request would change something already **approved** (a journey, a screen spec, a
+  to-be-solved item, a blueprint node) and they haven't said whether they're sure → ask once,
+  before drafting: *"Change it now, or try it as an idea first?"* "Change it now" runs the
+  normal procedure; "idea" runs `idea`.
+
+Don't ask for drafts, brand-new work, or corrections of a mistake, and never ask twice for
+the same change. The question is cheap because an idea runs the same steps; only where the
+work is kept differs.
+
 **Status records approval.** When a file is saved on the designer's yes, set `status:
 approved`; if they ask to keep it as work in progress, `status: draft`. When something a file
 was built from is changed and re-approved later (a persona under a journey, a journey under
