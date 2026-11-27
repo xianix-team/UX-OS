@@ -28,14 +28,16 @@ Inside the `claude` prompt:
 
 A URL input only works properly if Claude can **actually browse** — not just fetch the page.
 A plain fetch returns static HTML: no rendered pages, no computed styles, no screenshots, no
-clicking through flows. In a terminal or VS Code, that means the **Claude in Chrome**
-extension. You don't have to remember this — `/uxos:init` (and `patterns`, `matrix`,
-`journeys`) checks first, and if there's no browser it stops and offers you a choice instead
-of failing halfway.
+clicking through flows. In the Claude desktop app, the built-in browser pane does this with nothing to install.
+In a terminal or VS Code, that means the **Claude in Chrome** extension. You don't have to
+remember this — `/uxos:init` (and `patterns`, `matrix`, `journeys`) checks first, and if
+there's no browser it stops and offers you a choice instead of failing halfway.
 
-The check loads the browser tools before deciding — Claude in Chrome first, then the desktop
-app's built-in browser pane. If you ever see "no browser" while the extension is connected,
-update the plugin (`/plugin update uxos@uxos-marketplace`) and restart the session.
+**uxos never takes over your own browser without asking.** Research runs in the background
+(web search and fetch). For live pages it prefers the desktop app's built-in browser pane,
+which is separate from yours. It uses your own Chrome only after you say yes, once per
+session. If you ever see "no browser" while the extension is connected, update the plugin
+(`/plugin update uxos@uxos-marketplace`) and restart the session.
 
 `/uxos:init` will also always ask whether you have **code repo access**, even when you gave a
 URL — the repo is the best structural signal for the feature map, the URL adds screens,
@@ -63,6 +65,23 @@ Claude Code: `claude mcp add -s user uxos-skills -- npx -y @99x-ai-dlc/uxos-skil
 serves the same skills, templates, and method as the plugin, but not yet the plugin's slash
 commands or its hook — so ask in plain words ("start a uxos project for…") and the client
 fetches the right skill. The plugin is the full experience; use it where you can.
+
+## How uxos works with you
+
+A few rules hold in every command:
+
+- **Nothing is saved without your yes.** Every file is shown to you first. Say yes to save
+  it, or say what to change. Anything uxos worked out rather than found is marked
+  `Inferred —`, so you can check it.
+- **It never guesses from a name.** It asks what the product is in your words. If you can't
+  say yet, it stops and waits rather than inventing it.
+- **Plain words and pictures for choices about looks.** Questions about how a screen is laid
+  out are shown as rough sketches side by side, or left open for the design step, never
+  asked in words.
+- **Suggestions, never orders.** Every command ends with a ranked "Next" list. You can always
+  do something else.
+- **Files have a status.** `draft` (still being worked on), `approved` (you said yes), or
+  `stale` (something it was built from changed since; `/uxos:status` points these out).
 
 ## 0.5 Already have some of this? Import it first
 
@@ -98,10 +117,21 @@ converted; it's kept as the input for `/uxos:requirements-gap`.
 ```
 
 Just type that and press enter. It asks what it needs **one question at a time, in plain
-words** — no design jargon. First the project name, then **is this a new product starting
-from scratch, or one that already exists?** Everything after branches on the answer (uxos
-calls these *greenfield* and *brownfield*; you don't need to). It recaps your answers and
-asks before it reads or crawls anything.
+words** — no design jargon:
+
+1. the project name;
+2. **your role** (designer, product owner, founder, developer…), so every later step pitches
+   its questions to you;
+3. **is this a new product starting from scratch, or one that already exists?** Everything
+   after branches on the answer (uxos calls these *greenfield* and *brownfield*; you don't
+   need to);
+4. **the idea, in your own words**: what it is, who it's for, what problem it solves. uxos
+   says back what it understood and checks with you. The project name is only a label:
+   nothing is researched or assumed from it. If you can't describe it yet, it stops and picks
+   up later.
+
+Then platform, what material you have, and which design tools you'll use. It recaps your
+answers and asks before it reads or crawls anything, and shows each file before saving it.
 
 **Brownfield** — answer the questions, or paste a block like this right after (adjust the
 bracketed parts — for a multi-app/connected product, list every surface, see the note
@@ -109,6 +139,8 @@ below):
 
 ```
 Project: <name>
+Role: <designer / product owner / …>
+Idea: <what the product does and who uses it>
 Platform: web
 Inputs: live URL — <paste> (or: code repo — <path or git URL>)
 Domain familiarity: somewhat
@@ -129,12 +161,17 @@ continue
 **Greenfield** — paste a block like this instead:
 ```
 Project: <name>
+Role: <designer / product owner / founder / …>
+Idea: <what it is, who it's for, and the problem it solves>
 Platform: web
 Reference material: <a PRD/BRD, brand guidelines, competitor products for inspiration — any or none>
 Domain familiarity: not very
 ```
 It researches the domain (this is the primary evidence source — there's no product to
-observe) and goes straight to user-group candidates. **No gate G1** — nothing was crawled to
+observe). **You review the domain study section by section** before it's saved: what was
+researched (with sources), what was inferred, and anything you know that it didn't find.
+A one-click yes on a long study would be a rubber stamp. Then it proposes user groups for
+you to choose, and personas that carry the domain specifics forward. **No gate G1** — nothing was crawled to
 review. Go to §2B.
 
 ---
@@ -210,7 +247,9 @@ journeys and screen specs get designed — that's expected, not a gap.
 ```
 Detail each key journey — every step with How, Why and Technical delight — then spec the
 screens it touches: entry points, actions, controls, states, and how each is arranged. Same
-commands as adding a feature; see §3 for what each one does.
+commands as adding a feature; see §3 for what each one does. Layout choices you can't judge
+without seeing them (one column or two, a sheet or a full screen) are listed as **Open
+layout questions** and settled at the design step, on the canvas.
 
 ```
 /uxos:design-direction
@@ -255,6 +294,9 @@ direction and patterns all exist. Build the design system and the screens next (
 Walks 5 stages — driver, capability sketch, placement, conflict check, downstream summary —
 confirming at each before writing anything.
 
+**Only a first thought so far?** Use `/uxos:idea` instead (§10): the same steps, kept apart
+from the product until you decide after seeing a mockup.
+
 ```
 /uxos:blueprint uxos/feature-mapping/<slug>.md
 ```
@@ -273,23 +315,6 @@ step numbers to redo.
 Systematically checks input/data, state/timing, actor/permission, system/network,
 cross-surface handoff, and accessibility edge cases against this journey's actual steps —
 never runs on its own, but worth doing before handoff.
-
-*(the dev handoff — for engineering, QA, and AI-DLC agents)*
-```
-/uxos:requirements "<feature name>"
-```
-Writes the journey up as development **Units**: each one a buildable slice with Who, Why
-(user story + trace to to-be-solved), What, How (flow, screens, states, data, business
-rules) and Given/When/Then acceptance criteria with stable ids. It folds in the screen spec,
-edge cases and related UX issues automatically, proposes the slicing for your OK first, and
-marks any unit with open questions `not-ready` instead of guessing. Run it after
-`/uxos:screen-spec` for the fullest units.
-
-**This is what you give developers:** `uxos/requirements/`. Each file opens with **Start here**
-(build order, what's ready, how to run the prototype), and each unit's Build notes say what to
-build from and what's left to wire. `uxos/design-records/` is your own working record of what
-was drawn, built, and checked; developers don't need it. In a project from before 0.30.0 that
-folder is `uxos/handoff/`, and uxos offers once to rename it.
 
 *(strongly recommended before handoff)*
 ```
@@ -314,7 +339,7 @@ overrides): without a library, "build from components" quietly turns into inline
 /uxos:design "<feature name>" figma
 ```
 or `claude-design`, `prompt` (Stitch/another tool), or `code` (build a working prototype in the
-repo). This is the design handoff — the end of the add-feature chain.
+repo). This is the design handoff.
 
 **Claude Design** gives you one canvas per journey: an artboard for every screen in the
 screen spec *and* for each of its states (empty, error, loading…), labelled with steps and
@@ -333,6 +358,25 @@ wiring. After **each screen** an audit scans for inline styles, raw colours, mag
 styling inside screens and components defined in screens; findings block your confirmation
 unless you record an override. It can't judge visual fidelity, so it also runs the prototype
 for you to look at.
+
+
+*(the dev handoff — for engineering, QA, and AI-DLC agents)*
+```
+/uxos:requirements "<feature name>"
+```
+Writes the journey up as development **Units**: each one a buildable slice with Who, Why
+(user story + trace to to-be-solved), What, How (flow, screens, states, data, business
+rules) and Given/When/Then acceptance criteria with stable ids. It folds in the screen spec,
+edge cases and related UX issues automatically, proposes the slicing for your OK first, and
+marks any unit with open questions `not-ready` instead of guessing. It's built from the
+screen specs, so run it after `/uxos:screen-spec`, and again once the design is built so the
+Build notes are current.
+
+**This is what you give developers:** `uxos/requirements/`. Each file opens with **Start here**
+(build order, what's ready, how to run the prototype), and each unit's Build notes say what to
+build from and what's left to wire. `uxos/design-records/` is your own working record of what
+was drawn, built, and checked; developers don't need it. In a project from before 0.30.0 that
+folder is `uxos/handoff/`, and uxos offers once to rename it.
 
 ---
 
@@ -504,6 +548,64 @@ handy for the client conversation.
 
 ---
 
+## 10. A rough idea — try it before it becomes the product
+
+Some input is only a first thought. To see it as a mockup without it becoming part of the
+product:
+```
+/uxos:idea "what if owners could block dates from their phone"
+```
+It goes through **the same steps as any other work**, in full: why and where it fits, the
+feature map, the journey, screen specs, and a mockup. No shortcuts, because shortcuts are
+where things drift. The difference is where it's kept:
+
+- its journeys, screen specs and mockups go in `uxos/rough-ideas/<name>/`;
+- what it adds to the feature map or to-be-solved is marked `idea: <name>`;
+- nothing else in uxos treats it as real: no Units, no dev handoff, nothing added to the
+  design system or the product's code.
+
+Once you've seen the mockups, run `/uxos:idea` again and choose:
+- **go ahead:** uxos runs the steps it skipped (edge cases, then Units), moves the files into
+  the project, and takes the `idea:` marks off;
+- **park it:** kept for later, still apart;
+- **discard it:** uxos lists everything it will remove and restores what the idea changed,
+  only on your yes.
+
+`/uxos:status` lists ideas on their own, and flags ones untouched for 60 days or ideas that
+change the same thing.
+
+---
+
+## 11. Not happy with a screen — Crazy 8
+```
+/uxos:crazy8 J1 "Booking summary"
+```
+Eight genuinely different directions for one screen, drawn as rough grey boxes on one page.
+Choose each time: a **workshop** (people sketch for eight minutes, then uxos reads the photos
+into cards) or **AI** (eight directions, each changing a different thing: layout, how you
+interact, what comes first, and so on). You pick one or combine parts. Nothing reaches the
+screen spec or the design system until you confirm the choice; then `/uxos:design` builds it.
+
+---
+
+## 12. Working as a team
+
+`uxos/` is a folder of plain files in your project, so the team shares it through git like
+any other files.
+
+- **Work on a branch,** not straight on `main`, and merge when the work is agreed. Whatever
+  is on `main` is what everyone else sees, and what `/uxos:sync` counts as the truth.
+- **Commit when a step is saved and approved,** with a message saying which step (e.g.
+  "J3 screen specs").
+- **A push shares your changes with everyone who pulls.** If you're unsure, push your branch
+  and open a pull request, so someone can look first.
+- **Rough ideas are separate folders,** so two people working on different ideas won't
+  clash.
+- **Public repo?** Keep `uxos/sources/` and anything with client data out of it (add them to
+  `.gitignore`).
+
+---
+
 ## Anytime
 
 ```
@@ -519,7 +621,7 @@ writes nothing.
 | Command | What it does |
 |---|---|
 | `/uxos:import <path>` | adopt documents you already have (any format, file or folder) instead of recreating them |
-| `/uxos:init` | brownfield or greenfield; crawl inputs or start research; gate G1 (brownfield only) |
+| `/uxos:init` | start a project, one plain question at a time: name, your role, new or existing, the idea in your words; then crawl inputs (existing) or research the domain (new); gate G1 (existing only) |
 | `/uxos:journeys` | brownfield — name + map the key journeys |
 | `/uxos:matrix <J>` | brownfield — UX matrix for one journey |
 | `/uxos:patterns` | reverse-engineer (brownfield) or populate from design-direction (greenfield) |
@@ -547,8 +649,21 @@ writes nothing.
 | `/uxos:sync [repo]` | first time: enrich existing documents from the code (business logic etc.); after that: bring the model in line with what developers built |
 | `/uxos:status` | where things stand + suggested next steps |
 
-Update the plugin any time with:
+## Getting new versions
+
+You get a new version when it's **released**, not every time someone changes the repo, and
+only after you update. Inside `claude`:
 ```
 /plugin marketplace update uxos-marketplace
-/plugin update uxos
+/plugin update uxos@uxos-marketplace
 ```
+or from a terminal:
+```bash
+claude plugin marketplace update uxos-marketplace && claude plugin update uxos@uxos-marketplace
+```
+Then restart the session. Claude Code can also keep a marketplace updated automatically;
+look for the setting under Marketplaces in `/plugin`. What changed in each version is in the
+[CHANGELOG](../../CHANGELOG.md) and on the repo's Releases page.
+
+Using the MCP server? End the command with `@latest`
+(`npx -y @99x-ai-dlc/uxos-skills-mcp@latest`) so it picks up each release.
